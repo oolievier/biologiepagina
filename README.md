@@ -10,6 +10,7 @@ door een zelf ontworpen redactioneel thema (papier, inkt, mosgroen en oker).
 - `theme/theme.js` — navigatie, zoeken en leesvoortgang.
 - `theme/search-index.json` — gegenereerde zoekindex op basis van alle paginatitels.
 - `tools/build.js` — zet de gespiegelde originele HTML-pagina's om naar het nieuwe thema.
+- `tools/fetch-pages.js` — haalt gelinkte pagina's op die niet in de sitemap staan.
 - `tools/fetch-missing.js` — haalt assetbestanden op die de spiegeling miste.
 - `tools/check.js` — controleert links en tekstbehoud.
 - `vercel.json` — kleine rewrite voor `/index.htm`.
@@ -28,8 +29,9 @@ geen gradiënten, geen standaard SaaS-kaarten en geen emoji-icoontjes.
 
 ```bash
 cd tools && npm install
+node fetch-pages.js /pad/naar/gespiegelde/site
 node build.js /pad/naar/gespiegelde/site ..
-node fetch-missing.js ..
+node fetch-missing.js .. /pad/naar/gespiegelde/site
 node check.js /pad/naar/gespiegelde/site ..
 ```
 

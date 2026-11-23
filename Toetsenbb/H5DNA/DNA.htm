@@ -1,0 +1,1908 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oefentoets DNA | Biologiepagina.nl</title>
+<meta property="og:title" content="Oefentoets DNA">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefentoets DNA">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://biologiepagina.nl/Toetsenbb/H5DNA/DNA.htm">
+<meta property="og:image" content="https://biologiepagina.nl/Images/biologiepagina.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oefentoets DNA">
+<meta name="twitter:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefentoets DNA">
+<meta name="twitter:image" content="https://biologiepagina.nl/Images/biologiepagina.jpg">
+<meta name="twitter:image:alt" content="Oefentoets DNA">
+<meta name="DC:Creator" content="Bio Web Design">
+<meta name="DC:Title" content="Oefentoets DNA | Biologiepagina.nl">
+<meta name="Description" content="Biologie oefenen met oefentoetsen voor Biologie voor Jou en Nectar. Oefentoets DNA en cellen.">
+<meta name="author" content="biologiepagina.nl">
+<meta http-equiv="language" content="NL">
+<link rel="icon" href="/theme/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap">
+<link rel="stylesheet" href="/theme/theme.css">
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M062Y6XMGZ');
+</script>
+<script type="text/javascript">
+
+//<![CDATA[
+
+<!--
+
+
+
+
+function Client(){
+//if not a DOM browser, hopeless
+	this.min = false; if (document.getElementById){this.min = true;};
+
+	this.ua = navigator.userAgent;
+	this.name = navigator.appName;
+	this.ver = navigator.appVersion;  
+
+//Get data about the browser
+	this.mac = (this.ver.indexOf('Mac') != -1);
+	this.win = (this.ver.indexOf('Windows') != -1);
+
+//Look for Gecko
+	this.gecko = (this.ua.indexOf('Gecko') > 1);
+	if (this.gecko){
+		this.geckoVer = parseInt(this.ua.substring(this.ua.indexOf('Gecko')+6, this.ua.length));
+//		if (this.geckoVer < 20020000){this.min = false;}
+	}
+	
+//Look for Firebird
+	this.firebird = (this.ua.indexOf('Firebird') > 1);
+	
+//Look for Safari
+	this.safari = (this.ua.indexOf('Safari') > 1);
+	if (this.safari){
+		this.gecko = false;
+	}
+	
+//Look for IE
+	this.ie = (this.ua.indexOf('MSIE') > 0);
+	if (this.ie){
+		this.ieVer = parseFloat(this.ua.substring(this.ua.indexOf('MSIE')+5, this.ua.length));
+		if (this.ieVer < 5.5){this.min = false;}
+	}
+	
+//Look for Opera
+	this.opera = (this.ua.indexOf('Opera') > 0);
+	if (this.opera){
+		this.operaVer = parseFloat(this.ua.substring(this.ua.indexOf('Opera')+6, this.ua.length));
+		if (this.operaVer < 7.04){this.min = false;}
+	}
+	if (this.min == false){
+//		alert('Your browser may not be able to handle this page.');
+	}
+	
+//Special case for the horrible ie5mac
+	this.ie5mac = (this.ie&&this.mac&&(this.ieVer<6));
+}
+
+var C = new Client();
+
+//for (prop in C){
+//	alert(prop + ': ' + C[prop]);
+//}
+
+
+
+//CODE FOR HANDLING NAV BUTTONS AND FUNCTION BUTTONS
+
+//[strNavBarJS]
+function NavBtnOver(Btn){
+	if (Btn.className != 'NavButtonDown'){Btn.className = 'NavButtonUp';}
+}
+
+function NavBtnOut(Btn){
+	Btn.className = 'NavButton';
+}
+
+function NavBtnDown(Btn){
+	Btn.className = 'NavButtonDown';
+}
+//[/strNavBarJS]
+
+function FuncBtnOver(Btn){
+	if (Btn.className != 'FuncButtonDown'){Btn.className = 'FuncButtonUp';}
+}
+
+function FuncBtnOut(Btn){
+	Btn.className = 'FuncButton';
+}
+
+function FuncBtnDown(Btn){
+	Btn.className = 'FuncButtonDown';
+}
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+
+
+
+//CODE FOR HANDLING DISPLAY OF POPUP FEEDBACK BOX
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+//Focus the OK button
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+	
+//
+//	RefreshImages();
+//
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+				//get Mac FireFox to manipulate display, to force screen redraw
+				if (C.mac && C.gecko) {Els[i].style.display = '';}
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+				if (C.mac && C.gecko) {Els[i].style.display = 'none';}
+			}
+		} 
+		else {
+			// tagName is either input or select (that is, Form Elements)
+			// ie6 has a problem with Form elements, so manipulate those
+			if (C.ie) {
+				if (C.ieVer < 7) {
+					if (Show == true){
+						Els[i].style.visibility = 'visible';
+					}
+					else{
+						Els[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+	if (Finished == true){
+		Finish();
+	}
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].clientWidth;
+	this.H = document.getElementsByTagName('body')[0].clientHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	if (C.ie) {
+		thisKey = window.event.keyCode;
+	}
+	else {
+		thisKey = e.keyCode;
+	}
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+	}
+
+	if (Suppress == true){
+		if (C.ie){
+			window.event.returnValue = false;	
+			window.event.cancelBubble = true;
+		}
+		else{
+			e.preventDefault();
+		}
+	}
+}
+
+if (C.ie){
+	document.attachEvent('onkeydown',SuppressBackspace);
+	window.attachEvent('onkeydown',SuppressBackspace);
+}
+else{
+	if (window.addEventListener){
+		window.addEventListener('keypress',SuppressBackspace,false);
+	}
+}
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+	RefreshImages();
+
+}
+
+
+
+Imgs = new Array();
+
+function PreloadImages(){
+	var a = PreloadImages.arguments;
+	for (var i=0; i<a.length; i++){
+		Imgs[i] = new Image();
+		Imgs[i].src = a[i];
+	}
+}
+
+function RefreshImages(){
+	for (var i=0; i<document.images.length; i++){
+		if (document.images[i].name.substring(0,6) != 'NavBar'){
+			document.images[i].src = document.images[i].src;
+		}
+	}
+}
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+//EXTENSION TO ARRAY OBJECT
+function Array_IndexOf(Input){
+	var Result = -1;
+	for (var i=0; i<this.length; i++){
+		if (this[i] == Input){
+			Result = i;
+		}
+	}
+	return Result;
+}
+Array.prototype.indexOf = Array_IndexOf;
+
+//IE HAS RENDERING BUG WITH BOTTOM NAVBAR
+function RemoveBottomNavBarForIE(){
+	if ((C.ie)&&(document.getElementById('Reading') != null)){
+		if (document.getElementById('BottomNavBar') != null){
+			document.getElementById('TheBody').removeChild(document.getElementById('BottomNavBar'));
+		}
+	}
+}
+
+
+
+
+//HOTPOTNET-RELATED CODE
+
+var HPNStartTime = (new Date()).getTime();
+var SubmissionTimeout = 30000;
+var Detail = ''; //Global that is used to submit tracking data
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.detail.value = Detail;
+		Frm.submit();
+	}
+}
+
+
+
+
+
+//JQUIZ CORE JAVASCRIPT CODE
+
+var CurrQNum = 0;
+var CorrectIndicator = '<img src="duimhoog.gif" alt="duimhoog.gif" title="duimhoog" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var IncorrectIndicator = '<img src="duimlaagrood.gif" alt="duimlaagrood.gif" title="duimlaagrood" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var YourScoreIs = 'Je score is';
+
+//New for 6.2.2.0
+var CompletedSoFar = 'Aantal vragen volledig afgerond: ';
+var ExerciseCompleted = 'You have completed the exercise.';
+var ShowCompletedSoFar = true;
+
+var ContinuousScoring = true;
+var CorrectFirstTime = 'Vragen die de eerste keer al goed zijn beantwoord: ';
+var ShowCorrectFirstTime = true;
+var ShuffleQs = false;
+var ShuffleAs = false;
+var DefaultRight = 'Correct!';
+var DefaultWrong = 'Sorry! Probeer nog een keer....';
+var QsToShow = 37;
+var Score = 0;
+var Finished = false;
+var Qs = null;
+var QArray = new Array();
+var ShowingAllQuestions = false;
+var ShowAllQuestionsCaption = '';
+var ShowOneByOneCaption = '';
+var State = new Array();
+var Feedback = '';
+var TimeOver = false;
+var strInstructions = '';
+var Locked = false;
+
+//The following variable can be used to add a message explaining that
+//the question is finished, so no further marking will take place.
+var strQuestionFinished = '';
+
+function CompleteEmptyFeedback(){
+	var QNum, ANum;
+	for (QNum=0; QNum<I.length; QNum++){
+//Only do this if not multi-select
+		if (I[QNum][2] != '3'){
+  		for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+  			if (I[QNum][3][ANum][1].length < 1){
+  				if (I[QNum][3][ANum][2] > 0){
+  					I[QNum][3][ANum][1] = DefaultRight;
+  				}
+  				else{
+  					I[QNum][3][ANum][1] = DefaultWrong;
+  				}
+  			}
+  		}
+		}
+	}
+}
+
+function SetUpQuestions(){
+	var AList = new Array(); 
+	var QList = new Array();
+	var i, j;
+	Qs = document.getElementById('Questions');
+	while (Qs.getElementsByTagName('li').length > 0){
+		QList.push(Qs.removeChild(Qs.getElementsByTagName('li')[0]));
+	}
+	var DumpItem = 0;
+	if (QsToShow > QList.length){
+		QsToShow = QList.length;
+	}
+	while (QsToShow < QList.length){
+		DumpItem = Math.floor(QList.length*Math.random());
+		for (j=DumpItem; j<(QList.length-1); j++){
+			QList[j] = QList[j+1];
+		}
+		QList.length = QList.length-1;
+	}
+	if (ShuffleQs == true){
+		QList = Shuffle(QList);
+	}
+	if (ShuffleAs == true){
+		var As;
+		for (var i=0; i<QList.length; i++){
+			As = QList[i].getElementsByTagName('ol')[0];
+			if (As != null){
+  			AList.length = 0;
+				while (As.getElementsByTagName('li').length > 0){
+					AList.push(As.removeChild(As.getElementsByTagName('li')[0]));
+				}
+				AList = Shuffle(AList);
+				for (j=0; j<AList.length; j++){
+					As.appendChild(AList[j]);
+				}
+			}
+		}
+	}
+	
+	for (i=0; i<QList.length; i++){
+		Qs.appendChild(QList[i]);
+		QArray[QArray.length] = QList[i];
+	}
+
+//Show the first item
+	QArray[0].style.display = '';
+	
+//Now hide all except the first item
+	for (i=1; i<QArray.length; i++){
+		QArray[i].style.display = 'none';
+	}		
+	SetQNumReadout();
+	
+	SetFocusToTextbox();
+}
+
+function SetFocusToTextbox(){
+//if there's a textbox, set the focus in it
+	if (QArray[CurrQNum].getElementsByTagName('input')[0] != null){
+		QArray[CurrQNum].getElementsByTagName('input')[0].focus();
+//and show a keypad if there is one
+		if (document.getElementById('CharacterKeypad') != null){
+			document.getElementById('CharacterKeypad').style.display = 'block';
+		}
+	}
+	else{
+  	if (QArray[CurrQNum].getElementsByTagName('textarea')[0] != null){
+  		QArray[CurrQNum].getElementsByTagName('textarea')[0].focus();	
+//and show a keypad if there is one
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'block';
+			}
+		}
+//This added for 6.0.4.11: hide accented character buttons if no textbox
+		else{
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'none';
+			}
+		}
+	}
+}
+
+function ChangeQ(ChangeBy){
+//The following line prevents moving to another question until the current
+//question is answered correctly. Uncomment it to enable this behaviour. 
+//	if (State[CurrQNum][0] == -1){return;}
+	if (((CurrQNum + ChangeBy) < 0)||((CurrQNum + ChangeBy) >= QArray.length)){return;}
+	QArray[CurrQNum].style.display = 'none';
+	CurrQNum += ChangeBy;
+	QArray[CurrQNum].style.display = '';
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+	SetQNumReadout();
+	SetFocusToTextbox();
+}
+
+var HiddenReadingShown = false;
+function ShowSpecialReadingForQuestion(){
+//Undocumented function for showing specific reading text elements which change with each question
+//Added on 10/12/2004
+	if (document.getElementById('ReadingDiv') != null){
+		if (HiddenReadingShown == true){
+			document.getElementById('ReadingDiv').innerHTML = '';
+		}
+		if (QArray[CurrQNum] != null){
+//Fix for 6.0.4.25
+			var Children = QArray[CurrQNum].getElementsByTagName('div');
+			for (var i=0; i<Children.length; i++){
+			if (Children[i].className=="HiddenReading"){
+					document.getElementById('ReadingDiv').innerHTML = Children[i].innerHTML;
+					HiddenReadingShown = true;
+//Hide the ShowAllQuestions button to avoid confusion
+					if (document.getElementById('ShowMethodButton') != null){
+						document.getElementById('ShowMethodButton').style.display = 'none';
+					}
+				}
+			}	
+		}
+	}
+}
+
+function SetQNumReadout(){
+	document.getElementById('QNumReadout').innerHTML = (CurrQNum+1) + ' / ' + QArray.length;
+	if ((CurrQNum+1) >= QArray.length){
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'visible';
+		}
+	}
+	if (CurrQNum <= 0){
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'visible';
+		}
+	}
+}
+
+var I=new Array();
+I[0]=new Array();I[0][0]=100;
+I[0][1]='';
+I[0][2]='1';
+I[0][3]=new Array();
+I[0][3][0]=new Array('eiwit','',1,100,1);
+I[0][3][1]=new Array('enzym','',1,100,1);
+I[1]=new Array();I[1][0]=100;
+I[1][1]='';
+I[1][2]='1';
+I[1][3]=new Array();
+I[1][3][0]=new Array('mutatie','',1,100,1);
+I[2]=new Array();I[2][0]=100;
+I[2][1]='';
+I[2][2]='1';
+I[2][3]=new Array();
+I[2][3][0]=new Array('genetisch gemodificeerde planten','',1,100,1);
+I[2][3][1]=new Array('gemodificeerde planten','',1,100,1);
+I[2][3][2]=new Array('gemanipuleerde planten','',1,100,1);
+I[2][3][3]=new Array('genetisch gemanipuleerde planten','',1,100,1);
+I[3]=new Array();I[3][0]=100;
+I[3][1]='';
+I[3][2]='0';
+I[3][3]=new Array();
+I[3][3][0]=new Array('nee','',0,0,1);
+I[3][3][1]=new Array('ja, 6','',0,0,1);
+I[3][3][2]=new Array('ja, 12','',1,100,1);
+I[3][3][3]=new Array('ja, 24','',0,0,1);
+I[4]=new Array();I[4][0]=100;
+I[4][1]='';
+I[4][2]='0';
+I[4][3]=new Array();
+I[4][3][0]=new Array('alleen 1','',0,0,1);
+I[4][3][1]=new Array('alleen 2','',0,0,1);
+I[4][3][2]=new Array('alleen 3','',0,0,1);
+I[4][3][3]=new Array('alleen 1 en 2','',1,100,1);
+I[4][3][4]=new Array('alleen 1 en 3','',0,0,1);
+I[4][3][5]=new Array('alleen 2 en 3','',0,0,1);
+I[5]=new Array();I[5][0]=100;
+I[5][1]='';
+I[5][2]='0';
+I[5][3]=new Array();
+I[5][3][0]=new Array('bij de typen 1 en 2','',0,0,1);
+I[5][3][1]=new Array('bij de typen 1 en 3','',0,0,1);
+I[5][3][2]=new Array('bij de typen 2 en 4','',0,0,1);
+I[5][3][3]=new Array('bij de typen 3 en 4','',1,100,1);
+I[6]=new Array();I[6][0]=100;
+I[6][1]='';
+I[6][2]='0';
+I[6][3]=new Array();
+I[6][3][0]=new Array('geen van beide verklaringen','',0,0,1);
+I[6][3][1]=new Array('alleen verklaring 1','',0,0,1);
+I[6][3][2]=new Array('alleen verklaring 2','',1,100,1);
+I[6][3][3]=new Array('beide verklaringen','',0,0,1);
+I[7]=new Array();I[7][0]=100;
+I[7][1]='';
+I[7][2]='0';
+I[7][3]=new Array();
+I[7][3][0]=new Array('Deze cellen leven op het moment dat de foto wordt gemaakt.','',0,0,1);
+I[7][3][1]=new Array('Deze cellen zijn v\u00F3\u00F3r het maken van de foto tijdens een mitose gedood en gekleurd.','',1,100,1);
+I[7][3][2]=new Array('Deze cellen hebben na een mitose voldoende tijd gehad voor plasmagroei en differentiatie, waarna ze voor het maken van de foto worden gedood en gekleurd.','',0,0,1);
+I[7][3][3]=new Array('alleen leerling 1','',0,0,1);
+I[7][3][4]=new Array('alleen leerling 2','',0,0,1);
+I[7][3][5]=new Array('zowel leerling 1 als leerling 2','',0,0,1);
+I[8]=new Array();I[8][0]=100;
+I[8][1]='';
+I[8][2]='0';
+I[8][3]=new Array();
+I[8][3][0]=new Array('alleen leerling 1','',0,0,1);
+I[8][3][1]=new Array('alleen leerling 2','',0,0,1);
+I[8][3][2]=new Array('zowel leerling 1 als leerling 2','',1,100,1);
+I[9]=new Array();I[9][0]=100;
+I[9][1]='';
+I[9][2]='0';
+I[9][3]=new Array();
+I[9][3][0]=new Array('tot de eiwitten','',1,100,1);
+I[9][3][1]=new Array('tot de koolhydraten','',0,0,1);
+I[9][3][2]=new Array('tot de mineralen','',0,0,1);
+I[9][3][3]=new Array('tot de vetten','',0,0,1);
+I[10]=new Array();I[10][0]=100;
+I[10][1]='';
+I[10][2]='0';
+I[10][3]=new Array();
+I[10][3][0]=new Array('alleen 1','',0,0,1);
+I[10][3][1]=new Array('alleen 2','',0,0,1);
+I[10][3][2]=new Array('alleen 3','',1,100,1);
+I[10][3][3]=new Array('alleen 1 en 2','',0,0,1);
+I[10][3][4]=new Array('alleen 1 en 3','',0,0,1);
+I[10][3][5]=new Array('1, 2 en 3','',0,0,1);
+I[11]=new Array();I[11][0]=100;
+I[11][1]='';
+I[11][2]='0';
+I[11][3]=new Array();
+I[11][3][0]=new Array('stoornis 1','',0,0,1);
+I[11][3][1]=new Array('stoornis 2','',0,0,1);
+I[11][3][2]=new Array('stoornis 3','',0,0,1);
+I[11][3][3]=new Array('stoornis 4','',0,0,1);
+I[11][3][4]=new Array('stoornis 5','',1,100,1);
+I[12]=new Array();I[12][0]=100;
+I[12][1]='';
+I[12][2]='0';
+I[12][3]=new Array();
+I[12][3][0]=new Array('het DNA','',1,100,1);
+I[12][3][1]=new Array('bepaalde eiwitten','',0,0,1);
+I[12][3][2]=new Array('de hemoglobine','',0,0,1);
+I[12][3][3]=new Array('de ribosomen','',0,0,1);
+I[13]=new Array();I[13][0]=100;
+I[13][1]='';
+I[13][2]='0';
+I[13][3]=new Array();
+I[13][3][0]=new Array('alleen 1','',0,0,1);
+I[13][3][1]=new Array('alleen 2','',0,0,1);
+I[13][3][2]=new Array('alleen 3','',0,0,1);
+I[13][3][3]=new Array('1 en 2','',0,0,1);
+I[13][3][4]=new Array('1 en 3','',0,0,1);
+I[13][3][5]=new Array('2 en 3','',1,100,1);
+I[14]=new Array();I[14][0]=100;
+I[14][1]='';
+I[14][2]='0';
+I[14][3]=new Array();
+I[14][3][0]=new Array('Deze bewering geldt uitsluitend voor erfelijke mutatie.','',0,0,1);
+I[14][3][1]=new Array('Deze bewering geldt uitsluitend voor somatische mutatie.','',0,0,1);
+I[14][3][2]=new Array('Deze bewering geldt zowel voor erfelijke als voor somatische mutatie.','',1,100,1);
+I[15]=new Array();I[15][0]=100;
+I[15][1]='';
+I[15][2]='0';
+I[15][3]=new Array();
+I[15][3][0]=new Array('1','',0,0,1);
+I[15][3][1]=new Array('2','',1,100,1);
+I[15][3][2]=new Array('4','',0,0,1);
+I[15][3][3]=new Array('8','',0,0,1);
+I[16]=new Array();I[16][0]=100;
+I[16][1]='';
+I[16][2]='0';
+I[16][3]=new Array();
+I[16][3][0]=new Array('Het chromosoom bestaat dan uit slechts \u00E9\u00E9n chromatide.','',0,0,1);
+I[16][3][1]=new Array('Het chromosoom is dan gespiraliseerd (opgerold).','',0,0,1);
+I[16][3][2]=new Array('Het chromosoom is dan niet gespiraliseerd.','',1,100,1);
+I[16][3][3]=new Array('Het chromosoom neemt dan geen kleurstof op.','',0,0,1);
+I[17]=new Array();I[17][0]=100;
+I[17][1]='';
+I[17][2]='1';
+I[17][3]=new Array();
+I[17][3][0]=new Array('ribosoom','',1,100,1);
+I[17][3][1]=new Array('ribosomen','',1,100,1);
+I[18]=new Array();I[18][0]=100;
+I[18][1]='';
+I[18][2]='0';
+I[18][3]=new Array();
+I[18][3][0]=new Array('Twee verschillende organismen wisselen via plasmiden stukjes DNA uit zodat er nieuwe combinaties ontstaan','',0,0,1);
+I[18][3][1]=new Array('Een deel van het DNA van een organisme wordt in een ander organisme gebracht','',1,100,1);
+I[18][3][2]=new Array('Door het enzym reverse transcriptase wordt RNA omgezet in DNA. Dit DNA heeft een andere combinatie van genen','',0,0,1);
+I[18][3][3]=new Array('Een plasmide van een bacterie wordt overgebracht in een andere cel','',0,0,1);
+I[19]=new Array();I[19][0]=100;
+I[19][1]='';
+I[19][2]='0';
+I[19][3]=new Array();
+I[19][3][0]=new Array('Ja, het is dubbelstrengs DNA','',0,0,1);
+I[19][3][1]=new Array('Ja, het is enkelstrengs DNA','',1,100,1);
+I[19][3][2]=new Array('Nee, het is niet te bepalen','',0,0,1);
+I[19][3][3]=new Array('Ja, het is RNA','',0,0,1);
+I[20]=new Array();I[20][0]=100;
+I[20][1]='';
+I[20][2]='0';
+I[20][3]=new Array();
+I[20][3][0]=new Array('thymine - nucleotide - triplet - DNA-molecuul - chromosoom - gen -genoom','',0,0,1);
+I[20][3][1]=new Array('thymine - triplet - gen - nucleotide -DNA-molecuul - chromosoom - genoom','',0,0,1);
+I[20][3][2]=new Array('thymine - nucleotide - triplet - gen - DNA-molecuul - chromosoom - genoom','',1,100,1);
+I[20][3][3]=new Array('thymine - nucleotide - triplet - gen -genoom - DNA-molecuul - chromosoom','',0,0,1);
+I[21]=new Array();I[21][0]=100;
+I[21][1]='';
+I[21][2]='0';
+I[21][3]=new Array();
+I[21][3][0]=new Array('1','',0,0,1);
+I[21][3][1]=new Array('2','',0,0,1);
+I[21][3][2]=new Array('1 en 2','',1,100,1);
+I[21][3][3]=new Array('geen van beide','',0,0,1);
+I[22]=new Array();I[22][0]=100;
+I[22][1]='';
+I[22][2]='0';
+I[22][3]=new Array();
+I[22][3][0]=new Array('een eiwit','',1,100,1);
+I[22][3][1]=new Array('DNA','',0,0,1);
+I[22][3][2]=new Array('RNA','',0,0,1);
+I[22][3][3]=new Array('een aminozuur','',0,0,1);
+I[23]=new Array();I[23][0]=100;
+I[23][1]='';
+I[23][2]='0';
+I[23][3]=new Array();
+I[23][3][0]=new Array('16 %','',0,0,1);
+I[23][3][1]=new Array('68 %','',0,0,1);
+I[23][3][2]=new Array('34 %','',1,100,1);
+I[23][3][3]=new Array('Dat kun je niet weten','',0,0,1);
+I[24]=new Array();I[24][0]=100;
+I[24][1]='';
+I[24][2]='0';
+I[24][3]=new Array();
+I[24][3][0]=new Array('Kanker veroorzaakt mutaties zodat de regeling van de celdeling niet goed verloopt','',0,0,1);
+I[24][3][1]=new Array('Er is geen verband tussen mutaties en kanker want kanker wordt veroorzaakt door carcinogene stoffen','',0,0,1);
+I[24][3][2]=new Array('Door kanker neemt het aantal mutaties toe zodat er een grotere kans is op een tumor','',0,0,1);
+I[24][3][3]=new Array('Door mutaties kan kanker ontstaan','',1,100,1);
+I[25]=new Array();I[25][0]=100;
+I[25][1]='';
+I[25][2]='0';
+I[25][3]=new Array();
+I[25][3][0]=new Array('DNA','',0,0,1);
+I[25][3][1]=new Array('m-RNA','',1,100,1);
+I[25][3][2]=new Array('aminozuren','',0,0,1);
+I[25][3][3]=new Array('koolhydraat','',0,0,1);
+I[26]=new Array();I[26][0]=100;
+I[26][1]='';
+I[26][2]='0';
+I[26][3]=new Array();
+I[26][3][0]=new Array('2','',0,0,1);
+I[26][3][1]=new Array('6','',0,0,1);
+I[26][3][2]=new Array('12','',1,100,1);
+I[26][3][3]=new Array('4','',0,0,1);
+I[26][3][4]=new Array('24','',0,0,1);
+I[27]=new Array();I[27][0]=100;
+I[27][1]='';
+I[27][2]='0';
+I[27][3]=new Array();
+I[27][3][0]=new Array('1 en 2','A en T zijn altijd gekoppeld, net als C en G. A/T = 1 C/G = 1',0,0,1);
+I[27][3][1]=new Array('4 en 6','A en T zijn altijd gekoppeld, net als C en G. A/T = 1 C/G = 1',0,0,1);
+I[27][3][2]=new Array('3, 4 en 5','A en T zijn altijd gekoppeld, net als C en G. A/T = 1 C/G = 1',1,100,1);
+I[27][3][3]=new Array('1, 4 en 5','A en T zijn altijd gekoppeld, net als C en G. A/T = 1 C/G = 1',0,0,1);
+I[27][3][4]=new Array('3 en 6','A en T zijn altijd gekoppeld, net als C en G. A/T = 1 C/G = 1',0,0,1);
+I[28]=new Array();I[28][0]=100;
+I[28][1]='';
+I[28][2]='0';
+I[28][3]=new Array();
+I[28][3][0]=new Array('AUG GCU AAU UGU GAA UAA','',1,100,1);
+I[28][3][1]=new Array('ATG GCT AAT TGT GAA TAA','',0,0,1);
+I[28][3][2]=new Array('UTG GCT UUT TGT GUU TUU','',0,0,1);
+I[28][3][3]=new Array('AUC CGU AAU UCU CAA UAA','',0,0,1);
+I[29]=new Array();I[29][0]=100;
+I[29][1]='';
+I[29][2]='0';
+I[29][3]=new Array();
+I[29][3][0]=new Array('met-arg-his-tyr-lys-stop','',0,0,1);
+I[29][3][1]=new Array('start-arg-his-tyr-lys','Een polypeptide start altijd met het aminozuur methionine.',0,0,1);
+I[29][3][2]=new Array('met-arg-his-tyr-lys','',1,100,1);
+I[29][3][3]=new Array('arg-his-tyr-lys','',0,0,1);
+I[30]=new Array();I[30][0]=100;
+I[30][1]='';
+I[30][2]='0';
+I[30][3]=new Array();
+I[30][3][0]=new Array('DNA is groter dan RNA','',0,0,1);
+I[30][3][1]=new Array('Een van de stikstofbasen is anders','',0,0,1);
+I[30][3][2]=new Array('DNA en RNA bevatten verschillende suikers','',0,0,1);
+I[30][3][3]=new Array('DNA bestaat uit een dubbele streng (dubbele helix)','',0,0,1);
+I[30][3][4]=new Array('Al deze verschillen zijn correct','',1,100,1);
+I[31]=new Array();I[31][0]=100;
+I[31][1]='';
+I[31][2]='0';
+I[31][3]=new Array();
+I[31][3][0]=new Array('TAC','',0,0,1);
+I[31][3][1]=new Array('UAC','',0,0,1);
+I[31][3][2]=new Array('AUG','',0,0,1);
+I[31][3][3]=new Array('UAC','',0,0,1);
+I[31][3][4]=new Array('ATG','',1,100,1);
+I[32]=new Array();I[32][0]=100;
+I[32][1]='';
+I[32][2]='0';
+I[32][3]=new Array();
+I[32][3][0]=new Array('3','de volgorde wordt nu: AUG-GCU-AAA-UUG-UGA-AUA Dus: met - ala - lys - leu (stop) > dus 4 aminozuren',0,0,1);
+I[32][3][1]=new Array('4','de volgorde wordt nu: AUG-GCU-AAA-UUG-UGA-AUA Dus: met - ala - lys - leu (stop) > dus 4 aminozuren',1,100,1);
+I[32][3][2]=new Array('5','de volgorde wordt nu: AUG-GCU-AAA-UUG-UGA-AUA Dus: met - ala - lys - leu (stop) > dus 4 aminozuren',0,0,1);
+I[32][3][3]=new Array('6','de volgorde wordt nu: AUG-GCU-AAA-UUG-UGA-AUA Dus: met - ala - lys - leu (stop) > dus 4 aminozuren',0,0,1);
+I[33]=new Array();I[33][0]=100;
+I[33][1]='';
+I[33][2]='0';
+I[33][3]=new Array();
+I[33][3][0]=new Array('Juist','',1,100,1);
+I[33][3][1]=new Array('Onjuist','',0,0,1);
+I[34]=new Array();I[34][0]=100;
+I[34][1]='';
+I[34][2]='0';
+I[34][3]=new Array();
+I[34][3][0]=new Array('van RNA via DNA naar eiwit','',0,0,1);
+I[34][3][1]=new Array('van eiwit via RNA naar DNA','',0,0,1);
+I[34][3][2]=new Array('van DNA via eiwit naar RNA','',0,0,1);
+I[34][3][3]=new Array('van RNA via eiwit naar DNA','',0,0,1);
+I[34][3][4]=new Array('van DNA via RNA naar eiwit','',1,100,1);
+I[35]=new Array();I[35][0]=100;
+I[35][1]='';
+I[35][2]='1';
+I[35][3]=new Array();
+I[35][3][0]=new Array('111','Let op, het zijn 112 tripletten, maar de laatste staat voor het stopcodon en dat is geen aminozuur.',1,100,1);
+I[36]=new Array();I[36][0]=100;
+I[36][1]='';
+I[36][2]='0';
+I[36][3]=new Array();
+I[36][3][0]=new Array('GGU','',0,0,1);
+I[36][3][1]=new Array('GGG','',0,0,1);
+I[36][3][2]=new Array('GGC','',0,0,1);
+I[36][3][3]=new Array('GGA','',0,0,1);
+I[36][3][4]=new Array('Alle vier bovenstaande tripletten zijn juist','',1,100,1);
+
+
+function StartUp(){
+	RemoveBottomNavBarForIE();
+
+//If there's only one question, no need for question navigation controls
+	if (QsToShow < 2){
+		document.getElementById('QNav').style.display = 'none';
+	}
+	
+//Stash the instructions so they can be redisplayed
+	strInstructions = document.getElementById('InstructionsDiv').innerHTML;
+	
+
+	
+
+	
+
+	PreloadImages('duimhoog.gif','duimlaagrood.gif','biohavo931oud_03.jpg','biohavo981_10.jpg','biohavo041_09.jpg','nucleotides.jpg','aminozuurschema.gif');
+
+	
+	CompleteEmptyFeedback();
+
+	SetUpQuestions();
+	ClearTextBoxes();
+	CreateStatusArray();
+	
+
+	
+//Check search string for q parameter
+	if (document.location.search.length > 0){
+		if (ShuffleQs == false){
+			var JumpTo = parseInt(document.location.search.substring(1,document.location.search.length))-1;
+			if (JumpTo <= QsToShow){
+				ChangeQ(JumpTo);
+			}
+		}
+	}
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+}
+
+function ShowHideQuestions(){
+	FuncBtnOut(document.getElementById('ShowMethodButton'));
+	document.getElementById('ShowMethodButton').style.display = 'none';
+	if (ShowingAllQuestions == false){
+		for (var i=0; i<QArray.length; i++){
+				QArray[i].style.display = '';
+			}
+		document.getElementById('Questions').style.listStyleType = 'decimal';
+		document.getElementById('OneByOneReadout').style.display = 'none';
+		document.getElementById('ShowMethodButton').innerHTML = ShowOneByOneCaption;
+		ShowingAllQuestions = true;
+	}
+	else{
+		for (var i=0; i<QArray.length; i++){
+				if (i != CurrQNum){
+					QArray[i].style.display = 'none';
+				}
+			}
+		document.getElementById('Questions').style.listStyleType = 'none';
+		document.getElementById('OneByOneReadout').style.display = '';
+		document.getElementById('ShowMethodButton').innerHTML = ShowAllQuestionsCaption;
+		ShowingAllQuestions = false;	
+	}
+	document.getElementById('ShowMethodButton').style.display = 'inline';
+}
+
+function CreateStatusArray(){
+	var QNum, ANum;
+//For each item in the item array
+	for (QNum=0; QNum<I.length; QNum++){
+//Check if the question still exists (hasn't been nuked by showing a random selection)
+		if (document.getElementById('Q_' + QNum) != null){
+			State[QNum] = new Array();
+			State[QNum][0] = -1; //Score for this q; -1 shows question not done yet
+			State[QNum][1] = new Array(); //answers
+			for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+				State[QNum][1][ANum] = 0; //answer not chosen yet; when chosen, will store its position in the series of choices
+			}
+			State[QNum][2] = 0; //tries at this q so far
+			State[QNum][3] = 0; //incrementing percent-correct values of selected answers
+			State[QNum][4] = 0; //penalties incurred for hints
+			State[QNum][5] = ''; //Sequence of answers chosen by number
+		}
+		else{
+			State[QNum] = null;
+		}
+	}
+}
+
+
+
+function CheckMCAnswer(QNum, ANum, Btn){
+//if question doesn't exist, bail
+	if (State[QNum].length < 1){return;}
+	
+//Get the feedback
+	Feedback = I[QNum][3][ANum][1];
+	
+//Now show feedback and bail if question already complete
+	if (State[QNum][0] > -1){
+//Add an extra message explaining that the question
+// is finished if defined by the user
+		if (strQuestionFinished.length > 0){Feedback += '<br />' + strQuestionFinished;}
+//Show the feedback
+		ShowMessage(Feedback);
+//New for 6.2.2.1: If you want to mark an answer as correct even when it's the final choice, uncomment this line.
+//		if (I[QNum][3][ANum][2] >= 1){Btn.innerHTML = CorrectIndicator;}else{Btn.innerHTML = IncorrectIndicator;}	
+		return;
+	}
+	
+//Hide the button while processing
+	Btn.style.display = 'none';
+
+//Increment the number of tries
+	State[QNum][2]++;
+	
+//Add the percent-correct value of this answer
+	State[QNum][3] += I[QNum][3][ANum][3];
+	
+//Store the try number in the answer part of the State array, for tracking purposes
+	State[QNum][1][ANum] = State[QNum][2];
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	State[QNum][5] += String.fromCharCode(65+ANum);
+	
+//Should this answer be accepted as correct?
+	if (I[QNum][3][ANum][2] < 1){
+//It's wrong
+
+//Mark the answer
+		Btn.innerHTML = IncorrectIndicator;
+		
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+		
+//Check whether this leaves just one MC answer unselected, in which case the Q is terminated
+		var RemainingAnswer = FinalAnswer(QNum);
+		if (RemainingAnswer > -1){
+//Behave as if the last answer had been selected, but give no credit for it
+//Increment the number of tries
+			State[QNum][2]++;		
+		
+//Calculate the score for this question
+			CalculateMCQuestionScore(QNum);
+			
+//Get the overall score and add it to the feedback
+			CalculateOverallScore();
+//New for 6.2.2.1
+			var QsDone = CheckQuestionsCompleted();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's right
+//Mark the answer
+		Btn.innerHTML = CorrectIndicator;
+				
+//Calculate the score for this question
+		CalculateMCQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+
+//Get the overall score and add it to the feedback
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+		}
+		else{
+			WriteToInstructions(QsDone);
+		}
+	}
+	
+//Show the button again
+	Btn.style.display = 'inline';
+	
+//Finally, show the feedback	
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMCQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties
+	var PercentCorrect = State[QNum][3];
+	var TotAns = GetTotalMCAnswers(QNum);
+	var HintPenalties = State[QNum][4];
+	
+//Make sure it's not already complete
+
+	if (State[QNum][0] < 0){
+//Allow for Hybrids
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+//This line calculates the score for this question
+			if (TotAns == 1){
+				State[QNum][0] = 1;
+			}
+			else{
+				State[QNum][0] = ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
+			}
+		}
+//Fix for Safari bug added for version 6.0.3.42 (negative infinity problem)
+		if ((State[QNum][0] < 0)||(State[QNum][0] == Number.NEGATIVE_INFINITY)){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function GetTotalMCAnswers(QNum){
+	var Result = 0;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			Result++;
+		}
+	}
+	return Result;
+}
+
+function FinalAnswer(QNum){
+	var UnchosenAnswers = 0;
+	var FinalAnswer = -1;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			if (State[QNum][1][ANum] < 1){ //This answer hasn't been chosen yet
+				UnchosenAnswers++;
+				FinalAnswer = ANum;
+			}
+		}
+	}
+	if (UnchosenAnswers == 1){
+		return FinalAnswer;
+	}
+	else{
+		return -1;
+	}
+}
+
+
+
+
+
+function CalculateOverallScore(){
+	var TotalWeighting = 0;
+	var TotalScore = 0;
+	
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] > -1){
+				TotalWeighting += I[QNum][0];
+				TotalScore += (I[QNum][0] * State[QNum][0]);
+			}
+		}
+	}
+	if (TotalWeighting > 0){
+		Score = Math.floor((TotalScore/TotalWeighting)*100);
+	}
+	else{
+//if TotalWeighting is 0, no questions so far have any value, so 
+//no penalty should be shown.
+		Score = 100; 
+	}
+}
+
+//New for 6.2.2.0
+function CheckQuestionsCompleted(){
+	if (ShowCompletedSoFar == false){return '';}
+	var QsCompleted = 0;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] >= 0){
+				QsCompleted++;
+			}
+		}
+	}
+//Fixes for 6.2.2.2
+	if (QsCompleted >= QArray.length){
+		return ExerciseCompleted;
+	}
+	else{
+		return CompletedSoFar + ' ' + QsCompleted + '/' + QArray.length + '.';
+	}
+}
+
+function CheckFinished(){
+	var FB = '';
+	var AllDone = true;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] < 0){
+				AllDone = false;
+			}
+		}
+	}
+	if (AllDone == true){
+	
+//Report final score and submit if necessary
+		CalculateOverallScore();
+		FB = YourScoreIs + ' ' + Score + '%.';
+		if (ShowCorrectFirstTime == true){
+			var CFT = 0;
+			for (QNum=0; QNum<State.length; QNum++){
+				if (State[QNum] != null){
+					if (State[QNum][0] >= 1){
+						CFT++;
+					}
+				}
+			}
+			FB += '<br />' + CorrectFirstTime + ' ' + CFT + '/' + QsToShow;
+		}
+		
+//New for 6.2.2.0
+		FB += '<br />' + ExerciseCompleted;
+		
+		WriteToInstructions(FB);
+		
+		Finished == true;
+
+
+
+
+		TimeOver = true;
+		Locked = true;
+		
+
+
+		Finished = true;
+		Detail = '<?xml version="1.0"?><hpnetresult><fields>';
+		for (QNum=0; QNum<State.length; QNum++){
+			if (State[QNum] != null){
+				if (State[QNum][5].length > 0){
+					Detail += '<field><fieldname>Question #' + (QNum+1) + '</fieldname><fieldtype>question-tracking</fieldtype><fieldlabel>Q ' + (QNum+1) + '</fieldlabel><fieldlabelid>QuestionTrackingField</fieldlabelid><fielddata>' + State[QNum][5] + '</fielddata></field>';
+				}
+			}
+		}
+		Detail += '</fields></hpnetresult>';
+		setTimeout('Finish()', SubmissionTimeout);
+	}
+
+}
+
+
+
+
+
+//CORE CODE FOR CHECKING SHORT ANSWER GUESSES AGAINST ANSWER ARRAYS
+
+var CaseSensitive = false;
+var ShowAlsoCorrect = true;
+var PleaseEnter = 'Voer een antwoord in';
+var HybridTries = 2;
+var PartlyIncorrect = 'Je antwoord is deels onjuist';
+var CorrectList = 'Goede antwoorden: ';
+var NextCorrect = 'Volgende goede letter van het antwoord is: ';
+var CurrBox = null;
+
+function TrackFocus(BoxID){
+	InTextBox = true;
+	CurrBox = document.getElementById(BoxID);
+}
+
+function LeaveGap(){
+	InTextBox = false;
+}
+
+function TypeChars(Chars){
+	if (CurrBox != null){
+//Following check added for 6.0.4.4 to avoid error message in IE6
+		if (CurrBox.style.display != 'none'){
+			CurrBox.value += Chars;
+			CurrBox.focus();
+		}
+	}
+}
+
+function CheckGuess(Guess, Answer, CaseSensitive, PercentCorrect, Feedback){
+	this.Guess = Guess;
+	this.Answer = Answer;
+	this.PercentCorrect = PercentCorrect;
+	this.Feedback = Feedback;
+	if (CaseSensitive == false){
+		this.WorkingGuess = Guess.toLowerCase();
+		this.WorkingAnswer = Answer.toLowerCase();
+	}
+	else{
+		this.WorkingGuess = Guess;
+		this.WorkingAnswer = Answer;				
+	}
+	this.Hint = '';
+	this.HintPenalty = 1/Answer.length;
+	this.CorrectStart = '';
+	this.WrongMiddle = '';
+	this.CorrectEnd = '';
+	this.PercentMatch = 0;
+	this.DoCheck();
+}
+
+function CheckGuess_DoCheck(){
+//Check if it's an exact match
+	if (this.WorkingAnswer == this.WorkingGuess){
+		this.PercentMatch = 100;
+		this.CorrectStart = this.Guess;
+	return;
+	}
+//Figure out how much of the beginning is correct
+	var i = 0;
+	var CorrectChars = 0;
+	while (this.WorkingAnswer.charAt(i) == this.WorkingGuess.charAt(i)){
+		i++;
+		CorrectChars++;
+	}
+//Stash the hint
+	this.Hint = this.Answer.charAt(i);
+	
+	this.CorrectStart = this.Guess.substring(0, i);
+	
+//If there's more to the answer, look at the rest of it
+	if (i<this.Guess.length){
+	
+//Figure out how much of the end is correct
+		var j = this.WorkingGuess.length-1;
+		var k = this.WorkingAnswer.length-1;
+		while ((j>=i)&&((this.WorkingAnswer.charAt(k) == this.WorkingGuess.charAt(j))&&(CorrectChars < this.Answer.length))){
+			CorrectChars++;
+			j--;
+			k--;
+		}
+		this.CorrectEnd = this.Guess.substring(j+1, this.Guess.length);
+		this.WrongMiddle = this.Guess.substring(i, j+1);
+	}
+	if (TrimString(this.WrongMiddle).length < 1){this.WrongMiddle = '_';}
+//Calculate match score based on how much of the guess is correct
+	if (CorrectChars < this.Answer.length){
+		this.PercentMatch = Math.floor(100*CorrectChars)/this.Answer.length;
+	}
+	else{
+		this.PercentMatch = Math.floor((100 * CorrectChars)/this.Guess.length);
+	}	
+}
+
+CheckGuess.prototype.DoCheck = CheckGuess_DoCheck;
+
+function CheckAnswerArray(CaseSensitive){
+	this.CaseSensitive = CaseSensitive;
+	this.Answers = new Array();
+	this.Score = 0;
+	this.Feedback = '';
+	this.Hint = '';
+	this.HintPenalty = 0;
+	this.MatchedAnswerLength = 1;
+	this.CompleteMatch = false;
+	this.MatchNum = -1;
+}
+
+function CheckAnswerArray_AddAnswer(Guess, Answer, PercentCorrect, Feedback){
+	this.Answers.push(new CheckGuess(Guess, Answer, this.CaseSensitive, PercentCorrect, Feedback));
+}
+
+CheckAnswerArray.prototype.AddAnswer = CheckAnswerArray_AddAnswer;
+
+function CheckAnswerArray_ClearAll(){
+	this.Answers.length = 0;
+}
+
+CheckAnswerArray.prototype.ClearAll = CheckAnswerArray_ClearAll;
+
+function CheckAnswerArray_GetBestMatch(){
+//First check for a 100% match
+	for (var i=0; i<this.Answers.length; i++){
+		if (this.Answers[i].PercentMatch == 100){
+			this.Feedback = this.Answers[i].Feedback;
+			this.Score = this.Answers[i].PercentCorrect;
+			this.CompleteMatch = true;
+			this.MatchNum = i;
+			return;
+		}
+	}
+//Now check for the best alternative match
+	var PercentMatch = 0;
+	var BestMatch = -1;
+	for (i=0; i<this.Answers.length; i++){
+		if ((this.Answers[i].PercentMatch > PercentMatch)&&(this.Answers[i].PercentCorrect == 100)){
+			BestMatch = i;
+			PercentMatch = this.Answers[i].PercentMatch;
+		}
+	}
+	if (BestMatch > -1){
+		this.Score = this.Answers[BestMatch].PercentMatch;
+		this.Feedback = PartlyIncorrect + ' ';
+		this.Feedback += '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Feedback += '<span class="Highlight">' + this.Answers[BestMatch].WrongMiddle + '</span>';
+		this.Feedback += this.Answers[BestMatch].CorrectEnd + '</span>';
+		this.Hint = '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Hint += '<span class="Highlight">' + this.Answers[BestMatch].Hint + '</span></span>';
+		this.HintPenalty = this.Answers[BestMatch].HintPenalty;
+	}
+	else{
+		this.Score = 0;
+		this.Feedback = '';
+	}
+}
+
+CheckAnswerArray.prototype.GetBestMatch = CheckAnswerArray_GetBestMatch;
+
+function CheckShortAnswer(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess (TrimString added to fix bug for 6.0.4.3)
+	var G = TrimString(document.getElementById('Q_' + QNum + '_Guess').value);
+	
+//If no guess, bail with message; no penalty
+	if (G.length < 1){
+		ShowMessage(PleaseEnter);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+	}
+	CA.GetBestMatch();
+	
+//Store any match in the state tracking field
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	if (CA.MatchNum > -1){
+		State[QNum][5] += String.fromCharCode(65+CA.MatchNum);
+	}
+//Else store the student's answer
+	else{
+		State[QNum][5] += G;
+	}
+
+//Add the percent correct value for this answer to the Q State (works for all
+//situations, wrong or right)
+	State[QNum][3] += CA.Score;
+	
+//Now branch, based on the nature of the match
+//Is it a complete match?
+	if (CA.CompleteMatch == true){
+		
+//Is it with a wrong answer, or a right answer?
+		if (CA.Score == 100){
+//It's right
+			CalculateShortAnsQuestionScore(QNum);
+			
+//New for 6.2.2.0
+			var QsDone = CheckQuestionsCompleted();
+			
+//Get correct answer list if required, assuming there are any other correct alternatives
+			if (ShowAlsoCorrect == true){
+				var AlsoCorrectList = GetCorrectList(QNum, G, false);
+				if (AlsoCorrectList.length > 0){
+					CA.Feedback += '<br />' + CorrectList + '<br />' + AlsoCorrectList;
+				}
+			}	
+		
+//Get the overall score and add it to the feedback
+			if (ContinuousScoring == true){
+				CalculateOverallScore();
+				CA.Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+			ShowMessage(CA.Feedback);
+//Put the answer in
+			ReplaceGuessBox(QNum, G);
+			CheckFinished();
+			return;
+		}
+	}
+	
+//Otherwise, it's a match to a predicted wrong/partially correct, or a partial
+//match to a right answer
+	if (CA.Feedback.length < 1){CA.Feedback = DefaultWrong;}
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+	if (Finished == false){
+		WriteToInstructions(strInstructions);
+	}	
+	ShowMessage(CA.Feedback);
+
+//If necessary, switch a hybrid question to m/c
+	if (State[QNum][2] >= HybridTries){
+		SwitchHybridDisplay(QNum);
+	}
+}
+
+function CalculateShortAnsQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties;
+	var PercentCorrect = State[QNum][3];
+	var HintPenalties = State[QNum][4];
+
+//Make sure it's not already complete
+	if (State[QNum][0] < 0){
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+			State[QNum][0] = (PercentCorrect/(100*Tries));
+		}
+		if (State[QNum][0] < 0){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function SwitchHybridDisplay(QNum){
+	if (document.getElementById('Q_' + QNum + '_Hybrid_MC') != null){
+		document.getElementById('Q_' + QNum + '_Hybrid_MC').style.display = '';
+		if (document.getElementById('Q_' + QNum + '_SA') != null){
+			document.getElementById('Q_' + QNum + '_SA').style.display = 'none';
+		}
+	}
+}
+
+function GetCorrectArray(QNum){
+	var Result = new Array();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][2] == 1){ //This is an acceptable correct answer
+			Result.push(I[QNum][3][ANum][0]);
+		}
+	}	
+	return Result;
+}
+
+function GetCorrectList(QNum, Answer, IncludeAnswer){
+	var As = GetCorrectArray(QNum);
+	var Result = '';
+	for (var ANum=0; ANum<As.length; ANum++){
+		if ((IncludeAnswer == true)||(As[ANum] != Answer)){
+			Result += As[ANum] + '<br />';
+		}
+	}
+	return Result;
+}
+
+function GetFirstCorrectAnswer(QNum){
+	var As = GetCorrectArray(QNum);
+	if (As.length > 0){
+		return As[0];
+	}
+	else{
+		return '';
+	}
+}
+
+function ReplaceGuessBox(QNum, Ans){
+	if (document.getElementById('Q_' + QNum + '_SA') != null){
+		var El = document.getElementById('Q_' + QNum + '_SA');
+		while (El.childNodes.length > 0){
+			El.removeChild(El.childNodes[0]);
+		}
+		var A = document.createElement('span');
+		A.setAttribute('class', 'Answer');
+		var T = document.createTextNode(Ans);
+		A.appendChild(T);
+		El.appendChild(A);
+	}
+}
+
+
+
+function ShowAnswers(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//Get the answer list to display
+	var Ans = GetCorrectList(QNum, '', false);
+	Ans = CorrectList + '<br />' + Ans;
+	
+//Display feedback
+	ShowMessage(Ans);
+	
+//Set the score for this question to 0 if no score yet 
+	if (State[QNum][0] < 1){
+		State[QNum][0] = 0;
+	}
+
+//Get the first correct answer
+	var FirstAns = GetFirstCorrectAnswer(QNum);
+	
+//Replace the textbox
+	ReplaceGuessBox(QNum, FirstAns);
+	
+//New for 6.2.2.0: Get scores and feedback
+	var QsDone = CheckQuestionsCompleted();
+	
+	if (ContinuousScoring == true){
+		CalculateOverallScore();
+		WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+	}
+	
+//This may be the last, so check finished status
+	CheckFinished();
+}
+
+
+
+
+
+function ShowHint(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess
+	var G = document.getElementById('Q_' + QNum + '_Guess').value;
+	
+//If no guess, give the first correct bit
+	if (G.length < 1){
+		var Ans = GetFirstCorrectAnswer(QNum);
+		var Hint = Ans.charAt(0);
+		ShowMessage(NextCorrect + '<br />' + Hint);
+//Penalty for hint
+		State[QNum][4] += (1/Ans.length);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+//Use only correct answers
+		if (I[QNum][3][ANum][2] == 1){
+			CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+		}
+	}
+	CA.GetBestMatch();
+	if (CA.CompleteMatch == true){
+//It's right!
+		CheckShortAnswer(QNum);
+		return;
+	}
+	else{
+		if (CA.Hint.length > 0){
+			ShowMessage(NextCorrect + '<br />' + CA.Hint);
+			State[QNum][4] += CA.HintPenalty;
+		}
+		else{
+			ShowMessage(DefaultWrong + '<br />' + NextCorrect + '<br />' + GetFirstCorrectAnswer(QNum).charAt(0));
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+//]]>
+
+</script>
+</head>
+<body id="TheBody" onload="StartUp()">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#content">Direct naar de inhoud</a>
+<header class="masthead"><div class="masthead__inner"><a class="brand" href="/" aria-label="Biologiepagina.nl — home"><svg class="brand__mark" viewBox="0 0 32 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 33V13"/><path d="M16 21C8 21 4 16 4 8c8 0 12 5 12 13Z"/><path d="M16 14C16 7 20 3 27 3c0 7-4 11-11 11Z"/><circle cx="16" cy="27" r="5"/></svg><span class="brand__name">Biologie<em>pagina</em>.nl<small>Oefenen &amp; leren voor vmbo, havo en vwo</small></span></a><p class="masthead__tagline">Biologie bij Biologie voor Jou &amp; Nectar</p><div class="masthead__tools"><div class="search"><label class="search__label" for="site-search">Zoek op deze site</label><input class="search__input" id="site-search" type="search" placeholder="Zoek" autocomplete="off"><svg class="search__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><ul class="search__results" hidden aria-label="Zoekresultaten"></ul></div><button class="nav-toggle" type="button" aria-controls="site-rail" aria-expanded="false">Inhoud</button></div></div></header>
+<div class="rail-backdrop" aria-hidden="true"></div>
+<div class="shell">
+<nav class="rail" id="site-rail" aria-label="Hoofdnavigatie"><p class="rail__eyebrow">Inhoud</p><div class="rail__group"><h2 class="rail__title">Klassen</h2><ul class="rail__list"><li><a href="/Brugklasnieuw/klas1.htm">Klas 1 · vmbo / havo / vwo</a></li><li><a href="/2en3/klas2.htm">Klas 2</a></li><li><a href="/2en3/klas2.htm">Klas 3</a></li><li><a href="/34mavo/mavo34.htm">Vmbo 3 & 4</a></li><li><a href="/Havo4/Havo4.htm">Havo 4</a></li><li><a href="/Havo5/Havo5.htm">Havo 5</a></li><li><a href="/Vwo4/vwo4.htm">Vwo 4</a></li><li><a href="/Vwo5/vwo5.htm">Vwo 5</a></li><li><a href="/Vwo6/vwo6.htm">Vwo 6</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Examens</h2><ul class="rail__list"><li><a href="/34mavo/examenbiologieVMBObb.htm">Vmbo BB</a></li><li><a href="/34mavo/examenbiologieVMBOkader.htm">Vmbo kader</a></li><li><a href="/34mavo/examenbiologie.htm">Vmbo TL / mavo</a></li><li><a href="/Havo5/examen.htm">Havo</a></li><li><a href="/Vwo6/examenvwo.htm">Vwo</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Vaardigheden</h2><ul class="rail__list"><li><a href="/verslagbiologieonderbouw.htm">Verslag · onderbouw</a></li><li><a href="/verslagbiologie.htm">Verslag · bovenbouw</a></li><li><a href="/tekenregels.htm">Tekenregels</a></li><li><a href="/grafiekmaken.htm">Grafiek maken</a></li><li><a href="/Links/profielwerkstuk.htm">Profielwerkstuk</a></li><li><a href="/Links/links.htm">Overige links</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Over de site</h2><ul class="rail__list"><li><a href="/Contact/contact.htm">Contact</a></li><li><a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></li></ul></div><div class="rail__foot"><a href="/Links/links.htm">Alle links</a> · <a href="/Contact/contact.htm">Contact</a></div></nav>
+<main class="page" id="content">
+<nav class="breadcrumb" aria-label="Kruimelpad"><a href="/">Home</a><span class="breadcrumb__sep">/</span><span>Biologiepagina.nl</span></nav>
+<h1 class="page-title">Oefentoets DNA<span class="page-kicker">Biologiepagina.nl</span></h1>
+<div class="prose"><!-- BeginTopNavButtons -->
+
+
+
+<!-- EndTopNavButtons -->
+
+<div class="Titles">
+	<h2 class="ExerciseTitle">Oefentoets DNA</h2>
+	<div align="center"></div>
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions"></div>
+</div>
+
+
+
+
+<div id="MainDiv" class="StdDiv">
+ 
+<div id="QNav" class="QuestionNavigation">
+
+
+
+<div id="OneByOneReadout">
+<button id="PrevQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(-1); return false;">&lt;&lt;&lt;</button>
+
+<span id="QNumReadout" class="QNum">&nbsp;</span>
+
+<button id="NextQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(1); return false;">&gt;&gt;&gt; </button>
+<br>
+	
+	</div><br>
+   
+<!-- OnderAnimatie -->
+
+
+
+</div>
+ 
+<ol class="QuizQuestions" id="Questions">
+<li class="QuizQuestion" id="Q_0" style="display: none"><div class="QuestionText">Bij de VU spoort dr. Dorret Boomsma, samen met onderzoekers in Amerika en Australië, verbanden op tussen DNA en depressiviteit. Zij hoopt dat haar onderzoek kan leiden tot de ontwikkeling van een geneesmiddel tegen depressiviteit.<br>In het volgende citaat van dr. Boomsma is een woord weggelaten:<br>„Een gen codeert voor een .......................... en als je die stof hebt, heb je in principe een geneesmiddel".<br>Noteer het woord dat in bovenstaande zin moet worden ingevuld.</div><div class="ShortAnswer" id="Q_0_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_0_Guess" onfocus="TrackFocus('Q_0_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(0)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(0)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(0)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_1" style="display: none"><div class="QuestionText">Onder de inwoners van het afgelegen Italiaanse bergdorpje Limone aan het Gardameer bevindt zich een groep van 46 mensen met een variant van HDL die vet (en daarmee cholesterol) sneller afvoert naar de lever dan normale HDL. Onderzoek heeft uitgewezen dat bij een voorouder uit de 18e eeuw een verandering in een gen voor een HDL-eiwit moet zijn opgetreden. Het dorpje lag lange tijd zeer geïsoleerd. Tot 1932 was er geen weg naar andere dorpen.<br><br>Noteer de naam van zo'n verandering in een gen.</div><div class="ShortAnswer" id="Q_1_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_1_Guess" onfocus="TrackFocus('Q_1_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(1)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(1)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(1)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_2" style="display: none"><div class="QuestionText">In de onkruidbestrijding bestaat een nieuwe techniek. Men heeft transgene planten ontwikkeld van bijvoorbeeld maïs en suikerbiet, waarin een speciaal gen is ingebouwd.<br>Door dit gen zijn deze planten resistent tegen een bepaald bestrijdingsmiddel. Dit bestrijdingsmiddel doodt het onkruid dat op de akker groeit, maar doodt de transgene planten niet.<br><br>Hoe worden transgene planten ook genoemd?</div><div class="ShortAnswer" id="Q_2_SA"><form method="post" action="" onsubmit="return false;"><div><textarea id="Q_2_Guess" onfocus="TrackFocus('Q_2_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" cols="29" rows="2"></textarea><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(2)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(2)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(2)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_3" style="display: none"><div class="QuestionText">Bij chimpansees is 2n = 48.<br>Bepaalde chromosomen van vrouwelijke chimpansees zijn kopieën van chromosomen van hun grootmoeders van moederszijde.<br>Als ervan wordt uitgegaan dat er geen mutaties en geen breuken in chromosomen optreden, is dan te bepalen hoe groot het aantal van deze kopieën gemiddeld bij vrouwelijke chimpansees zal zijn? Zo ja, hoeveel?</div><ol class="MCAnswers"><li id="Q_3_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_0_Btn" onclick="CheckMCAnswer(3,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;nee</li><li id="Q_3_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_1_Btn" onclick="CheckMCAnswer(3,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ja, 6</li><li id="Q_3_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_2_Btn" onclick="CheckMCAnswer(3,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ja, 12</li><li id="Q_3_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_3_Btn" onclick="CheckMCAnswer(3,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ja, 24</li></ol></li>
+<li class="QuizQuestion" id="Q_4" style="display: none"><div class="QuestionText">Ook onder invloed van andere factoren dan bepaalde ultraviolette stralen kan bij de mens kanker ontstaan. Over het ontstaan van kanker wordt een aantal beweringen gedaan:<br><br>1 Radioactieve straling kan leiden tot verandering in de volgorde van de bouwstenen van het DNA waardoor kanker kan ontstaan.<br>2 Bepaalde chemische stoffen kunnen mutaties in het DNA veroorzaken waardoor kanker kan ontstaan.<br>3 Een gezonde cel kan door contact met een kankercel zelf in een kankercel veranderen.<br><br>Welke van deze beweringen is of welke zijn juist?</div><ol class="MCAnswers"><li id="Q_4_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_0_Btn" onclick="CheckMCAnswer(4,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_4_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_1_Btn" onclick="CheckMCAnswer(4,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_4_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_2_Btn" onclick="CheckMCAnswer(4,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_4_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_3_Btn" onclick="CheckMCAnswer(4,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 2</li><li id="Q_4_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_4_Btn" onclick="CheckMCAnswer(4,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 3</li><li id="Q_4_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_5_Btn" onclick="CheckMCAnswer(4,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_5" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/biohavo931oud_03.jpg" alt="biohavo931oud_03.jpg" title="biohavo931oud_03" width="585" height="376"><br><br>In allerlei delen van het lichaam kan ongecontroleerde celdeling optreden. De bron geeft schematisch vier typen cellen weer die bij de mens voorkomen. De vier typen cellen zijn niet op dezelfde schaal getekend.<br>Bij twee van de getekende typen cellen treedt niet of nauwelijks ongecontroleerde deling op.<br><br>Bij welke twee typen cellen zal niet of nauwelijks ongecontroleerde deling optreden?</div><ol class="MCAnswers"><li id="Q_5_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_0_Btn" onclick="CheckMCAnswer(5,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bij de typen 1 en 2</li><li id="Q_5_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_1_Btn" onclick="CheckMCAnswer(5,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bij de typen 1 en 3</li><li id="Q_5_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_2_Btn" onclick="CheckMCAnswer(5,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bij de typen 2 en 4</li><li id="Q_5_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_3_Btn" onclick="CheckMCAnswer(5,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bij de typen 3 en 4</li></ol></li>
+<li class="QuizQuestion" id="Q_6" style="display: none"><div class="QuestionText">Transgene maïsplanten<br><br>Maïs is een belangrijk voedselgewas. Door jarenlange veredeling via kruising en selectie zijn de maiskolven steeds groter en voedzamer geworden. Een nadeel van deze veredelingsmethode is dat deze zeer veel tijd kost. Een ander nadeel is dat niet elk gewenst resultaat kan worden bereikt. Het verhogen van de weerstand tegen insectenvraat bleek bij maïsplanten via kruising en selectie niet te lukken. Hiervoor worden de volgende verklaringen bedacht:<br><br>1 Doordat maïsplanten door de wind worden bestoven, vindt overdracht van genen willekeurig plaats.<br>2 Een gen dat weerstand geeft tegen insectenvraat komt bij maïs van nature niet voor.<br><br>Kan 1 een juiste verklaring zijn voor het feit dat het verhogen van de weerstand van maïsplanten niet lukte via kruising en selectie? En 2?</div><ol class="MCAnswers"><li id="Q_6_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_0_Btn" onclick="CheckMCAnswer(6,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;geen van beide verklaringen</li><li id="Q_6_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_1_Btn" onclick="CheckMCAnswer(6,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen verklaring 1</li><li id="Q_6_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_2_Btn" onclick="CheckMCAnswer(6,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen verklaring 2</li><li id="Q_6_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_3_Btn" onclick="CheckMCAnswer(6,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;beide verklaringen</li></ol></li>
+<li class="QuizQuestion" id="Q_7" style="display: none"><div class="QuestionText">Tegenwoordig kan de aanwezigheid van een groot aantal erfelijke afwijkingen al vóór de geboorte van een kind worden vastgesteld. Daartoe worden cellen van het embryo verzameld. Deze cellen worden verder gekweekt. De chromosomen in de gekweekte cellen worden geteld en verder onderzocht. Daarbij kan ook het geslacht worden vastgesteld. Bovendien is het mogelijk de stofwisseling van de embryonale cellen op afwijkingen te testen.<br>Om een karyogram te maken, worden foto's van microscopische preparaten van cellen gemaakt.<br><br>Welke van de volgende voorwaarden geldt voor de cellen die hiervoor worden gebruikt?</div><ol class="MCAnswers"><li id="Q_7_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_0_Btn" onclick="CheckMCAnswer(7,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze cellen leven op het moment dat de foto wordt gemaakt.</li><li id="Q_7_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_1_Btn" onclick="CheckMCAnswer(7,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze cellen zijn vóór het maken van de foto tijdens een mitose gedood en gekleurd.</li><li id="Q_7_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_2_Btn" onclick="CheckMCAnswer(7,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze cellen hebben na een mitose voldoende tijd gehad voor plasmagroei en differentiatie, waarna ze voor het maken van de foto worden gedood en gekleurd.</li><li id="Q_7_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_3_Btn" onclick="CheckMCAnswer(7,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 1</li><li id="Q_7_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_4_Btn" onclick="CheckMCAnswer(7,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 2</li><li id="Q_7_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_5_Btn" onclick="CheckMCAnswer(7,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel leerling 1 als leerling 2</li></ol></li>
+<li class="QuizQuestion" id="Q_8" style="display: none"><div class="QuestionText">Veel erfelijke stofwisselingsziekten berusten op het ontbreken van het juiste DNA voor de vorming van een bepaald enzym. Een docente vraagt haar leerlingen hoe men bij een onderzoek van cellen vóór de geboorte een dergelijk enzymdefect zou kunnen constateren.<br><br>Leerling 1 beweert dat zich dan mogelijk in de cellen een stof ophoopt die anders met behulp van het enzym zou worden omgezet.<br>Leerling 2 beweert dat in de cellen dan mogelijk een stof ontbreekt die anders met behulp van het enzym zou worden gevormd.<br><br>Welke van deze leerlingen heeft of welke hebben een juiste bewering gedaan?</div><ol class="MCAnswers"><li id="Q_8_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_0_Btn" onclick="CheckMCAnswer(8,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 1</li><li id="Q_8_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_1_Btn" onclick="CheckMCAnswer(8,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 2</li><li id="Q_8_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_2_Btn" onclick="CheckMCAnswer(8,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel leerling 1 als leerling 2</li></ol></li>
+<li class="QuizQuestion" id="Q_9" style="display: none"><div class="QuestionText">Transgene organismen<br><br>Groeihormoon dat momenteel als geneesmiddel voor de mens wordt gebruikt, wordt op grote schaal gemaakt door bacteriën waaraan door genetische manipulatie menselijk DNA is toegevoegd. Dat geldt ook voor het hormoon insuline. Deze hormonen zijn zeer geschikt om via genetische manipulatie te worden geproduceerd, omdat ze beide tot een bepaalde groep stoffen behoren.<br><br>Tot welke van de volgende groepen stoffen behoren deze hormonen?</div><ol class="MCAnswers"><li id="Q_9_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_0_Btn" onclick="CheckMCAnswer(9,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot de eiwitten</li><li id="Q_9_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_1_Btn" onclick="CheckMCAnswer(9,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot de koolhydraten</li><li id="Q_9_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_2_Btn" onclick="CheckMCAnswer(9,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot de mineralen</li><li id="Q_9_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_3_Btn" onclick="CheckMCAnswer(9,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot de vetten</li></ol></li>
+<li class="QuizQuestion" id="Q_10" style="display: none"><div class="QuestionText">Een probleem voor de veehouders in Australië is sterfte onder het vee door het eten van bepaalde giftige bladeren. Dit treedt met name op in gebieden waar voedselschaarste heerst. Met behulp van genetische manipulatie zijn bacteriën uit het maagdarmkanaal van schapen, geiten en koeien voorzien van een gen voor een bepaald enzym. Dit enzym maakt de gifstof uit de bladeren onschadelijk. Plannen om een veldproef te doen met vee waaraan deze genetisch gemanipuleerde bacteriën zouden worden toegediend, werden door een adviescommissie afgekeurd. De commissie was bevreesd voor verspreiding van de gemanipuleerde bacteriën onder verwilderde geiten.<br><br>In de tekst staat "... een gen voor een bepaald enzym".<br>Hierover worden de volgende beweringen gedaan:<br>1 Bacteriën hebben geen kern en kunnen dus zonder genetische manipulatie geen eiwitten maken.<br>2 Het gen bestaat uit een eiwit dat het enzym maakt.<br>3 Het gen bevat de code voor het vormen van het enzym.<br><br>Welke van deze beweringen is of zijn juist?<br></div><ol class="MCAnswers"><li id="Q_10_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_0_Btn" onclick="CheckMCAnswer(10,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_10_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_1_Btn" onclick="CheckMCAnswer(10,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_10_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_2_Btn" onclick="CheckMCAnswer(10,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_10_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_3_Btn" onclick="CheckMCAnswer(10,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 2</li><li id="Q_10_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_4_Btn" onclick="CheckMCAnswer(10,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 3</li><li id="Q_10_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_5_Btn" onclick="CheckMCAnswer(10,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_11" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/biohavo981_10.jpg" alt="biohavo981_10.jpg" title="biohavo981_10" width="700" height="267"><br><br>In bron 1 zijn twee karyogrammen weergegeven. Deze karyogrammen zijn afkomstig van een eeneiige tweeling. Het ene kind is van het mannelijk geslacht zonder duidelijke uiterlijke afwijkingen. Bij het andere kind zijn wel uiterlijke afwijkingen geconstateerd.<br><br>Bij het ontstaan van deze tweeling is een stoornis opgetreden in een kerndeling. Vijf mogelijke stoornissen zijn:<br>1 een stoornis in de meiose 1 van de eicel<br>2 een stoornis in de meiose 1 van de zaadcel<br>3 een stoornis in de meiose 2 van de eicel<br>4 een stoornis in de meiose 2 van de zaadcel<br>5 een stoornis in de eerste mitose van de zygote<br><br>Welke van deze stoornissen kan geleid hebben tot het ontstaan van deze bijzondere tweeling?<br></div><ol class="MCAnswers"><li id="Q_11_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_0_Btn" onclick="CheckMCAnswer(11,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;stoornis 1</li><li id="Q_11_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_1_Btn" onclick="CheckMCAnswer(11,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;stoornis 2</li><li id="Q_11_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_2_Btn" onclick="CheckMCAnswer(11,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;stoornis 3</li><li id="Q_11_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_3_Btn" onclick="CheckMCAnswer(11,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;stoornis 4</li><li id="Q_11_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_4_Btn" onclick="CheckMCAnswer(11,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;stoornis 5</li></ol></li>
+<li class="QuizQuestion" id="Q_12" style="display: none"><div class="QuestionText">Het is inmiddels gelukt om andere organismen dan de mens, zoals muizen en varkens, mensen-hemoglobine te laten produceren, dat gebruikt kan worden bij de fabricage van kunstbloed.<br><br>Wat hebben de onderzoekers bij deze organismen veranderd om dit te bereiken?</div><ol class="MCAnswers"><li id="Q_12_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_0_Btn" onclick="CheckMCAnswer(12,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;het DNA</li><li id="Q_12_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_1_Btn" onclick="CheckMCAnswer(12,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bepaalde eiwitten</li><li id="Q_12_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_2_Btn" onclick="CheckMCAnswer(12,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de hemoglobine</li><li id="Q_12_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_3_Btn" onclick="CheckMCAnswer(12,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de ribosomen</li></ol></li>
+<li class="QuizQuestion" id="Q_13" style="display: none"><div class="QuestionText">Een biotechnologiebedrijf in de USA dat zich bezighoudt met humane gentherapie, kan genen leveren die actief zijn op plaatsen waar nieuwe bloedvaatjes nodig zijn. Een patiënt bij wie het vaatstelsel in de benen onder de knieën bijna volledig was vernietigd, is met succes behandeld. Door de gentherapie is in zijn benen het aanmaken van nieuwe vertakkingen van bloedvaten gestimuleerd. Inmiddels zijn tientallen patiënten met succes behandeld.<br>Men hoopt dat de nieuwe techniek ook goed uitpakt bij patiënten na een hartinfarct. Bij deze patiënten sterft een deel van het hart af als gevolg van dichtgeslibde bloedvaten. Men hoopt de groei van nieuwe bloedvaten rond die vaten te kunnen stimuleren.<br>De techniek is uitgeprobeerd bij varkens en de resultaten waren verbijsterend. De varkens ondergingen een open hartoperatie waarbij een slagadertje van het hart werd afgeklemd. Na een periode van drie weken werden de varkens sloom en wilden niet meer lopen op een rolband. Vervolgens kreeg een groep van deze varkens een hartinjectie met het nieuwe gen. Na drie tot vijf weken konden deze dieren de rolband weer aan. Analyse van de bloedstroom in het hart toonde aan dat deze compleet hersteld was en dat een netwerk van nieuwe bloedvaten was aangelegd rondom de kunstmatige blokkade van het afgeklemde hartbloedvat.<br><br>Drie technieken zijn:<br>1 Het maken van een karyogram voor erfelijkheidsadvisering;<br>2 Produceren van insuline met behulp van bacteriën;<br>3 Produceren van yoghurt.<br><br>Welke van deze technieken zijn voorbeelden van biotechnologie?</div><ol class="MCAnswers"><li id="Q_13_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_0_Btn" onclick="CheckMCAnswer(13,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_13_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_1_Btn" onclick="CheckMCAnswer(13,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_13_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_2_Btn" onclick="CheckMCAnswer(13,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_13_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_3_Btn" onclick="CheckMCAnswer(13,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 en 2</li><li id="Q_13_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_4_Btn" onclick="CheckMCAnswer(13,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 en 3</li><li id="Q_13_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_5_Btn" onclick="CheckMCAnswer(13,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_14" style="display: none"><div class="QuestionText">Biologen onderscheiden twee typen mutatie: somatische en erfelijke mutatie. Somatische mutatie komt alleen voor in lichaamscellen. De mutantgenen die daarbij ontstaan, kunnen dus verder voorkomen in alle cellen die door deling uit die lichaamscellen zijn ontstaan. Erfelijke mutatie vindt plaats in gameten of in cellen waaruit gameten ontstaan. De mutantgenen die daar het gevolg van zijn, kunnen van generatie op generatie worden doorgegeven.<br>Een leerling leest de volgende bewering: "Mutatie is vaak het gevolg van fouten tijdens de verdubbeling van het DNA en soms het gevolg van fouten tijdens de kerndeling."<br><br>Geldt deze bewering uitsluitend voor erfelijke mutatie, uitsluitend voor somatische mutatie of voor beide typen mutatie?</div><ol class="MCAnswers"><li id="Q_14_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_0_Btn" onclick="CheckMCAnswer(14,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze bewering geldt uitsluitend voor erfelijke mutatie.</li><li id="Q_14_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_1_Btn" onclick="CheckMCAnswer(14,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze bewering geldt uitsluitend voor somatische mutatie.</li><li id="Q_14_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_2_Btn" onclick="CheckMCAnswer(14,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Deze bewering geldt zowel voor erfelijke als voor somatische mutatie.</li></ol></li>
+<li class="QuizQuestion" id="Q_15" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/biohavo041_09.jpg" alt="biohavo041_09.jpg" title="biohavo041_09" width="680" height="793"><br><br>In de bron staat informatie over het menselijke genoom en de bouw van een DNA-molecuul.<br>Hoeveel DNA-moleculen komen voor in het getekende chromosoom?</div><ol class="MCAnswers"><li id="Q_15_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_0_Btn" onclick="CheckMCAnswer(15,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1</li><li id="Q_15_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_1_Btn" onclick="CheckMCAnswer(15,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2</li><li id="Q_15_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_2_Btn" onclick="CheckMCAnswer(15,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4</li><li id="Q_15_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_3_Btn" onclick="CheckMCAnswer(15,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;8</li></ol></li>
+<li class="QuizQuestion" id="Q_16" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/biohavo041_09.jpg" alt="biohavo041_09.jpg" title="biohavo041_09" width="680" height="793"><br><br>Het in de bron getekende chromosoom is tijdens de deling zichtbaar met een lichtmicroscoop als de cel wordt behandeld met een kleurstof.<br>Hoe komt het dat in niet-delende cellen een chromosoom na behandeling met de kleurstof niet zichtbaar is?</div><ol class="MCAnswers"><li id="Q_16_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_0_Btn" onclick="CheckMCAnswer(16,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Het chromosoom bestaat dan uit slechts één chromatide.</li><li id="Q_16_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_1_Btn" onclick="CheckMCAnswer(16,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Het chromosoom is dan gespiraliseerd (opgerold).</li><li id="Q_16_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_2_Btn" onclick="CheckMCAnswer(16,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Het chromosoom is dan niet gespiraliseerd.</li><li id="Q_16_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_3_Btn" onclick="CheckMCAnswer(16,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Het chromosoom neemt dan geen kleurstof op.</li></ol></li>
+<li class="QuizQuestion" id="Q_17" style="display: none"><div class="QuestionText">Op een bepaald chromosoom ligt het gen voor het enzym mono-amine-oxydase-A (MAO-A). Dit enzym speelt een rol bij de normale afbraak van neurotransmitters, stoffen in de hersenen die de prikkeloverdracht tussen zenuwcellen verzorgen. Er bestaat een genetisch defect dat de productie van het enzym MAO-A ontregelt. Gevolg daarvan zou zijn dat de stofwisseling van de neurotransmitters als serotonine, dopamine en noradrenaline in de hersenen verstoord is geraakt. Dit heeft weer tot gevolg dat er agressief gedrag optreedt. Dit agressieve gedrag treedt voornamelijk bij mannen op.<br>Biochemisch onderzoek bij drie onderzochte mannen leverde inderdaad bewijs voor een verstoorde neurotransmitter-huishouding.<br><br>Met behulp van welk celorganel wordt het MAO-enzym gemaakt?</div><div class="ShortAnswer" id="Q_17_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_17_Guess" onfocus="TrackFocus('Q_17_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(17)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(17)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(17)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_18" style="display: none"><div class="QuestionText">Wat gebeurt er bij recombinant-DNA-techniek?</div><ol class="MCAnswers"><li id="Q_18_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_0_Btn" onclick="CheckMCAnswer(18,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Twee verschillende organismen wisselen via plasmiden stukjes DNA uit zodat er nieuwe combinaties ontstaan</li><li id="Q_18_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_1_Btn" onclick="CheckMCAnswer(18,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Een deel van het DNA van een organisme wordt in een ander organisme gebracht</li><li id="Q_18_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_2_Btn" onclick="CheckMCAnswer(18,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door het enzym reverse transcriptase wordt RNA omgezet in DNA. Dit DNA heeft een andere combinatie van genen</li><li id="Q_18_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_3_Btn" onclick="CheckMCAnswer(18,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Een plasmide van een bacterie wordt overgebracht in een andere cel</li></ol></li>
+<li class="QuizQuestion" id="Q_19" style="display: none"><div class="QuestionText">Het erfelijk materiaal in virussen is heel verschillend. Dit virus komt voor in varianten met enkel- en met dubbelstrengs DNA.<br>Het erfelijk materiaal van een bepaald virus heeft de volgende samenstelling van stikstofbasen: cytosine = 19%, adenine = 25%, thymine = 33% en guanine = 23%.<br>Kan men op grond van deze gegevens bepalen wat voor erfelijk materiaal het is? Zo ja, welke vorm is het?</div><ol class="MCAnswers"><li id="Q_19_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_0_Btn" onclick="CheckMCAnswer(19,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, het is dubbelstrengs DNA</li><li id="Q_19_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_1_Btn" onclick="CheckMCAnswer(19,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, het is enkelstrengs DNA</li><li id="Q_19_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_2_Btn" onclick="CheckMCAnswer(19,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Nee, het is niet te bepalen</li><li id="Q_19_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_3_Btn" onclick="CheckMCAnswer(19,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, het is RNA</li></ol></li>
+<li class="QuizQuestion" id="Q_20" style="display: none"><div class="QuestionText">In welk rijtje staan de woorden in juiste volgorde van klein naar groot</div><ol class="MCAnswers"><li id="Q_20_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_0_Btn" onclick="CheckMCAnswer(20,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thymine - nucleotide - triplet - DNA-molecuul - chromosoom - gen -genoom</li><li id="Q_20_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_1_Btn" onclick="CheckMCAnswer(20,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thymine - triplet - gen - nucleotide -DNA-molecuul - chromosoom - genoom</li><li id="Q_20_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_2_Btn" onclick="CheckMCAnswer(20,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thymine - nucleotide - triplet - gen - DNA-molecuul - chromosoom - genoom</li><li id="Q_20_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_3_Btn" onclick="CheckMCAnswer(20,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thymine - nucleotide - triplet - gen -genoom - DNA-molecuul - chromosoom</li></ol></li>
+<li class="QuizQuestion" id="Q_21" style="display: none"><div class="QuestionText">Over het ontstaan van kanker wordt een aantal beweringen gedaan:<br>1. Radioactieve straling kan leiden tot verandering in de volgorde van de bouwstenen van het DNA waardoor kanker kan ontstaan.<br>2. Bepaalde chemische stoffen kunnen mutatie in het DNA veroorzaken waardoor kanker kan ontstaan.<br>Welke van deze beweringen is of zijn juist?</div><ol class="MCAnswers"><li id="Q_21_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_0_Btn" onclick="CheckMCAnswer(21,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1</li><li id="Q_21_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_1_Btn" onclick="CheckMCAnswer(21,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2</li><li id="Q_21_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_2_Btn" onclick="CheckMCAnswer(21,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 en 2</li><li id="Q_21_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_3_Btn" onclick="CheckMCAnswer(21,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;geen van beide</li></ol></li>
+<li class="QuizQuestion" id="Q_22" style="display: none"><div class="QuestionText">Op een bepaald chromosoom ligt het gen voor het enzym mono-amine-oxydase-A (MAO-A). Dit enzym speelt een rol bij de normale afbraak van neurotransmitters, stoffen in de hersenen die de prikkeloverdracht tussen zenuwcellen verzorgen. Er bestaat een genetisch defect dat de productie van het enzym MAO-A ontregelt. Gevolg daarvan zou zijn dat de stofwisseling van de neurotransmitters als serotonine, dopamine en noradrenaline in de hersenen verstoord is geraakt. Dit heeft weer tot gevolg dat er agressief gedrag optreedt. Dit agressieve gedrag treedt voornamelijk bij mannen op.<br>Biochemisch onderzoek bij drie onderzochte mannen leverde inderdaad bewijs voor een verstoorde neurotransmitter-huishouding.<br><br>Een gen is een drager van erfelijke informatie.<br>Waarvan is een gen de code?<br></div><ol class="MCAnswers"><li id="Q_22_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_0_Btn" onclick="CheckMCAnswer(22,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een eiwit</li><li id="Q_22_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_1_Btn" onclick="CheckMCAnswer(22,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;DNA</li><li id="Q_22_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_2_Btn" onclick="CheckMCAnswer(22,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;RNA</li><li id="Q_22_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_3_Btn" onclick="CheckMCAnswer(22,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een aminozuur</li></ol></li>
+<li class="QuizQuestion" id="Q_23" style="display: none"><div class="QuestionText">In het DNA van een bepaalde bacterie zit 16 % Adenine.<br>Wat is het percentage Guanine in die bacterie?<br></div><ol class="MCAnswers"><li id="Q_23_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_0_Btn" onclick="CheckMCAnswer(23,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;16 %</li><li id="Q_23_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_1_Btn" onclick="CheckMCAnswer(23,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;68 %</li><li id="Q_23_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_2_Btn" onclick="CheckMCAnswer(23,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;34 %</li><li id="Q_23_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_3_Btn" onclick="CheckMCAnswer(23,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Dat kun je niet weten</li></ol></li>
+<li class="QuizQuestion" id="Q_24" style="display: none"><div class="QuestionText">Welk bewering over kanker en mutaties is juist?<br></div><ol class="MCAnswers"><li id="Q_24_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_0_Btn" onclick="CheckMCAnswer(24,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Kanker veroorzaakt mutaties zodat de regeling van de celdeling niet goed verloopt</li><li id="Q_24_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_1_Btn" onclick="CheckMCAnswer(24,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Er is geen verband tussen mutaties en kanker want kanker wordt veroorzaakt door carcinogene stoffen</li><li id="Q_24_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_2_Btn" onclick="CheckMCAnswer(24,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door kanker neemt het aantal mutaties toe zodat er een grotere kans is op een tumor</li><li id="Q_24_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_3_Btn" onclick="CheckMCAnswer(24,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door mutaties kan kanker ontstaan</li></ol></li>
+<li class="QuizQuestion" id="Q_25" style="display: none"><div class="QuestionText">Een cel bevat bepaalde hoeveelheden van de volgende stoffen:<br>1) DNA,<br>2) m-RNA,<br>3) aminozuren,<br>4) koolhydraat.<br>Deze cel gaat op een gegeven ogenblik meer van een bepaald eiwit produceren.<br><br>Van welk van bovengenoemde stoffen neemt daarbij de hoeveelheid toe?</div><ol class="MCAnswers"><li id="Q_25_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_0_Btn" onclick="CheckMCAnswer(25,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;DNA</li><li id="Q_25_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_1_Btn" onclick="CheckMCAnswer(25,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;m-RNA</li><li id="Q_25_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_2_Btn" onclick="CheckMCAnswer(25,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;aminozuren</li><li id="Q_25_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_3_Btn" onclick="CheckMCAnswer(25,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;koolhydraat</li></ol></li>
+<li class="QuizQuestion" id="Q_26" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/nucleotides.jpg" alt="nucleotides.jpg" title="nucleotides" width="550" height="390"><br><br>Hier staat een stukje DNA-streng.<br>Uit hoeveel nucleotiden bestaat dit stukje DNA?<br></div><ol class="MCAnswers"><li id="Q_26_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_0_Btn" onclick="CheckMCAnswer(26,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2</li><li id="Q_26_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_1_Btn" onclick="CheckMCAnswer(26,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;6</li><li id="Q_26_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_2_Btn" onclick="CheckMCAnswer(26,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;12</li><li id="Q_26_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_3_Btn" onclick="CheckMCAnswer(26,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4</li><li id="Q_26_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_4_Btn" onclick="CheckMCAnswer(26,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;24</li></ol></li>
+<li class="QuizQuestion" id="Q_27" style="display: none"><div class="QuestionText">Voor dubbelstrengs DNA geldt de volgende verhouding:<br> 1. A/G<br> 2. C/T<br> 3. C/G<br> 4. (A+C)/(G+T)<br> 5. (A+G)/(C+T)<br> 6. (A+T)/(G+C)<br>Welke verhoudingen zijn gelijk aan 1 ?</div><ol class="MCAnswers"><li id="Q_27_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_0_Btn" onclick="CheckMCAnswer(27,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 en 2</li><li id="Q_27_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_1_Btn" onclick="CheckMCAnswer(27,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 en 6</li><li id="Q_27_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_2_Btn" onclick="CheckMCAnswer(27,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3, 4 en 5</li><li id="Q_27_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_3_Btn" onclick="CheckMCAnswer(27,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1, 4 en 5</li><li id="Q_27_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_4_Btn" onclick="CheckMCAnswer(27,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3 en 6</li></ol></li>
+<li class="QuizQuestion" id="Q_28" style="display: none"><div class="QuestionText">De nucleotide-sammenstelling (basenvolgorde) van een DNA streng is:<br>TAC CGA TTA ACA CTT ATT<br>De basenvolgorde in het mRNA is dan:</div><ol class="MCAnswers"><li id="Q_28_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_0_Btn" onclick="CheckMCAnswer(28,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;AUG GCU AAU UGU GAA UAA</li><li id="Q_28_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_1_Btn" onclick="CheckMCAnswer(28,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ATG GCT AAT TGT GAA TAA</li><li id="Q_28_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_2_Btn" onclick="CheckMCAnswer(28,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;UTG GCT UUT TGT GUU TUU</li><li id="Q_28_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_3_Btn" onclick="CheckMCAnswer(28,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;AUC CGU AAU UCU CAA UAA</li></ol></li>
+<li class="QuizQuestion" id="Q_29" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/aminozuurschema.gif" alt="aminozuurschema.gif" title="aminozuurschema" width="444" height="448"><br><br>Gegeven is de volgende mRNA:<br><br>AUG CGC CAU UAU AAG UGA<br><br>De gevormde polypeptide is:</div><ol class="MCAnswers"><li id="Q_29_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_0_Btn" onclick="CheckMCAnswer(29,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;met-arg-his-tyr-lys-stop</li><li id="Q_29_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_1_Btn" onclick="CheckMCAnswer(29,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;start-arg-his-tyr-lys</li><li id="Q_29_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_2_Btn" onclick="CheckMCAnswer(29,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;met-arg-his-tyr-lys</li><li id="Q_29_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_3_Btn" onclick="CheckMCAnswer(29,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;arg-his-tyr-lys</li></ol></li>
+<li class="QuizQuestion" id="Q_30" style="display: none"><div class="QuestionText">Het verschil tussen DNA en RNA in een menselijke darmcel is:</div><ol class="MCAnswers"><li id="Q_30_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_0_Btn" onclick="CheckMCAnswer(30,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;DNA is groter dan RNA</li><li id="Q_30_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_1_Btn" onclick="CheckMCAnswer(30,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Een van de stikstofbasen is anders</li><li id="Q_30_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_2_Btn" onclick="CheckMCAnswer(30,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;DNA en RNA bevatten verschillende suikers</li><li id="Q_30_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_3_Btn" onclick="CheckMCAnswer(30,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;DNA bestaat uit een dubbele streng (dubbele helix)</li><li id="Q_30_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_4_Btn" onclick="CheckMCAnswer(30,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Al deze verschillen zijn correct</li></ol></li>
+<li class="QuizQuestion" id="Q_31" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/aminozuurschema.gif" alt="aminozuurschema.gif" title="aminozuurschema" width="444" height="448"><br><br>Een deel van een bepaalde genetische code is:<br>AUG GCU AAU UGU GAA UAA<br>Op basis van deze basenvolgorde wordt een polypeptide gevormd.<br><br>Het startcodon op mRNA is AUG.<br>Wat is de basenvolgorde op de DNA-streng tegenover de afgelezen DNA-streng, die correspondeert met dit startcodon?</div><ol class="MCAnswers"><li id="Q_31_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_0_Btn" onclick="CheckMCAnswer(31,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;TAC</li><li id="Q_31_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_1_Btn" onclick="CheckMCAnswer(31,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;UAC</li><li id="Q_31_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_2_Btn" onclick="CheckMCAnswer(31,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;AUG</li><li id="Q_31_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_3_Btn" onclick="CheckMCAnswer(31,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;UAC</li><li id="Q_31_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_4_Btn" onclick="CheckMCAnswer(31,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ATG</li></ol></li>
+<li class="QuizQuestion" id="Q_32" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/aminozuurschema.gif" alt="aminozuurschema.gif" title="aminozuurschema" width="444" height="448"><br><br>Een deel van een bepaalde genetische code is:<br>AUG GCU AAU UGU GAA UAA<br>Op basis van deze basenvolgorde wordt een polypeptide gevormd.<br><br>Als de zevende base uit het gegeven molecuul verdubbelt, ontstaat een polypeptide met ___ aminozuren.</div><ol class="MCAnswers"><li id="Q_32_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_0_Btn" onclick="CheckMCAnswer(32,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3</li><li id="Q_32_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_1_Btn" onclick="CheckMCAnswer(32,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4</li><li id="Q_32_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_2_Btn" onclick="CheckMCAnswer(32,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;5</li><li id="Q_32_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_3_Btn" onclick="CheckMCAnswer(32,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;6</li></ol></li>
+<li class="QuizQuestion" id="Q_33" style="display: none"><div class="QuestionText">Transcriptie vindt plaats in de kern en translatie in het cytoplasma.</div><ol class="MCAnswers"><li id="Q_33_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_0_Btn" onclick="CheckMCAnswer(33,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Juist</li><li id="Q_33_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_1_Btn" onclick="CheckMCAnswer(33,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Onjuist</li></ol></li>
+<li class="QuizQuestion" id="Q_34" style="display: none"><div class="QuestionText">De informatiestroom in een lichaamscel verloopt:<br></div><ol class="MCAnswers"><li id="Q_34_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_0_Btn" onclick="CheckMCAnswer(34,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van RNA via DNA naar eiwit</li><li id="Q_34_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_1_Btn" onclick="CheckMCAnswer(34,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van eiwit via RNA naar DNA</li><li id="Q_34_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_2_Btn" onclick="CheckMCAnswer(34,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van DNA via eiwit naar RNA</li><li id="Q_34_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_3_Btn" onclick="CheckMCAnswer(34,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van RNA via eiwit naar DNA</li><li id="Q_34_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_4_Btn" onclick="CheckMCAnswer(34,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van DNA via RNA naar eiwit</li></ol></li>
+<li class="QuizQuestion" id="Q_35" style="display: none"><div class="QuestionText">Een mRNA bestaat uit 336 nucleotiden.<br>Uit hoeveel aminozuren bestaat de polypeptide?</div><div class="ShortAnswer" id="Q_35_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_35_Guess" onfocus="TrackFocus('Q_35_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(35)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(35)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(35)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_36" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/H5DNA/aminozuurschema.gif" alt="aminozuurschema.gif" title="aminozuurschema" width="444" height="448"><br><br>Een mRNA codeert voor polypeptide:<br>met-phe-glan-gly<br><br>De code voor het laatste aminozuur is:</div><ol class="MCAnswers"><li id="Q_36_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_0_Btn" onclick="CheckMCAnswer(36,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;GGU</li><li id="Q_36_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_1_Btn" onclick="CheckMCAnswer(36,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;GGG</li><li id="Q_36_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_2_Btn" onclick="CheckMCAnswer(36,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;GGC</li><li id="Q_36_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_3_Btn" onclick="CheckMCAnswer(36,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;GGA</li><li id="Q_36_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_4_Btn" onclick="CheckMCAnswer(36,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Alle vier bovenstaande tripletten zijn juist</li></ol></li></ol>
+
+
+
+</div>
+
+
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="HideFeedback(); return false;">&nbsp;OK&nbsp;</button>
+</div>
+
+
+<!-- BeginBottomNavButtons -->
+
+
+
+<!-- EndBottomNavButtons -->
+
+<!-- BeginSubmissionForm -->
+
+<!-- EndSubmissionForm --></div>
+<footer class="page-footer"><p>Biologiepagina.nl · gratis oefenen en leren voor vmbo, havo en vwo.</p><p><a href="/Contact/contact.htm">Contact</a> · <a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></p></footer>
+</main>
+</div>
+<script src="/theme/theme.js" defer></script>
+</body>
+</html>

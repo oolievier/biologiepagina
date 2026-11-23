@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biologische bestrijding: plaag of natuurlijke vijand?</title>
+<meta property="og:title" content="Oefening Biologische bestrijding">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefening Biologische bestrijding">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://biologiepagina.nl/Oefeningen/Biologischebestrijding/biologischebestrijding.htm">
+<meta property="og:image" content="https://biologiepagina.nl/Oefeningen/Biologischebestrijding/biologischebestrijding.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oefening Biologische bestrijding">
+<meta name="twitter:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefening Biologische bestrijding">
+<meta name="twitter:image" content="https://biologiepagina.nl/Oefeningen/Biologischebestrijding/biologischebestrijding.jpg">
+<meta name="twitter:image:alt" content="Oefening Biologische bestrijding">
+<meta name="DC:Creator" content="biologiepagina, voor het leren en oefenen van biologie">
+<meta name="DC:Title" content="Biologische bestrijding: plaag of natuurlijke vijand?">
+<meta name="Keywords" content="biologie, oefenen, studeren, opleiding, havo, vwo, vmbo, hbo, studie, biologie studies, examentraining, diploma, mbo opleiding, ict, ict opleiding, examen, leren, duurzaam">
+<meta name="author" content="biologiepagina.nl">
+<meta http-equiv="language" content="NL">
+<link rel="icon" href="/theme/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap">
+<link rel="stylesheet" href="/theme/theme.css">
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M062Y6XMGZ');
+</script>
+<script type="text/javascript">
+
+//<![CDATA[
+
+<!--
+
+
+
+
+function Client(){
+//if not a DOM browser, hopeless
+	this.min = false; if (document.getElementById){this.min = true;};
+
+	this.ua = navigator.userAgent;
+	this.name = navigator.appName;
+	this.ver = navigator.appVersion;  
+
+//Get data about the browser
+	this.mac = (this.ver.indexOf('Mac') != -1);
+	this.win = (this.ver.indexOf('Windows') != -1);
+
+//Look for Gecko
+	this.gecko = (this.ua.indexOf('Gecko') > 1);
+	if (this.gecko){
+		this.geckoVer = parseInt(this.ua.substring(this.ua.indexOf('Gecko')+6, this.ua.length));
+		if (this.geckoVer < 20020000){this.min = false;}
+	}
+	
+//Look for Firebird
+	this.firebird = (this.ua.indexOf('Firebird') > 1);
+	
+//Look for Safari
+	this.safari = (this.ua.indexOf('Safari') > 1);
+	if (this.safari){
+		this.gecko = false;
+	}
+	
+//Look for IE
+	this.ie = (this.ua.indexOf('MSIE') > 0);
+	if (this.ie){
+		this.ieVer = parseFloat(this.ua.substring(this.ua.indexOf('MSIE')+5, this.ua.length));
+		if (this.ieVer < 5.5){this.min = false;}
+	}
+	
+//Look for Opera
+	this.opera = (this.ua.indexOf('Opera') > 0);
+	if (this.opera){
+		this.operaVer = parseFloat(this.ua.substring(this.ua.indexOf('Opera')+6, this.ua.length));
+		if (this.operaVer < 7.04){this.min = false;}
+	}
+	if (this.min == false){
+		alert('Your browser may not be able to handle this page.');
+	}
+	
+//Special case for the horrible ie5mac
+	this.ie5mac = (this.ie&&this.mac&&(this.ieVer<6));
+}
+
+var C = new Client();
+
+//for (prop in C){
+//	alert(prop + ': ' + C[prop]);
+//}
+
+
+
+//CODE FOR HANDLING NAV BUTTONS AND FUNCTION BUTTONS
+
+//[strNavBarJS]
+function NavBtnOver(Btn){
+	if (Btn.className != 'NavButtonDown'){Btn.className = 'NavButtonUp';}
+}
+
+function NavBtnOut(Btn){
+	Btn.className = 'NavButton';
+}
+
+function NavBtnDown(Btn){
+	Btn.className = 'NavButtonDown';
+}
+//[/strNavBarJS]
+
+function FuncBtnOver(Btn){
+	if (Btn.className != 'FuncButtonDown'){Btn.className = 'FuncButtonUp';}
+}
+
+function FuncBtnOut(Btn){
+	Btn.className = 'FuncButton';
+}
+
+function FuncBtnDown(Btn){
+	Btn.className = 'FuncButtonDown';
+}
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+
+
+
+//CODE FOR HANDLING DISPLAY OF POPUP FEEDBACK BOX
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+//Focus the OK button
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+	
+//
+//	RefreshImages();
+//
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+				//get Mac FireFox to manipulate display, to force screen redraw
+				if (C.mac && C.gecko) {Els[i].style.display = '';}
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+				if (C.mac && C.gecko) {Els[i].style.display = 'none';}
+			}
+		} 
+		else {
+			// tagName is either input or select (that is, Form Elements)
+			// ie6 has a problem with Form elements, so manipulate those
+			if (C.ie) {
+				if (C.ieVer < 7) {
+					if (Show == true){
+						Els[i].style.visibility = 'visible';
+					}
+					else{
+						Els[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+	if (Finished == true){
+		Finish();
+	}
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].clientWidth;
+	this.H = document.getElementsByTagName('body')[0].clientHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	if (C.ie) {
+		thisKey = window.event.keyCode;
+	}
+	else {
+		thisKey = e.keyCode;
+	}
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+	}
+
+	if (Suppress == true){
+		if (C.ie){
+			window.event.returnValue = false;	
+			window.event.cancelBubble = true;
+		}
+		else{
+			e.preventDefault();
+		}
+	}
+}
+
+if (C.ie){
+	document.attachEvent('onkeydown',SuppressBackspace);
+	window.attachEvent('onkeydown',SuppressBackspace);
+}
+else{
+	if (window.addEventListener){
+		window.addEventListener('keypress',SuppressBackspace,false);
+	}
+}
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+	RefreshImages();
+
+}
+
+
+
+Imgs = new Array();
+
+function PreloadImages(){
+	var a = PreloadImages.arguments;
+	for (var i=0; i<a.length; i++){
+		Imgs[i] = new Image();
+		Imgs[i].src = a[i];
+	}
+}
+
+function RefreshImages(){
+	for (var i=0; i<document.images.length; i++){
+		if (document.images[i].name.substring(0,6) != 'NavBar'){
+			document.images[i].src = document.images[i].src;
+		}
+	}
+}
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+//EXTENSION TO ARRAY OBJECT
+function Array_IndexOf(Input){
+	var Result = -1;
+	for (var i=0; i<this.length; i++){
+		if (this[i] == Input){
+			Result = i;
+		}
+	}
+	return Result;
+}
+Array.prototype.indexOf = Array_IndexOf;
+
+//IE HAS RENDERING BUG WITH BOTTOM NAVBAR
+function RemoveBottomNavBarForIE(){
+	if ((C.ie)&&(document.getElementById('Reading') != null)){
+		if (document.getElementById('BottomNavBar') != null){
+			document.getElementById('TheBody').removeChild(document.getElementById('BottomNavBar'));
+		}
+	}
+}
+
+
+
+
+//HOTPOTNET-RELATED CODE
+
+var HPNStartTime = (new Date()).getTime();
+var SubmissionTimeout = 30000;
+var Detail = ''; //Global that is used to submit tracking data
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.detail.value = Detail;
+		Frm.submit();
+	}
+}
+
+
+
+
+
+//JMATCH CORE JAVASCRIPT CODE
+
+var CorrectIndicator = '<img src="duimhoog.gif" alt="duimhoog.gif" title="duimhoog" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var IncorrectIndicator = '<img src="duimlaagrood.gif" alt="duimlaagrood.gif" title="duimlaagrood" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var YourScoreIs = 'Je score is';
+var CorrectResponse = 'Correct! <img src="antwoord.jpg" alt="antwoord.jpg" title="antwoord" width="638" height="285"></img>';
+var IncorrectResponse = 'Sorry! Probeer het opnieuw';
+var TotalUnfixedLeftItems = 0;
+var TotCorrectChoices = 0;
+var Penalties = 0;
+var Finished = false;
+var TimeOver = false;
+
+var Score = 0;
+var Locked = false;
+var ShuffleQs = false;
+var QsToShow = 28;
+
+
+function StartUp(){
+	RemoveBottomNavBarForIE();
+
+
+	
+
+
+
+	PreloadImages('duimhoog.gif','duimlaagrood.gif','antwoord.jpg','biologischebestrijding.jpg');
+
+
+	SetUpItems(ShuffleQs,QsToShow);
+
+	TotalUnfixedLeftItems = document.getElementById('MatchDiv').getElementsByTagName('select').length;
+
+//Create arrays
+	CreateStatusArrays();
+
+
+}
+
+Status = new Array();
+
+
+function CreateStatusArrays(){
+	var Selects = document.getElementById('Questions').getElementsByTagName('select');
+	for (var x=0; x<Selects.length; x++){
+		Status[x] = new Array();
+		Status[x][0] = 0; // Item not matched correctly yet
+		Status[x][1] = 0; //Tries at this item so far
+		Status[x][2] = Selects[x].id; //Store a ref to the original drop-down
+		Status[x][3] = new Array(); //Sequence of guesses for this item
+	}
+}
+
+function GetKeyFromSelectContainer(Container){
+	var Result = -1;
+	if (Container.getElementsByTagName('select').length > 0){
+		var Select = Container.getElementsByTagName('select')[0];
+		if (Select != null){
+			Result = parseInt(Select.id.substring(1, Select.id.length));
+		}
+	}
+	return Result;
+}
+
+function GetKeyFromSelect(Select){
+	var Result = -1;
+	if (Select != null){
+		Result = parseInt(Select.id.substring(1, Select.id.length));
+	}
+	return Result;
+}
+
+var OriginalKeys = new Array();
+var ReducedKeys = new Array();
+
+function GetUniqueKeys(Container, TargetArray){
+	TargetArray.length = 0;
+	var x = -1;
+	var SList = Container.getElementsByTagName('select');
+	if (SList.length > 0){
+		for (var i=0; i<SList.length; i++){
+			x = GetKeyFromSelect(SList[i]);
+			if (TargetArray.indexOf(x) < 0){
+				TargetArray.push(x);
+			}
+		}
+	}
+}
+
+function SetUpItems(ShuffleQs, ReduceTo){
+	var QList = new Array();
+	var i, j, k, Selects, Options;
+
+//Remove all the table rows and put them in an array for processing
+	var Qs = document.getElementById('Questions');
+	
+//First, get a list of keys
+	GetUniqueKeys(Qs, OriginalKeys);
+
+//Remove the table rows to an array
+	while (Qs.getElementsByTagName('tr').length > 0){
+		QList.push(Qs.removeChild(Qs.getElementsByTagName('tr')[0]));
+	}
+
+	var Reducing = (QList.length > ReduceTo);
+	
+//If required, select random rows to delete
+	if (Reducing == true){
+		var DumpItem = 0;
+		while (ReduceTo < QList.length){
+	
+//Get a number to delete from the array
+			DumpItem = Math.floor(QList.length*Math.random());
+			for (i=DumpItem; i<(QList.length-1); i++){
+				QList[i] = QList[i+1];
+			}
+			QList.length = QList.length-1;
+		}
+	}
+//Shuffle the rows if necessary
+	if (ShuffleQs == true){
+		QList = Shuffle(QList);
+	}
+
+	TotalUnfixedLeftItems = QList.length;
+	
+//Write the rows back to the table body
+	for (i=0; i<QList.length; i++){
+		Qs.appendChild(QList[i]);
+	}
+	
+//Now we need to remove any drop-down options that no longer have associated select items
+	if (Reducing == true){
+		GetUniqueKeys(Qs, ReducedKeys);
+		
+		Selects = Qs.getElementsByTagName('select');
+		for (i=0; i<Selects.length; i++){
+			Options = Selects[i].getElementsByTagName('option');
+			for (j=Options.length-1; j>=0; j--){
+				if (OptionRequired(Options[j].value) == false){
+					Selects[i].removeChild(Options[j]);
+				}
+			}
+		}
+	}
+}
+
+function OptionRequired(Key){
+	if (ReducedKeys.indexOf(Key) > -1){
+		return true;
+	}
+	else{
+		if (OriginalKeys.indexOf(Key) > -1){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+}
+
+function CheckAnswers(){
+	if (Locked == true){return;}
+	var Select = null;
+	var Key = -1;
+	var Parent = null;
+	var Answer = null;
+	var AnsText = '';
+	var AllDone = true;
+	TotCorrectChoices = 0;
+	
+//for each item not fixed or a distractor
+	for (var i=0; i<Status.length; i++){
+	
+//if it hasn't been answered correctly yet
+		if (Status[i][0] < 1){
+		
+//Add one to the number of tries for this item
+			Status[i][1]++;
+			
+//Get a pointer to the drop-down
+			Select = document.getElementById(Status[i][2]);
+			Key = GetKeyFromSelect(Select);
+//Save the answer given
+			Status[i][3].push(Select.options[Select.selectedIndex].value);
+			
+//Check the answer
+			if (Select.options[Select.selectedIndex].value == Key){
+					Status[i][0] = 1;
+					AnsText = Select.options[Select.selectedIndex].innerHTML;
+					Parent = Select.parentNode;
+					Parent.removeChild(Select);
+					Parent.innerHTML = AnsText;
+					Parent.nextSibling.innerHTML = CorrectIndicator;
+			} 
+			else{
+				AllDone = false;
+				Parent = Select.parentNode;
+				Parent.nextSibling.innerHTML = IncorrectIndicator;
+			}
+		}
+		else{
+//Add a copy of the last (correct) answer.
+			Status[i][3].push(Status[i][3][Status[i][3].length-1]);
+		}
+//If it's correct, count it
+		if (Status[i][0] == 1){
+			TotCorrectChoices++;
+		}
+	}
+//Calculate the score
+	Score = Math.floor(((TotCorrectChoices-Penalties)/TotalUnfixedLeftItems)*100);
+	if (Score<0){Score = 0;}
+	var Feedback = '';
+
+//Build the feedback
+	if (AllDone == true){
+		Feedback = YourScoreIs + ' ' + Score + '%.' + '<br />' + CorrectResponse;
+	}
+	else{
+		Feedback = YourScoreIs + ' ' + Score + '%.' + '<br />' + IncorrectResponse;
+//Penalty for incorrect check
+		Penalties++;
+	}
+
+//If the exercise is over, deal with that
+	if ((AllDone == true)||(TimeOver == true)){
+
+
+		TimeOver = true;
+		Locked = true;
+		Finished = true;
+		setTimeout('Finish()', SubmissionTimeout);
+		WriteToInstructions(Feedback);
+	}
+
+//Show the feedback
+	ShowMessage(Feedback);
+	
+
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+//]]>
+
+</script>
+</head>
+<body id="TheBody" onload="StartUp()">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#content">Direct naar de inhoud</a>
+<header class="masthead"><div class="masthead__inner"><a class="brand" href="/" aria-label="Biologiepagina.nl — home"><svg class="brand__mark" viewBox="0 0 32 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 33V13"/><path d="M16 21C8 21 4 16 4 8c8 0 12 5 12 13Z"/><path d="M16 14C16 7 20 3 27 3c0 7-4 11-11 11Z"/><circle cx="16" cy="27" r="5"/></svg><span class="brand__name">Biologie<em>pagina</em>.nl<small>Oefenen &amp; leren voor vmbo, havo en vwo</small></span></a><p class="masthead__tagline">Biologie bij Biologie voor Jou &amp; Nectar</p><div class="masthead__tools"><div class="search"><label class="search__label" for="site-search">Zoek op deze site</label><input class="search__input" id="site-search" type="search" placeholder="Zoek" autocomplete="off"><svg class="search__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><ul class="search__results" hidden aria-label="Zoekresultaten"></ul></div><button class="nav-toggle" type="button" aria-controls="site-rail" aria-expanded="false">Inhoud</button></div></div></header>
+<div class="rail-backdrop" aria-hidden="true"></div>
+<div class="shell">
+<nav class="rail" id="site-rail" aria-label="Hoofdnavigatie"><p class="rail__eyebrow">Inhoud</p><div class="rail__group"><h2 class="rail__title">Klassen</h2><ul class="rail__list"><li><a href="/Brugklasnieuw/klas1.htm">Klas 1 · vmbo / havo / vwo</a></li><li><a href="/2en3/klas2.htm">Klas 2</a></li><li><a href="/2en3/klas2.htm">Klas 3</a></li><li><a href="/34mavo/mavo34.htm">Vmbo 3 & 4</a></li><li><a href="/Havo4/Havo4.htm">Havo 4</a></li><li><a href="/Havo5/Havo5.htm">Havo 5</a></li><li><a href="/Vwo4/vwo4.htm">Vwo 4</a></li><li><a href="/Vwo5/vwo5.htm">Vwo 5</a></li><li><a href="/Vwo6/vwo6.htm">Vwo 6</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Examens</h2><ul class="rail__list"><li><a href="/34mavo/examenbiologieVMBObb.htm">Vmbo BB</a></li><li><a href="/34mavo/examenbiologieVMBOkader.htm">Vmbo kader</a></li><li><a href="/34mavo/examenbiologie.htm">Vmbo TL / mavo</a></li><li><a href="/Havo5/examen.htm">Havo</a></li><li><a href="/Vwo6/examenvwo.htm">Vwo</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Vaardigheden</h2><ul class="rail__list"><li><a href="/verslagbiologieonderbouw.htm">Verslag · onderbouw</a></li><li><a href="/verslagbiologie.htm">Verslag · bovenbouw</a></li><li><a href="/tekenregels.htm">Tekenregels</a></li><li><a href="/grafiekmaken.htm">Grafiek maken</a></li><li><a href="/Links/profielwerkstuk.htm">Profielwerkstuk</a></li><li><a href="/Links/links.htm">Overige links</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Over de site</h2><ul class="rail__list"><li><a href="/Contact/contact.htm">Contact</a></li><li><a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></li></ul></div><div class="rail__foot"><a href="/Links/links.htm">Alle links</a> · <a href="/Contact/contact.htm">Contact</a></div></nav>
+<main class="page" id="content">
+<nav class="breadcrumb" aria-label="Kruimelpad"><a href="/">Home</a><span class="breadcrumb__sep">/</span><span>Oefeningen</span></nav>
+<h1 class="page-title">Biologische bestrijding: plaag of natuurlijke vijand?<span class="page-kicker">Oefeningen</span></h1>
+<div class="prose"><!-- BeginTopNavButtons -->
+
+
+
+<!-- EndTopNavButtons -->
+
+<div class="Titles">
+	<h1 class="ExerciseTitle">Biologische bestrijding: plaag of natuurlijke vijand?</h1>
+	<div align="center">
+	  
+<!-- responsive -->
+
+</div>
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions"><img src="/Oefeningen/Biologischebestrijding/biologischebestrijding.jpg" alt="biologischebestrijding.jpg" title="biologische bestrijding oefenen biologie" width="538" height="761" style="float: left"></div>
+</div>
+
+
+
+<div id="MainDiv" class="StdDiv">
+
+<button id="CheckButton1" class="FuncButton" onmouseover="FuncBtnOver(this)" onfocus="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onblur="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckAnswers()">&nbsp;Controleer&nbsp;</button>
+
+<div id="MatchDiv" style="text-align: center">
+
+<form id="QForm" method="post" action="" onsubmit="return false;">
+<table style="margin: 2em auto 2em auto" class="layout-table"><tbody id="Questions">
+
+<tr><td class="LeftItem">1: Naam organisme </td><td class="RightItem"><select id="s0_0"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">1: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_1"><option value="x">???</option>
+
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">2: Naam organisme </td><td class="RightItem"><select id="s2_2"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">2: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_3"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">3: Naam organisme </td><td class="RightItem"><select id="s4_4"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">3: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_5"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">4: Naam organisme </td><td class="RightItem"><select id="s6_6"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">4: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_7"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">5: Naam organisme </td><td class="RightItem"><select id="s8_8"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="3">Plaag</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">5: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_9"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">6: Naam organisme </td><td class="RightItem"><select id="s10_10"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">6: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_11"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">7: Naam organisme </td><td class="RightItem"><select id="s12_12"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">7: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_13"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">8: Naam organisme </td><td class="RightItem"><select id="s14_14"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">8: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_15"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">9: Naam organisme </td><td class="RightItem"><select id="s16_16"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">9: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_17"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">10: Naam organisme </td><td class="RightItem"><select id="s18_18"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">10: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_19"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">11: Naam organisme </td><td class="RightItem"><select id="s20_20"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="3">Plaag</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">11: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_21"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">12: Naam organisme </td><td class="RightItem"><select id="s22_22"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">12: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s1_23"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">13: Naam organisme </td><td class="RightItem"><select id="s24_24"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">13: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_25"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr><tr><td class="LeftItem">14: Naam organisme </td><td class="RightItem"><select id="s26_26"><option value="x">???</option>
+<option value="4">Larve lieveheersbeestje</option>
+<option value="26">Trips</option>
+<option value="10">Oorworm</option>
+<option value="16">Spin</option>
+<option value="24">Rups koolwitje</option>
+<option value="2">Bladluis</option>
+<option value="22">Roofwants</option>
+<option value="14">Wittevlieg</option>
+<option value="8">Zweefvlieg</option>
+<option value="0">Sluipwesp</option>
+<option value="12">Larve meikever</option>
+<option value="18">Gaasvlieg</option>
+<option value="20">Naaktslak</option>
+<option value="6">Roofmijt</option>
+</select></td><td></td></tr><tr><td class="LeftItem">14: Plaag of natuurlijke vijand?</td><td class="RightItem"><select id="s3_27"><option value="x">???</option>
+<option value="1">Natuurlijke vijand</option>
+<option value="3">Plaag</option>
+</select></td><td></td></tr>
+
+</tbody></table>
+</form>
+
+
+</div>
+
+<button id="CheckButton2" class="FuncButton" onmouseover="FuncBtnOver(this)" onfocus="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onblur="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckAnswers()">&nbsp;Controleer&nbsp;</button>
+
+</div>
+
+
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="HideFeedback(); return false;">&nbsp;OK&nbsp;</button>
+</div>
+
+<!-- BeginBottomNavButtons -->
+
+
+
+<!-- EndBottomNavButtons -->
+
+<!-- BeginSubmissionForm -->
+
+<!-- EndSubmissionForm -->
+
+<div align="center">
+  <!-- BeginBottomNavButtons -->
+  <!-- EndBottomNavButtons -->
+  <!-- BeginSubmissionForm -->
+  <!-- EndSubmissionForm -->
+  
+</div></div>
+<footer class="page-footer"><p>Biologiepagina.nl · gratis oefenen en leren voor vmbo, havo en vwo.</p><p><a href="/Contact/contact.htm">Contact</a> · <a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></p></footer>
+</main>
+</div>
+<script src="/theme/theme.js" defer></script>
+</body>
+</html>

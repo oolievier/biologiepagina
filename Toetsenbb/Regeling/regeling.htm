@@ -1,0 +1,1943 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oefentoets Regeling &amp; Waarnemen</title>
+<meta name="author" content="Created with Hot Potatoes by Half-Baked Software, registered to Bio Webdesign.">
+<meta name="keywords" content="Hot Potatoes, Hot Potatoes, Half-Baked Software, Windows, University of Victoria">
+<meta name="DC:Title" content="Oefentoets Regeling &amp; Waarnemen">
+<link rel="icon" href="/theme/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap">
+<link rel="stylesheet" href="/theme/theme.css">
+<script type="text/javascript">
+
+//<![CDATA[
+
+<!--
+
+
+
+
+function Client(){
+//if not a DOM browser, hopeless
+	this.min = false; if (document.getElementById){this.min = true;};
+
+	this.ua = navigator.userAgent;
+	this.name = navigator.appName;
+	this.ver = navigator.appVersion;  
+
+//Get data about the browser
+	this.mac = (this.ver.indexOf('Mac') != -1);
+	this.win = (this.ver.indexOf('Windows') != -1);
+
+//Look for Gecko
+	this.gecko = (this.ua.indexOf('Gecko') > 1);
+	if (this.gecko){
+		this.geckoVer = parseInt(this.ua.substring(this.ua.indexOf('Gecko')+6, this.ua.length));
+//		if (this.geckoVer < 20020000){this.min = false;}
+	}
+	
+//Look for Firebird
+	this.firebird = (this.ua.indexOf('Firebird') > 1);
+	
+//Look for Safari
+	this.safari = (this.ua.indexOf('Safari') > 1);
+	if (this.safari){
+		this.gecko = false;
+	}
+	
+//Look for IE
+	this.ie = (this.ua.indexOf('MSIE') > 0);
+	if (this.ie){
+		this.ieVer = parseFloat(this.ua.substring(this.ua.indexOf('MSIE')+5, this.ua.length));
+		if (this.ieVer < 5.5){this.min = false;}
+	}
+	
+//Look for Opera
+	this.opera = (this.ua.indexOf('Opera') > 0);
+	if (this.opera){
+		this.operaVer = parseFloat(this.ua.substring(this.ua.indexOf('Opera')+6, this.ua.length));
+		if (this.operaVer < 7.04){this.min = false;}
+	}
+	if (this.min == false){
+//		alert('Your browser may not be able to handle this page.');
+	}
+	
+//Special case for the horrible ie5mac
+	this.ie5mac = (this.ie&&this.mac&&(this.ieVer<6));
+}
+
+var C = new Client();
+
+//for (prop in C){
+//	alert(prop + ': ' + C[prop]);
+//}
+
+
+
+//CODE FOR HANDLING NAV BUTTONS AND FUNCTION BUTTONS
+
+//[strNavBarJS]
+function NavBtnOver(Btn){
+	if (Btn.className != 'NavButtonDown'){Btn.className = 'NavButtonUp';}
+}
+
+function NavBtnOut(Btn){
+	Btn.className = 'NavButton';
+}
+
+function NavBtnDown(Btn){
+	Btn.className = 'NavButtonDown';
+}
+//[/strNavBarJS]
+
+function FuncBtnOver(Btn){
+	if (Btn.className != 'FuncButtonDown'){Btn.className = 'FuncButtonUp';}
+}
+
+function FuncBtnOut(Btn){
+	Btn.className = 'FuncButton';
+}
+
+function FuncBtnDown(Btn){
+	Btn.className = 'FuncButtonDown';
+}
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+
+
+
+//CODE FOR HANDLING DISPLAY OF POPUP FEEDBACK BOX
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+//Focus the OK button
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+	
+//
+//	RefreshImages();
+//
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+				//get Mac FireFox to manipulate display, to force screen redraw
+				if (C.mac && C.gecko) {Els[i].style.display = '';}
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+				if (C.mac && C.gecko) {Els[i].style.display = 'none';}
+			}
+		} 
+		else {
+			// tagName is either input or select (that is, Form Elements)
+			// ie6 has a problem with Form elements, so manipulate those
+			if (C.ie) {
+				if (C.ieVer < 7) {
+					if (Show == true){
+						Els[i].style.visibility = 'visible';
+					}
+					else{
+						Els[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+	if (Finished == true){
+		Finish();
+	}
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].clientWidth;
+	this.H = document.getElementsByTagName('body')[0].clientHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	if (C.ie) {
+		thisKey = window.event.keyCode;
+	}
+	else {
+		thisKey = e.keyCode;
+	}
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+	}
+
+	if (Suppress == true){
+		if (C.ie){
+			window.event.returnValue = false;	
+			window.event.cancelBubble = true;
+		}
+		else{
+			e.preventDefault();
+		}
+	}
+}
+
+if (C.ie){
+	document.attachEvent('onkeydown',SuppressBackspace);
+	window.attachEvent('onkeydown',SuppressBackspace);
+}
+else{
+	if (window.addEventListener){
+		window.addEventListener('keypress',SuppressBackspace,false);
+	}
+}
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+	RefreshImages();
+
+}
+
+
+
+Imgs = new Array();
+
+function PreloadImages(){
+	var a = PreloadImages.arguments;
+	for (var i=0; i<a.length; i++){
+		Imgs[i] = new Image();
+		Imgs[i].src = a[i];
+	}
+}
+
+function RefreshImages(){
+	for (var i=0; i<document.images.length; i++){
+		if (document.images[i].name.substring(0,6) != 'NavBar'){
+			document.images[i].src = document.images[i].src;
+		}
+	}
+}
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+//EXTENSION TO ARRAY OBJECT
+function Array_IndexOf(Input){
+	var Result = -1;
+	for (var i=0; i<this.length; i++){
+		if (this[i] == Input){
+			Result = i;
+		}
+	}
+	return Result;
+}
+Array.prototype.indexOf = Array_IndexOf;
+
+//IE HAS RENDERING BUG WITH BOTTOM NAVBAR
+function RemoveBottomNavBarForIE(){
+	if ((C.ie)&&(document.getElementById('Reading') != null)){
+		if (document.getElementById('BottomNavBar') != null){
+			document.getElementById('TheBody').removeChild(document.getElementById('BottomNavBar'));
+		}
+	}
+}
+
+
+
+
+//HOTPOTNET-RELATED CODE
+
+var HPNStartTime = (new Date()).getTime();
+var SubmissionTimeout = 30000;
+var Detail = ''; //Global that is used to submit tracking data
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.detail.value = Detail;
+		Frm.submit();
+	}
+}
+
+
+
+
+
+//JQUIZ CORE JAVASCRIPT CODE
+
+var CurrQNum = 0;
+var CorrectIndicator = '<img src="duimhoog.gif" alt="duimhoog.gif" title="duimhoog" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var IncorrectIndicator = '<img src="duimlaagrood.gif" alt="duimlaagrood.gif" title="duimlaagrood" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var YourScoreIs = 'Je score is';
+
+//New for 6.2.2.0
+var CompletedSoFar = 'Aantal vragen volledig afgerond: ';
+var ExerciseCompleted = 'You have completed the exercise.';
+var ShowCompletedSoFar = true;
+
+var ContinuousScoring = true;
+var CorrectFirstTime = 'Vragen die de eerste keer al goed zijn beantwoord: ';
+var ShowCorrectFirstTime = true;
+var ShuffleQs = false;
+var ShuffleAs = false;
+var DefaultRight = 'Correct!';
+var DefaultWrong = 'Sorry! Probeer nog een keer....';
+var QsToShow = 44;
+var Score = 0;
+var Finished = false;
+var Qs = null;
+var QArray = new Array();
+var ShowingAllQuestions = false;
+var ShowAllQuestionsCaption = '';
+var ShowOneByOneCaption = '';
+var State = new Array();
+var Feedback = '';
+var TimeOver = false;
+var strInstructions = '';
+var Locked = false;
+
+//The following variable can be used to add a message explaining that
+//the question is finished, so no further marking will take place.
+var strQuestionFinished = '';
+
+function CompleteEmptyFeedback(){
+	var QNum, ANum;
+	for (QNum=0; QNum<I.length; QNum++){
+//Only do this if not multi-select
+		if (I[QNum][2] != '3'){
+  		for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+  			if (I[QNum][3][ANum][1].length < 1){
+  				if (I[QNum][3][ANum][2] > 0){
+  					I[QNum][3][ANum][1] = DefaultRight;
+  				}
+  				else{
+  					I[QNum][3][ANum][1] = DefaultWrong;
+  				}
+  			}
+  		}
+		}
+	}
+}
+
+function SetUpQuestions(){
+	var AList = new Array(); 
+	var QList = new Array();
+	var i, j;
+	Qs = document.getElementById('Questions');
+	while (Qs.getElementsByTagName('li').length > 0){
+		QList.push(Qs.removeChild(Qs.getElementsByTagName('li')[0]));
+	}
+	var DumpItem = 0;
+	if (QsToShow > QList.length){
+		QsToShow = QList.length;
+	}
+	while (QsToShow < QList.length){
+		DumpItem = Math.floor(QList.length*Math.random());
+		for (j=DumpItem; j<(QList.length-1); j++){
+			QList[j] = QList[j+1];
+		}
+		QList.length = QList.length-1;
+	}
+	if (ShuffleQs == true){
+		QList = Shuffle(QList);
+	}
+	if (ShuffleAs == true){
+		var As;
+		for (var i=0; i<QList.length; i++){
+			As = QList[i].getElementsByTagName('ol')[0];
+			if (As != null){
+  			AList.length = 0;
+				while (As.getElementsByTagName('li').length > 0){
+					AList.push(As.removeChild(As.getElementsByTagName('li')[0]));
+				}
+				AList = Shuffle(AList);
+				for (j=0; j<AList.length; j++){
+					As.appendChild(AList[j]);
+				}
+			}
+		}
+	}
+	
+	for (i=0; i<QList.length; i++){
+		Qs.appendChild(QList[i]);
+		QArray[QArray.length] = QList[i];
+	}
+
+//Show the first item
+	QArray[0].style.display = '';
+	
+//Now hide all except the first item
+	for (i=1; i<QArray.length; i++){
+		QArray[i].style.display = 'none';
+	}		
+	SetQNumReadout();
+	
+	SetFocusToTextbox();
+}
+
+function SetFocusToTextbox(){
+//if there's a textbox, set the focus in it
+	if (QArray[CurrQNum].getElementsByTagName('input')[0] != null){
+		QArray[CurrQNum].getElementsByTagName('input')[0].focus();
+//and show a keypad if there is one
+		if (document.getElementById('CharacterKeypad') != null){
+			document.getElementById('CharacterKeypad').style.display = 'block';
+		}
+	}
+	else{
+  	if (QArray[CurrQNum].getElementsByTagName('textarea')[0] != null){
+  		QArray[CurrQNum].getElementsByTagName('textarea')[0].focus();	
+//and show a keypad if there is one
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'block';
+			}
+		}
+//This added for 6.0.4.11: hide accented character buttons if no textbox
+		else{
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'none';
+			}
+		}
+	}
+}
+
+function ChangeQ(ChangeBy){
+//The following line prevents moving to another question until the current
+//question is answered correctly. Uncomment it to enable this behaviour. 
+//	if (State[CurrQNum][0] == -1){return;}
+	if (((CurrQNum + ChangeBy) < 0)||((CurrQNum + ChangeBy) >= QArray.length)){return;}
+	QArray[CurrQNum].style.display = 'none';
+	CurrQNum += ChangeBy;
+	QArray[CurrQNum].style.display = '';
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+	SetQNumReadout();
+	SetFocusToTextbox();
+}
+
+var HiddenReadingShown = false;
+function ShowSpecialReadingForQuestion(){
+//Undocumented function for showing specific reading text elements which change with each question
+//Added on 10/12/2004
+	if (document.getElementById('ReadingDiv') != null){
+		if (HiddenReadingShown == true){
+			document.getElementById('ReadingDiv').innerHTML = '';
+		}
+		if (QArray[CurrQNum] != null){
+//Fix for 6.0.4.25
+			var Children = QArray[CurrQNum].getElementsByTagName('div');
+			for (var i=0; i<Children.length; i++){
+			if (Children[i].className=="HiddenReading"){
+					document.getElementById('ReadingDiv').innerHTML = Children[i].innerHTML;
+					HiddenReadingShown = true;
+//Hide the ShowAllQuestions button to avoid confusion
+					if (document.getElementById('ShowMethodButton') != null){
+						document.getElementById('ShowMethodButton').style.display = 'none';
+					}
+				}
+			}	
+		}
+	}
+}
+
+function SetQNumReadout(){
+	document.getElementById('QNumReadout').innerHTML = (CurrQNum+1) + ' / ' + QArray.length;
+	if ((CurrQNum+1) >= QArray.length){
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'visible';
+		}
+	}
+	if (CurrQNum <= 0){
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'visible';
+		}
+	}
+}
+
+var I=new Array();
+I[0]=new Array();I[0][0]=100;
+I[0][1]='';
+I[0][2]='1';
+I[0][3]=new Array();
+I[0][3][0]=new Array('negatieve terugkoppeling','',1,100,1);
+I[0][3][1]=new Array('negatieve feedback','',1,100,1);
+I[1]=new Array();I[1][0]=100;
+I[1][1]='';
+I[1][2]='0';
+I[1][3]=new Array();
+I[1][3][0]=new Array('via de hersenstam','',0,0,1);
+I[1][3][1]=new Array('via het ruggemerg','',1,100,1);
+I[1][3][2]=new Array('via de grote hersenen','',0,0,1);
+I[2]=new Array();I[2][0]=100;
+I[2][1]='';
+I[2][2]='0';
+I[2][3]=new Array();
+I[2][3][0]=new Array('4 - 1 - 2 - 3 - 5','',0,0,1);
+I[2][3][1]=new Array('5 - 1 - 3 - 2 - 4','',0,0,1);
+I[2][3][2]=new Array('5 - 3 - 2 - 1 - 4','',1,100,1);
+I[3]=new Array();I[3][0]=100;
+I[3][1]='';
+I[3][2]='0';
+I[3][3]=new Array();
+I[3][3][0]=new Array('tot het animale zenuwstelsel','',1,100,1);
+I[3][3][1]=new Array('tot het orthosympatische deel van het autonome zenuwstelsel','',0,0,1);
+I[3][3][2]=new Array('tot het parasympatische deel van het autonome zenuwstelsel','',0,0,1);
+I[4]=new Array();I[4][0]=100;
+I[4][1]='';
+I[4][2]='0';
+I[4][3]=new Array();
+I[4][3][0]=new Array('de processen 1 en 3','',1,100,1);
+I[4][3][1]=new Array('de processen 1 en 4','',0,0,1);
+I[4][3][2]=new Array('de processen 2 en 3','',0,0,1);
+I[4][3][3]=new Array('de processen 2 en 4','',0,0,1);
+I[5]=new Array();I[5][0]=100;
+I[5][1]='';
+I[5][2]='0';
+I[5][3]=new Array();
+I[5][3][0]=new Array('adrenaline','',0,0,1);
+I[5][3][1]=new Array('glucagon','',0,0,1);
+I[5][3][2]=new Array('insuline','',0,0,1);
+I[5][3][3]=new Array('thyroxine','',1,100,1);
+I[6]=new Array();I[6][0]=100;
+I[6][1]='';
+I[6][2]='0';
+I[6][3]=new Array();
+I[6][3][0]=new Array('alleen de zenuwceluitlopers 1 en 2','',0,0,1);
+I[6][3][1]=new Array('alleen de zenuwceluitlopers 2 en 3','',1,100,1);
+I[6][3][2]=new Array('alleen de zenuwceluitlopers 3 en 4','',0,0,1);
+I[6][3][3]=new Array('de zenuwceluitlopers 1, 2, 3 en 4','',0,0,1);
+I[7]=new Array();I[7][0]=100;
+I[7][1]='';
+I[7][2]='0';
+I[7][3]=new Array();
+I[7][3][0]=new Array('alleen via het ruggenmerg','',0,0,1);
+I[7][3][1]=new Array('alleen via de grote hersenen, de kleine hersenen en het ruggenmerg','',0,0,1);
+I[7][3][2]=new Array('via de grote hersenen, de hersenstam, de kleine hersenen en het ruggenmerg','',1,100,1);
+I[8]=new Array();I[8][0]=100;
+I[8][1]='';
+I[8][2]='0';
+I[8][3]=new Array();
+I[8][3][0]=new Array('alleen in motorische centra','',0,0,1);
+I[8][3][1]=new Array('alleen in sensorische centra','',0,0,1);
+I[8][3][2]=new Array('zowel in motorische als in sensorische centra','',1,100,1);
+I[9]=new Array();I[9][0]=100;
+I[9][1]='';
+I[9][2]='0';
+I[9][3]=new Array();
+I[9][3][0]=new Array('Zowel de motorische als de sensorische centra bevinden zich in het merg.','',0,0,1);
+I[9][3][1]=new Array('Zowel de motorische als de sensorische centra bevinden zich in de schors.','',1,100,1);
+I[9][3][2]=new Array('De motorische centra bevinden zich in het merg, de sensorische centra in de schors.','',0,0,1);
+I[10]=new Array();I[10][0]=100;
+I[10][1]='';
+I[10][2]='0';
+I[10][3]=new Array();
+I[10][3][0]=new Array('1 - 2 - 3','',0,0,1);
+I[10][3][1]=new Array('1 - 3 - 2','',0,0,1);
+I[10][3][2]=new Array('2 - 1 - 3','',0,0,1);
+I[10][3][3]=new Array('2 - 3 - 1','',1,100,1);
+I[11]=new Array();I[11][0]=100;
+I[11][1]='';
+I[11][2]='0';
+I[11][3]=new Array();
+I[11][3][0]=new Array('alleen bij proces 1','',0,0,1);
+I[11][3][1]=new Array('alleen bij proces 3','',0,0,1);
+I[11][3][2]=new Array('alleen bij de processen 1 en 2','',1,100,1);
+I[11][3][3]=new Array('bij de processen 1, 2 en 3','',0,0,1);
+I[12]=new Array();I[12][0]=100;
+I[12][1]='';
+I[12][2]='0';
+I[12][3]=new Array();
+I[12][3][0]=new Array('ADH','',1,100,1);
+I[12][3][1]=new Array('LH','',0,0,1);
+I[12][3][2]=new Array('thyroxine','',0,0,1);
+I[13]=new Array();I[13][0]=100;
+I[13][1]='';
+I[13][2]='0';
+I[13][3]=new Array();
+I[13][3][0]=new Array('alleen van het orthosympatische deel van het autonome zenuwstelsel','',1,100,1);
+I[13][3][1]=new Array('alleen van het parasympatische deel van het autonome zenuwstelsel','',0,0,1);
+I[13][3][2]=new Array('zowel van het orthosympatische deel als van het parasympathische deel van het autonome zenuwstelsel','',0,0,1);
+I[14]=new Array();I[14][0]=100;
+I[14][1]='';
+I[14][2]='0';
+I[14][3]=new Array();
+I[14][3][0]=new Array('Nee, dit be\u00EFnvloedt de impulsfrequentie niet.','',0,0,1);
+I[14][3][1]=new Array('Ja, de impulsfrequentie is lager dan zonder koeling.','',1,100,1);
+I[14][3][2]=new Array('Ja, de impulsfrequentie is hoger dan zonder koeling.','',0,0,1);
+I[15]=new Array();I[15][0]=100;
+I[15][1]='';
+I[15][2]='0';
+I[15][3]=new Array();
+I[15][3][0]=new Array('orgaan 1 en orgaan 4','',1,100,1);
+I[15][3][1]=new Array('orgaan 2 en orgaan 4','',0,0,1);
+I[15][3][2]=new Array('de organen 1, 3 en 5','',0,0,1);
+I[15][3][3]=new Array('de organen 2, 3 en 5','',0,0,1);
+I[16]=new Array();I[16][0]=100;
+I[16][1]='';
+I[16][2]='0';
+I[16][3]=new Array();
+I[16][3][0]=new Array('alleen door het animale zenuwstelsel','',0,0,1);
+I[16][3][1]=new Array('alleen door het autonome zenuwstelsel','',1,100,1);
+I[16][3][2]=new Array('zowel door het animale als door het autonome zenuwstelsel','',0,0,1);
+I[17]=new Array();I[17][0]=100;
+I[17][1]='';
+I[17][2]='0';
+I[17][3]=new Array();
+I[17][3][0]=new Array('de grote hersenen','',1,100,1);
+I[17][3][1]=new Array('de hersenstam','',0,0,1);
+I[17][3][2]=new Array('de kleine hersenen','',0,0,1);
+I[17][3][3]=new Array('het ruggemerg','',0,0,1);
+I[18]=new Array();I[18][0]=100;
+I[18][1]='';
+I[18][2]='0';
+I[18][3]=new Array();
+I[18][3][0]=new Array('alleen 1','',0,0,1);
+I[18][3][1]=new Array('alleen 2','',0,0,1);
+I[18][3][2]=new Array('alleen 3','',1,100,1);
+I[18][3][3]=new Array('alleen 1 en 3','',0,0,1);
+I[18][3][4]=new Array('alleen 2 en 3','',0,0,1);
+I[18][3][5]=new Array('1, 2 en 3','',0,0,1);
+I[19]=new Array();I[19][0]=100;
+I[19][1]='';
+I[19][2]='0';
+I[19][3]=new Array();
+I[19][3][0]=new Array('alleen reflexen die via het ruggenmerg verlopen','',0,0,1);
+I[19][3][1]=new Array('alleen impulsen die via de kleine hersenen verlopen','',0,0,1);
+I[19][3][2]=new Array('zowel reflexen die via het ruggenmerg verlopen als impulsen die via de kleine hersenen verlopen','',1,100,1);
+I[20]=new Array();I[20][0]=100;
+I[20][1]='';
+I[20][2]='0';
+I[20][3]=new Array();
+I[20][3][0]=new Array('Nee, de invloed van beide delen is tijdens het slapen en tijdens het trimmen gelijk.','',0,0,1);
+I[20][3][1]=new Array('Ja, tijdens het slapen heeft het orthosympathische deel een grotere invloed.','',0,0,1);
+I[20][3][2]=new Array('Ja, tijdens het slapen heeft het parasympathische deel een grotere invloed.','',1,100,1);
+I[21]=new Array();I[21][0]=100;
+I[21][1]='';
+I[21][2]='0';
+I[21][3]=new Array();
+I[21][3][0]=new Array('1 = neemt toe / 2 = neemt toe','',0,0,1);
+I[21][3][1]=new Array('1 = neemt toe / 2 = neemt af','',0,0,1);
+I[21][3][2]=new Array('1 = neemt af / 2 = neemt toe','',1,100,1);
+I[21][3][3]=new Array('1 = neemt af / 2 = neemt af','',0,0,1);
+I[22]=new Array();I[22][0]=100;
+I[22][1]='';
+I[22][2]='0';
+I[22][3]=new Array();
+I[22][3][0]=new Array('alleen 1','',0,0,1);
+I[22][3][1]=new Array('alleen 2','',0,0,1);
+I[22][3][2]=new Array('alleen 3','',0,0,1);
+I[22][3][3]=new Array('alleen 1 en 2','',0,0,1);
+I[22][3][4]=new Array('alleen 2 en 3','',1,100,1);
+I[22][3][5]=new Array('1, 2 en 3','',0,0,1);
+I[23]=new Array();I[23][0]=100;
+I[23][1]='';
+I[23][2]='0';
+I[23][3]=new Array();
+I[23][3][0]=new Array('alleen motorische zenuwcellen en schakelcellen','',0,0,1);
+I[23][3][1]=new Array('alleen motorische zenuwcellen en sensorische zenuwcellen','',1,100,1);
+I[23][3][2]=new Array('alleen schakelcellen en sensorische zenuwcellen','',0,0,1);
+I[23][3][3]=new Array('motorische zenuwcellen, schakelcellen en sensorische zenuwcellen','',0,0,1);
+I[24]=new Array();I[24][0]=100;
+I[24][1]='';
+I[24][2]='0';
+I[24][3]=new Array();
+I[24][3][0]=new Array('alleen 1','',0,0,1);
+I[24][3][1]=new Array('alleen 2','',0,0,1);
+I[24][3][2]=new Array('alleen 3','',0,0,1);
+I[24][3][3]=new Array('alleen 1 en 2','',0,0,1);
+I[24][3][4]=new Array('alleen 2 en 3','',1,100,1);
+I[24][3][5]=new Array('1, 2 en 3','',0,0,1);
+I[25]=new Array();I[25][0]=100;
+I[25][1]='';
+I[25][2]='0';
+I[25][3]=new Array();
+I[25][3][0]=new Array('alleen motorische zenuwcellen en schakelcellen','',0,0,1);
+I[25][3][1]=new Array('alleen motorische zenuwcellen en sensorische zenuwcellen','',1,100,1);
+I[25][3][2]=new Array('alleen schakelcellen en sensorische zenuwcellen','',0,0,1);
+I[25][3][3]=new Array('motorische zenuwcellen, schakelcellen en sensorische zenuwcellen','',0,0,1);
+I[26]=new Array();I[26][0]=100;
+I[26][1]='';
+I[26][2]='0';
+I[26][3]=new Array();
+I[26][3][0]=new Array('2 - 3 - 4 - 1','',0,0,1);
+I[26][3][1]=new Array('3 - 2 - 5 - 6','',0,0,1);
+I[26][3][2]=new Array('3 - 4 - 1 - 5','',0,0,1);
+I[26][3][3]=new Array('4 - 2 - 5 - 1','',0,0,1);
+I[26][3][4]=new Array('4 - 3 - 2 - 6','',1,100,1);
+I[26][3][5]=new Array('4 - 3 - 5 - 6','',0,0,1);
+I[27]=new Array();I[27][0]=100;
+I[27][1]='';
+I[27][2]='0';
+I[27][3]=new Array();
+I[27][3][0]=new Array('door actief transport','',1,100,1);
+I[27][3][1]=new Array('door osmose','',0,0,1);
+I[27][3][2]=new Array('door terugresorptie','',0,0,1);
+I[27][3][3]=new Array('door ultrafiltratie','',0,0,1);
+I[28]=new Array();I[28][0]=100;
+I[28][1]='';
+I[28][2]='0';
+I[28][3]=new Array();
+I[28][3][0]=new Array('in de bijnierader','',1,100,1);
+I[28][3][1]=new Array('in de bijnierslagader','',0,0,1);
+I[28][3][2]=new Array('in de nierader','',0,0,1);
+I[28][3][3]=new Array('in de nierslagader','',0,0,1);
+I[29]=new Array();I[29][0]=100;
+I[29][1]='';
+I[29][2]='0';
+I[29][3]=new Array();
+I[29][3][0]=new Array('in de grote hersenen','',1,100,1);
+I[29][3][1]=new Array('in de hersenstam','',0,0,1);
+I[29][3][2]=new Array('in de kleine hersenen','',0,0,1);
+I[30]=new Array();I[30][0]=100;
+I[30][1]='';
+I[30][2]='0';
+I[30][3]=new Array();
+I[30][3][0]=new Array('toename van de impulsfrequentie','',1,100,1);
+I[30][3][1]=new Array('toename van de impulssterkte','',0,0,1);
+I[30][3][2]=new Array('toename van het aantal synapsen toename van het aantal uitlopers','',0,0,1);
+I[31]=new Array();I[31][0]=100;
+I[31][1]='';
+I[31][2]='0';
+I[31][3]=new Array();
+I[31][3][0]=new Array('een hoge glucoseconcentratie van het bloed','',1,100,1);
+I[31][3][1]=new Array('een lage glucoseconcentratie van het bloed','',0,0,1);
+I[31][3][2]=new Array('een hoge glucagonconcentratie van het bloed','',0,0,1);
+I[31][3][3]=new Array('een lage glucagonconcentratie van het bloed','',0,0,1);
+I[32]=new Array();I[32][0]=100;
+I[32][1]='';
+I[32][2]='0';
+I[32][3]=new Array();
+I[32][3][0]=new Array('alleen de afwijkingen 1 en 2','',0,0,1);
+I[32][3][1]=new Array('alleen de afwijkingen 1 en 3','',1,100,1);
+I[32][3][2]=new Array('alleen de afwijkingen 2 en 3','',0,0,1);
+I[32][3][3]=new Array('de afwijkingen 1, 2 en 3','',0,0,1);
+I[33]=new Array();I[33][0]=100;
+I[33][1]='';
+I[33][2]='0';
+I[33][3]=new Array();
+I[33][3][0]=new Array('alleen bewering 1','',1,100,1);
+I[33][3][1]=new Array('alleen de beweringen 1 en 2','',0,0,1);
+I[33][3][2]=new Array('alleen de beweringen 1 en 3','',0,0,1);
+I[33][3][3]=new Array('de beweringen 1, 2 en 3','',0,0,1);
+I[34]=new Array();I[34][0]=100;
+I[34][1]='';
+I[34][2]='0';
+I[34][3]=new Array();
+I[34][3][0]=new Array('De beweringen 1 en 2 zijn geen van beide juist.','',1,100,1);
+I[34][3][1]=new Array('Alleen bewering 1 is juist.','',0,0,1);
+I[34][3][2]=new Array('Alleen bewering 2 is juist.','',0,0,1);
+I[34][3][3]=new Array('De beweringen 1 en 2 zijn beide juist.','',0,0,1);
+I[35]=new Array();I[35][0]=100;
+I[35][1]='';
+I[35][2]='0';
+I[35][3]=new Array();
+I[35][3][0]=new Array('door de grote hersenen','',1,100,1);
+I[35][3][1]=new Array('door de kleine hersenen','',0,0,1);
+I[35][3][2]=new Array('door de kruising van de oogzenuwen','',0,0,1);
+I[35][3][3]=new Array('door de zintuigcellen van het netvlies','',0,0,1);
+I[36]=new Array();I[36][0]=100;
+I[36][1]='';
+I[36][2]='0';
+I[36][3]=new Array();
+I[36][3][0]=new Array('ja','',0,0,1);
+I[36][3][1]=new Array('nee, eerst wordt ballon 1 onzichtbaar','',0,0,1);
+I[36][3][2]=new Array('nee, eerst wordt ballon 2 onzichtbaar','',1,100,1);
+I[36][3][3]=new Array('nee, eerst wordt ballon 3 onzichtbaar','',0,0,1);
+I[37]=new Array();I[37][0]=100;
+I[37][1]='';
+I[37][2]='0';
+I[37][3]=new Array();
+I[37][3][0]=new Array('1','',1,100,1);
+I[37][3][1]=new Array('2','',0,0,1);
+I[37][3][2]=new Array('3','',0,0,1);
+I[37][3][3]=new Array('4','',0,0,1);
+I[38]=new Array();I[38][0]=100;
+I[38][1]='';
+I[38][2]='0';
+I[38][3]=new Array();
+I[38][3][0]=new Array('van kant P','',0,0,1);
+I[38][3][1]=new Array('van kant Q','',0,0,1);
+I[38][3][2]=new Array('van kant R','',1,100,1);
+I[39]=new Array();I[39][0]=100;
+I[39][1]='';
+I[39][2]='0';
+I[39][3]=new Array();
+I[39][3][0]=new Array('alleen verklaring 1','',0,0,1);
+I[39][3][1]=new Array('alleen verklaring 2','',0,0,1);
+I[39][3][2]=new Array('alleen verklaring 3','',1,100,1);
+I[39][3][3]=new Array('de verklaringen 1 en 3','',0,0,1);
+I[40]=new Array();I[40][0]=100;
+I[40][1]='';
+I[40][2]='0';
+I[40][3]=new Array();
+I[40][3][0]=new Array('door de bloedvaten die tegen het netvlies aanliggen','',1,100,1);
+I[40][3][1]=new Array('door de iris','',0,0,1);
+I[40][3][2]=new Array('door de pigmentlaag','',0,0,1);
+I[40][3][3]=new Array('door het harde oogvlies','',0,0,1);
+I[40][3][4]=new Array('door het hoornvlies','',0,0,1);
+I[41]=new Array();I[41][0]=100;
+I[41][1]='';
+I[41][2]='0';
+I[41][3]=new Array();
+I[41][3][0]=new Array('door het samentrekken van de kringspier in de iris','',0,0,1);
+I[41][3][1]=new Array('door het samentrekken van de kringspier in het straalvormig lichaam','',0,0,1);
+I[41][3][2]=new Array('door het samentrekken van de straalsgewijs verlopende spier in de iris','',1,100,1);
+I[42]=new Array();I[42][0]=100;
+I[42][1]='';
+I[42][2]='0';
+I[42][3]=new Array();
+I[42][3][0]=new Array('een onscherp beeld in de iris','',0,0,1);
+I[42][3][1]=new Array('een onscherp beeld op het netvlies','',0,0,1);
+I[42][3][2]=new Array('te weinig licht op de iris','',0,0,1);
+I[42][3][3]=new Array('te weinig licht op het netvlies','',1,100,1);
+I[43]=new Array();I[43][0]=100;
+I[43][1]='';
+I[43][2]='0';
+I[43][3]=new Array();
+I[43][3][0]=new Array('geen van beide leerlingen','',0,0,1);
+I[43][3][1]=new Array('alleen leerling 1','',1,100,1);
+I[43][3][2]=new Array('alleen leerling 2','',0,0,1);
+I[43][3][3]=new Array('zowel leerling 1 als leerling 2','',0,0,1);
+
+
+function StartUp(){
+	RemoveBottomNavBarForIE();
+
+//If there's only one question, no need for question navigation controls
+	if (QsToShow < 2){
+		document.getElementById('QNav').style.display = 'none';
+	}
+	
+//Stash the instructions so they can be redisplayed
+	strInstructions = document.getElementById('InstructionsDiv').innerHTML;
+	
+
+	
+
+	
+
+	PreloadImages('duimhoog.gif','duimlaagrood.gif','biohavo041_04.jpg','biohavo932oud_04.jpg','biohavo931_15.jpg','biohavo941oud_05.jpg','biohavo932nieuw_12.jpg','biohavo931_14.jpg','biohavo941_08.jpg','biohavo941info_06.jpg','biohavo942oud_16.jpg','biohavo972_11.jpg');
+
+	
+	CompleteEmptyFeedback();
+
+	SetUpQuestions();
+	ClearTextBoxes();
+	CreateStatusArray();
+	
+
+	
+//Check search string for q parameter
+	if (document.location.search.length > 0){
+		if (ShuffleQs == false){
+			var JumpTo = parseInt(document.location.search.substring(1,document.location.search.length))-1;
+			if (JumpTo <= QsToShow){
+				ChangeQ(JumpTo);
+			}
+		}
+	}
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+}
+
+function ShowHideQuestions(){
+	FuncBtnOut(document.getElementById('ShowMethodButton'));
+	document.getElementById('ShowMethodButton').style.display = 'none';
+	if (ShowingAllQuestions == false){
+		for (var i=0; i<QArray.length; i++){
+				QArray[i].style.display = '';
+			}
+		document.getElementById('Questions').style.listStyleType = 'decimal';
+		document.getElementById('OneByOneReadout').style.display = 'none';
+		document.getElementById('ShowMethodButton').innerHTML = ShowOneByOneCaption;
+		ShowingAllQuestions = true;
+	}
+	else{
+		for (var i=0; i<QArray.length; i++){
+				if (i != CurrQNum){
+					QArray[i].style.display = 'none';
+				}
+			}
+		document.getElementById('Questions').style.listStyleType = 'none';
+		document.getElementById('OneByOneReadout').style.display = '';
+		document.getElementById('ShowMethodButton').innerHTML = ShowAllQuestionsCaption;
+		ShowingAllQuestions = false;	
+	}
+	document.getElementById('ShowMethodButton').style.display = 'inline';
+}
+
+function CreateStatusArray(){
+	var QNum, ANum;
+//For each item in the item array
+	for (QNum=0; QNum<I.length; QNum++){
+//Check if the question still exists (hasn't been nuked by showing a random selection)
+		if (document.getElementById('Q_' + QNum) != null){
+			State[QNum] = new Array();
+			State[QNum][0] = -1; //Score for this q; -1 shows question not done yet
+			State[QNum][1] = new Array(); //answers
+			for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+				State[QNum][1][ANum] = 0; //answer not chosen yet; when chosen, will store its position in the series of choices
+			}
+			State[QNum][2] = 0; //tries at this q so far
+			State[QNum][3] = 0; //incrementing percent-correct values of selected answers
+			State[QNum][4] = 0; //penalties incurred for hints
+			State[QNum][5] = ''; //Sequence of answers chosen by number
+		}
+		else{
+			State[QNum] = null;
+		}
+	}
+}
+
+
+
+function CheckMCAnswer(QNum, ANum, Btn){
+//if question doesn't exist, bail
+	if (State[QNum].length < 1){return;}
+	
+//Get the feedback
+	Feedback = I[QNum][3][ANum][1];
+	
+//Now show feedback and bail if question already complete
+	if (State[QNum][0] > -1){
+//Add an extra message explaining that the question
+// is finished if defined by the user
+		if (strQuestionFinished.length > 0){Feedback += '<br />' + strQuestionFinished;}
+//Show the feedback
+		ShowMessage(Feedback);
+//New for 6.2.2.1: If you want to mark an answer as correct even when it's the final choice, uncomment this line.
+//		if (I[QNum][3][ANum][2] >= 1){Btn.innerHTML = CorrectIndicator;}else{Btn.innerHTML = IncorrectIndicator;}	
+		return;
+	}
+	
+//Hide the button while processing
+	Btn.style.display = 'none';
+
+//Increment the number of tries
+	State[QNum][2]++;
+	
+//Add the percent-correct value of this answer
+	State[QNum][3] += I[QNum][3][ANum][3];
+	
+//Store the try number in the answer part of the State array, for tracking purposes
+	State[QNum][1][ANum] = State[QNum][2];
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	State[QNum][5] += String.fromCharCode(65+ANum);
+	
+//Should this answer be accepted as correct?
+	if (I[QNum][3][ANum][2] < 1){
+//It's wrong
+
+//Mark the answer
+		Btn.innerHTML = IncorrectIndicator;
+		
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+		
+//Check whether this leaves just one MC answer unselected, in which case the Q is terminated
+		var RemainingAnswer = FinalAnswer(QNum);
+		if (RemainingAnswer > -1){
+//Behave as if the last answer had been selected, but give no credit for it
+//Increment the number of tries
+			State[QNum][2]++;		
+		
+//Calculate the score for this question
+			CalculateMCQuestionScore(QNum);
+			
+//Get the overall score and add it to the feedback
+			CalculateOverallScore();
+//New for 6.2.2.1
+			var QsDone = CheckQuestionsCompleted();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's right
+//Mark the answer
+		Btn.innerHTML = CorrectIndicator;
+				
+//Calculate the score for this question
+		CalculateMCQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+
+//Get the overall score and add it to the feedback
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+		}
+		else{
+			WriteToInstructions(QsDone);
+		}
+	}
+	
+//Show the button again
+	Btn.style.display = 'inline';
+	
+//Finally, show the feedback	
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMCQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties
+	var PercentCorrect = State[QNum][3];
+	var TotAns = GetTotalMCAnswers(QNum);
+	var HintPenalties = State[QNum][4];
+	
+//Make sure it's not already complete
+
+	if (State[QNum][0] < 0){
+//Allow for Hybrids
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+//This line calculates the score for this question
+			if (TotAns == 1){
+				State[QNum][0] = 1;
+			}
+			else{
+				State[QNum][0] = ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
+			}
+		}
+//Fix for Safari bug added for version 6.0.3.42 (negative infinity problem)
+		if ((State[QNum][0] < 0)||(State[QNum][0] == Number.NEGATIVE_INFINITY)){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function GetTotalMCAnswers(QNum){
+	var Result = 0;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			Result++;
+		}
+	}
+	return Result;
+}
+
+function FinalAnswer(QNum){
+	var UnchosenAnswers = 0;
+	var FinalAnswer = -1;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			if (State[QNum][1][ANum] < 1){ //This answer hasn't been chosen yet
+				UnchosenAnswers++;
+				FinalAnswer = ANum;
+			}
+		}
+	}
+	if (UnchosenAnswers == 1){
+		return FinalAnswer;
+	}
+	else{
+		return -1;
+	}
+}
+
+
+
+
+
+function CalculateOverallScore(){
+	var TotalWeighting = 0;
+	var TotalScore = 0;
+	
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] > -1){
+				TotalWeighting += I[QNum][0];
+				TotalScore += (I[QNum][0] * State[QNum][0]);
+			}
+		}
+	}
+	if (TotalWeighting > 0){
+		Score = Math.floor((TotalScore/TotalWeighting)*100);
+	}
+	else{
+//if TotalWeighting is 0, no questions so far have any value, so 
+//no penalty should be shown.
+		Score = 100; 
+	}
+}
+
+//New for 6.2.2.0
+function CheckQuestionsCompleted(){
+	if (ShowCompletedSoFar == false){return '';}
+	var QsCompleted = 0;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] >= 0){
+				QsCompleted++;
+			}
+		}
+	}
+//Fixes for 6.2.2.2
+	if (QsCompleted >= QArray.length){
+		return ExerciseCompleted;
+	}
+	else{
+		return CompletedSoFar + ' ' + QsCompleted + '/' + QArray.length + '.';
+	}
+}
+
+function CheckFinished(){
+	var FB = '';
+	var AllDone = true;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] < 0){
+				AllDone = false;
+			}
+		}
+	}
+	if (AllDone == true){
+	
+//Report final score and submit if necessary
+		CalculateOverallScore();
+		FB = YourScoreIs + ' ' + Score + '%.';
+		if (ShowCorrectFirstTime == true){
+			var CFT = 0;
+			for (QNum=0; QNum<State.length; QNum++){
+				if (State[QNum] != null){
+					if (State[QNum][0] >= 1){
+						CFT++;
+					}
+				}
+			}
+			FB += '<br />' + CorrectFirstTime + ' ' + CFT + '/' + QsToShow;
+		}
+		
+//New for 6.2.2.0
+		FB += '<br />' + ExerciseCompleted;
+		
+		WriteToInstructions(FB);
+		
+		Finished == true;
+
+
+
+
+		TimeOver = true;
+		Locked = true;
+		
+
+
+		Finished = true;
+		Detail = '<?xml version="1.0"?><hpnetresult><fields>';
+		for (QNum=0; QNum<State.length; QNum++){
+			if (State[QNum] != null){
+				if (State[QNum][5].length > 0){
+					Detail += '<field><fieldname>Question #' + (QNum+1) + '</fieldname><fieldtype>question-tracking</fieldtype><fieldlabel>Q ' + (QNum+1) + '</fieldlabel><fieldlabelid>QuestionTrackingField</fieldlabelid><fielddata>' + State[QNum][5] + '</fielddata></field>';
+				}
+			}
+		}
+		Detail += '</fields></hpnetresult>';
+		setTimeout('Finish()', SubmissionTimeout);
+	}
+
+}
+
+
+
+
+
+//CORE CODE FOR CHECKING SHORT ANSWER GUESSES AGAINST ANSWER ARRAYS
+
+var CaseSensitive = false;
+var ShowAlsoCorrect = true;
+var PleaseEnter = 'Voer een antwoord in';
+var HybridTries = 2;
+var PartlyIncorrect = 'Je antwoord is deels onjuist';
+var CorrectList = 'Goede antwoorden: ';
+var NextCorrect = 'Volgende goede letter van het antwoord is: ';
+var CurrBox = null;
+
+function TrackFocus(BoxID){
+	InTextBox = true;
+	CurrBox = document.getElementById(BoxID);
+}
+
+function LeaveGap(){
+	InTextBox = false;
+}
+
+function TypeChars(Chars){
+	if (CurrBox != null){
+//Following check added for 6.0.4.4 to avoid error message in IE6
+		if (CurrBox.style.display != 'none'){
+			CurrBox.value += Chars;
+			CurrBox.focus();
+		}
+	}
+}
+
+function CheckGuess(Guess, Answer, CaseSensitive, PercentCorrect, Feedback){
+	this.Guess = Guess;
+	this.Answer = Answer;
+	this.PercentCorrect = PercentCorrect;
+	this.Feedback = Feedback;
+	if (CaseSensitive == false){
+		this.WorkingGuess = Guess.toLowerCase();
+		this.WorkingAnswer = Answer.toLowerCase();
+	}
+	else{
+		this.WorkingGuess = Guess;
+		this.WorkingAnswer = Answer;				
+	}
+	this.Hint = '';
+	this.HintPenalty = 1/Answer.length;
+	this.CorrectStart = '';
+	this.WrongMiddle = '';
+	this.CorrectEnd = '';
+	this.PercentMatch = 0;
+	this.DoCheck();
+}
+
+function CheckGuess_DoCheck(){
+//Check if it's an exact match
+	if (this.WorkingAnswer == this.WorkingGuess){
+		this.PercentMatch = 100;
+		this.CorrectStart = this.Guess;
+	return;
+	}
+//Figure out how much of the beginning is correct
+	var i = 0;
+	var CorrectChars = 0;
+	while (this.WorkingAnswer.charAt(i) == this.WorkingGuess.charAt(i)){
+		i++;
+		CorrectChars++;
+	}
+//Stash the hint
+	this.Hint = this.Answer.charAt(i);
+	
+	this.CorrectStart = this.Guess.substring(0, i);
+	
+//If there's more to the answer, look at the rest of it
+	if (i<this.Guess.length){
+	
+//Figure out how much of the end is correct
+		var j = this.WorkingGuess.length-1;
+		var k = this.WorkingAnswer.length-1;
+		while ((j>=i)&&((this.WorkingAnswer.charAt(k) == this.WorkingGuess.charAt(j))&&(CorrectChars < this.Answer.length))){
+			CorrectChars++;
+			j--;
+			k--;
+		}
+		this.CorrectEnd = this.Guess.substring(j+1, this.Guess.length);
+		this.WrongMiddle = this.Guess.substring(i, j+1);
+	}
+	if (TrimString(this.WrongMiddle).length < 1){this.WrongMiddle = '_';}
+//Calculate match score based on how much of the guess is correct
+	if (CorrectChars < this.Answer.length){
+		this.PercentMatch = Math.floor(100*CorrectChars)/this.Answer.length;
+	}
+	else{
+		this.PercentMatch = Math.floor((100 * CorrectChars)/this.Guess.length);
+	}	
+}
+
+CheckGuess.prototype.DoCheck = CheckGuess_DoCheck;
+
+function CheckAnswerArray(CaseSensitive){
+	this.CaseSensitive = CaseSensitive;
+	this.Answers = new Array();
+	this.Score = 0;
+	this.Feedback = '';
+	this.Hint = '';
+	this.HintPenalty = 0;
+	this.MatchedAnswerLength = 1;
+	this.CompleteMatch = false;
+	this.MatchNum = -1;
+}
+
+function CheckAnswerArray_AddAnswer(Guess, Answer, PercentCorrect, Feedback){
+	this.Answers.push(new CheckGuess(Guess, Answer, this.CaseSensitive, PercentCorrect, Feedback));
+}
+
+CheckAnswerArray.prototype.AddAnswer = CheckAnswerArray_AddAnswer;
+
+function CheckAnswerArray_ClearAll(){
+	this.Answers.length = 0;
+}
+
+CheckAnswerArray.prototype.ClearAll = CheckAnswerArray_ClearAll;
+
+function CheckAnswerArray_GetBestMatch(){
+//First check for a 100% match
+	for (var i=0; i<this.Answers.length; i++){
+		if (this.Answers[i].PercentMatch == 100){
+			this.Feedback = this.Answers[i].Feedback;
+			this.Score = this.Answers[i].PercentCorrect;
+			this.CompleteMatch = true;
+			this.MatchNum = i;
+			return;
+		}
+	}
+//Now check for the best alternative match
+	var PercentMatch = 0;
+	var BestMatch = -1;
+	for (i=0; i<this.Answers.length; i++){
+		if ((this.Answers[i].PercentMatch > PercentMatch)&&(this.Answers[i].PercentCorrect == 100)){
+			BestMatch = i;
+			PercentMatch = this.Answers[i].PercentMatch;
+		}
+	}
+	if (BestMatch > -1){
+		this.Score = this.Answers[BestMatch].PercentMatch;
+		this.Feedback = PartlyIncorrect + ' ';
+		this.Feedback += '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Feedback += '<span class="Highlight">' + this.Answers[BestMatch].WrongMiddle + '</span>';
+		this.Feedback += this.Answers[BestMatch].CorrectEnd + '</span>';
+		this.Hint = '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Hint += '<span class="Highlight">' + this.Answers[BestMatch].Hint + '</span></span>';
+		this.HintPenalty = this.Answers[BestMatch].HintPenalty;
+	}
+	else{
+		this.Score = 0;
+		this.Feedback = '';
+	}
+}
+
+CheckAnswerArray.prototype.GetBestMatch = CheckAnswerArray_GetBestMatch;
+
+function CheckShortAnswer(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess (TrimString added to fix bug for 6.0.4.3)
+	var G = TrimString(document.getElementById('Q_' + QNum + '_Guess').value);
+	
+//If no guess, bail with message; no penalty
+	if (G.length < 1){
+		ShowMessage(PleaseEnter);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+	}
+	CA.GetBestMatch();
+	
+//Store any match in the state tracking field
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	if (CA.MatchNum > -1){
+		State[QNum][5] += String.fromCharCode(65+CA.MatchNum);
+	}
+//Else store the student's answer
+	else{
+		State[QNum][5] += G;
+	}
+
+//Add the percent correct value for this answer to the Q State (works for all
+//situations, wrong or right)
+	State[QNum][3] += CA.Score;
+	
+//Now branch, based on the nature of the match
+//Is it a complete match?
+	if (CA.CompleteMatch == true){
+		
+//Is it with a wrong answer, or a right answer?
+		if (CA.Score == 100){
+//It's right
+			CalculateShortAnsQuestionScore(QNum);
+			
+//New for 6.2.2.0
+			var QsDone = CheckQuestionsCompleted();
+			
+//Get correct answer list if required, assuming there are any other correct alternatives
+			if (ShowAlsoCorrect == true){
+				var AlsoCorrectList = GetCorrectList(QNum, G, false);
+				if (AlsoCorrectList.length > 0){
+					CA.Feedback += '<br />' + CorrectList + '<br />' + AlsoCorrectList;
+				}
+			}	
+		
+//Get the overall score and add it to the feedback
+			if (ContinuousScoring == true){
+				CalculateOverallScore();
+				CA.Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+			ShowMessage(CA.Feedback);
+//Put the answer in
+			ReplaceGuessBox(QNum, G);
+			CheckFinished();
+			return;
+		}
+	}
+	
+//Otherwise, it's a match to a predicted wrong/partially correct, or a partial
+//match to a right answer
+	if (CA.Feedback.length < 1){CA.Feedback = DefaultWrong;}
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+	if (Finished == false){
+		WriteToInstructions(strInstructions);
+	}	
+	ShowMessage(CA.Feedback);
+
+//If necessary, switch a hybrid question to m/c
+	if (State[QNum][2] >= HybridTries){
+		SwitchHybridDisplay(QNum);
+	}
+}
+
+function CalculateShortAnsQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties;
+	var PercentCorrect = State[QNum][3];
+	var HintPenalties = State[QNum][4];
+
+//Make sure it's not already complete
+	if (State[QNum][0] < 0){
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+			State[QNum][0] = (PercentCorrect/(100*Tries));
+		}
+		if (State[QNum][0] < 0){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function SwitchHybridDisplay(QNum){
+	if (document.getElementById('Q_' + QNum + '_Hybrid_MC') != null){
+		document.getElementById('Q_' + QNum + '_Hybrid_MC').style.display = '';
+		if (document.getElementById('Q_' + QNum + '_SA') != null){
+			document.getElementById('Q_' + QNum + '_SA').style.display = 'none';
+		}
+	}
+}
+
+function GetCorrectArray(QNum){
+	var Result = new Array();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][2] == 1){ //This is an acceptable correct answer
+			Result.push(I[QNum][3][ANum][0]);
+		}
+	}	
+	return Result;
+}
+
+function GetCorrectList(QNum, Answer, IncludeAnswer){
+	var As = GetCorrectArray(QNum);
+	var Result = '';
+	for (var ANum=0; ANum<As.length; ANum++){
+		if ((IncludeAnswer == true)||(As[ANum] != Answer)){
+			Result += As[ANum] + '<br />';
+		}
+	}
+	return Result;
+}
+
+function GetFirstCorrectAnswer(QNum){
+	var As = GetCorrectArray(QNum);
+	if (As.length > 0){
+		return As[0];
+	}
+	else{
+		return '';
+	}
+}
+
+function ReplaceGuessBox(QNum, Ans){
+	if (document.getElementById('Q_' + QNum + '_SA') != null){
+		var El = document.getElementById('Q_' + QNum + '_SA');
+		while (El.childNodes.length > 0){
+			El.removeChild(El.childNodes[0]);
+		}
+		var A = document.createElement('span');
+		A.setAttribute('class', 'Answer');
+		var T = document.createTextNode(Ans);
+		A.appendChild(T);
+		El.appendChild(A);
+	}
+}
+
+
+
+function ShowAnswers(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//Get the answer list to display
+	var Ans = GetCorrectList(QNum, '', false);
+	Ans = CorrectList + '<br />' + Ans;
+	
+//Display feedback
+	ShowMessage(Ans);
+	
+//Set the score for this question to 0 if no score yet 
+	if (State[QNum][0] < 1){
+		State[QNum][0] = 0;
+	}
+
+//Get the first correct answer
+	var FirstAns = GetFirstCorrectAnswer(QNum);
+	
+//Replace the textbox
+	ReplaceGuessBox(QNum, FirstAns);
+	
+//New for 6.2.2.0: Get scores and feedback
+	var QsDone = CheckQuestionsCompleted();
+	
+	if (ContinuousScoring == true){
+		CalculateOverallScore();
+		WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+	}
+	
+//This may be the last, so check finished status
+	CheckFinished();
+}
+
+
+
+
+
+function ShowHint(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess
+	var G = document.getElementById('Q_' + QNum + '_Guess').value;
+	
+//If no guess, give the first correct bit
+	if (G.length < 1){
+		var Ans = GetFirstCorrectAnswer(QNum);
+		var Hint = Ans.charAt(0);
+		ShowMessage(NextCorrect + '<br />' + Hint);
+//Penalty for hint
+		State[QNum][4] += (1/Ans.length);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+//Use only correct answers
+		if (I[QNum][3][ANum][2] == 1){
+			CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+		}
+	}
+	CA.GetBestMatch();
+	if (CA.CompleteMatch == true){
+//It's right!
+		CheckShortAnswer(QNum);
+		return;
+	}
+	else{
+		if (CA.Hint.length > 0){
+			ShowMessage(NextCorrect + '<br />' + CA.Hint);
+			State[QNum][4] += CA.HintPenalty;
+		}
+		else{
+			ShowMessage(DefaultWrong + '<br />' + NextCorrect + '<br />' + GetFirstCorrectAnswer(QNum).charAt(0));
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+//]]>
+
+</script>
+</head>
+<body id="TheBody" onload="StartUp()">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#content">Direct naar de inhoud</a>
+<header class="masthead"><div class="masthead__inner"><a class="brand" href="/" aria-label="Biologiepagina.nl — home"><svg class="brand__mark" viewBox="0 0 32 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 33V13"/><path d="M16 21C8 21 4 16 4 8c8 0 12 5 12 13Z"/><path d="M16 14C16 7 20 3 27 3c0 7-4 11-11 11Z"/><circle cx="16" cy="27" r="5"/></svg><span class="brand__name">Biologie<em>pagina</em>.nl<small>Oefenen &amp; leren voor vmbo, havo en vwo</small></span></a><p class="masthead__tagline">Biologie bij Biologie voor Jou &amp; Nectar</p><div class="masthead__tools"><div class="search"><label class="search__label" for="site-search">Zoek op deze site</label><input class="search__input" id="site-search" type="search" placeholder="Zoek" autocomplete="off"><svg class="search__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><ul class="search__results" hidden aria-label="Zoekresultaten"></ul></div><button class="nav-toggle" type="button" aria-controls="site-rail" aria-expanded="false">Inhoud</button></div></div></header>
+<div class="rail-backdrop" aria-hidden="true"></div>
+<div class="shell">
+<nav class="rail" id="site-rail" aria-label="Hoofdnavigatie"><p class="rail__eyebrow">Inhoud</p><div class="rail__group"><h2 class="rail__title">Klassen</h2><ul class="rail__list"><li><a href="/Brugklasnieuw/klas1.htm">Klas 1 · vmbo / havo / vwo</a></li><li><a href="/2en3/klas2.htm">Klas 2</a></li><li><a href="/2en3/klas2.htm">Klas 3</a></li><li><a href="/34mavo/mavo34.htm">Vmbo 3 & 4</a></li><li><a href="/Havo4/Havo4.htm">Havo 4</a></li><li><a href="/Havo5/Havo5.htm">Havo 5</a></li><li><a href="/Vwo4/vwo4.htm">Vwo 4</a></li><li><a href="/Vwo5/vwo5.htm">Vwo 5</a></li><li><a href="/Vwo6/vwo6.htm">Vwo 6</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Examens</h2><ul class="rail__list"><li><a href="/34mavo/examenbiologieVMBObb.htm">Vmbo BB</a></li><li><a href="/34mavo/examenbiologieVMBOkader.htm">Vmbo kader</a></li><li><a href="/34mavo/examenbiologie.htm">Vmbo TL / mavo</a></li><li><a href="/Havo5/examen.htm">Havo</a></li><li><a href="/Vwo6/examenvwo.htm">Vwo</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Vaardigheden</h2><ul class="rail__list"><li><a href="/verslagbiologieonderbouw.htm">Verslag · onderbouw</a></li><li><a href="/verslagbiologie.htm">Verslag · bovenbouw</a></li><li><a href="/tekenregels.htm">Tekenregels</a></li><li><a href="/grafiekmaken.htm">Grafiek maken</a></li><li><a href="/Links/profielwerkstuk.htm">Profielwerkstuk</a></li><li><a href="/Links/links.htm">Overige links</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Over de site</h2><ul class="rail__list"><li><a href="/Contact/contact.htm">Contact</a></li><li><a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></li></ul></div><div class="rail__foot"><a href="/Links/links.htm">Alle links</a> · <a href="/Contact/contact.htm">Contact</a></div></nav>
+<main class="page" id="content">
+<nav class="breadcrumb" aria-label="Kruimelpad"><a href="/">Home</a><span class="breadcrumb__sep">/</span><span>Biologiepagina.nl</span></nav>
+<h1 class="page-title">Oefentoets Regeling &amp; Waarnemen<span class="page-kicker">Biologiepagina.nl</span></h1>
+<div class="prose"><!-- BeginTopNavButtons -->
+
+
+
+<!-- EndTopNavButtons -->
+
+<div class="Titles">
+	<h2 class="ExerciseTitle">Oefentoets Regeling &amp; Waarnemen</h2>
+
+
+
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions"></div>
+</div>
+
+
+
+
+<div id="MainDiv" class="StdDiv">
+ 
+<div id="QNav" class="QuestionNavigation">
+
+
+
+<div id="OneByOneReadout">
+<button id="PrevQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(-1); return false;">&lt;&lt;&lt;</button>
+
+<span id="QNumReadout" class="QNum">&nbsp;</span>
+
+<button id="NextQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(1); return false;">&gt;&gt;&gt; </button>
+<br>
+	
+	</div><br>
+   
+<!-- OnderAnimatie -->
+
+
+
+</div>
+ 
+<ol class="QuizQuestions" id="Questions">
+<li class="QuizQuestion" id="Q_0" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo041_04.jpg" alt="biohavo041_04.jpg" title="biohavo041_04" width="398" height="391"><br><br>In de bron is de hormonale regulatie van de hypothalamus (Ht) (een deel van de hersenstam), de hypofyse (H) en de schildklier (S) schematisch weergegeven. SSH is schildklierstimulerend hormoon en SSH-RH is een stof (een 'releasing'-hormoon) die de hypofyse aanzet tot het afgeven van SSH.<br>Wat is de (biologische) term voor de hormonale regeling zoals die door de pijlen 1 en 2 in bron 1 wordt aangegeven?</div><div class="ShortAnswer" id="Q_0_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_0_Guess" onfocus="TrackFocus('Q_0_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="24"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(0)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(0)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(0)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_1" style="display: none"><div class="QuestionText">Wanneer iemand staat, kan een geringe beweging tot gevolg hebben dat het lichaam iets naar voren helt. Dan worden de kuitspieren, die aan de achterkant van de onderbenen liggen, iets uitgerekt. Deze uitrekking veroorzaakt een reflex die leidt tot het samentrekken van deze kuitspieren. Hierdoor wordt de oorspronkelijke houding van het lichaam hersteld.<br>Deze reflex heet de kuitspierreflex.<br><br>Verloopt de reflexboog van de kuitspierreflex via de hersenstam, het ruggemerg of de grote hersenen?</div><ol class="MCAnswers"><li id="Q_1_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_1_0_Btn" onclick="CheckMCAnswer(1,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;via de hersenstam</li><li id="Q_1_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_1_1_Btn" onclick="CheckMCAnswer(1,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;via het ruggemerg</li><li id="Q_1_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_1_2_Btn" onclick="CheckMCAnswer(1,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;via de grote hersenen</li></ol></li>
+<li class="QuizQuestion" id="Q_2" style="display: none"><div class="QuestionText">Vijf delen van de reflexboog van de kuitspierreflex zijn:<br>1 een motorische zenuwcel,<br>2 een schakelcel,<br>3 een sensorische zenuwcel,<br>4 een spier,<br>5 een spierzintuig.<br><br>In welke volgorde zijn deze delen bij het optreden van de kuitspierreflex betrokken?</div><ol class="MCAnswers"><li id="Q_2_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_2_0_Btn" onclick="CheckMCAnswer(2,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 - 1 - 2 - 3 - 5</li><li id="Q_2_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_2_1_Btn" onclick="CheckMCAnswer(2,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;5 - 1 - 3 - 2 - 4</li><li id="Q_2_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_2_2_Btn" onclick="CheckMCAnswer(2,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;5 - 3 - 2 - 1 - 4</li></ol></li>
+<li class="QuizQuestion" id="Q_3" style="display: none"><div class="QuestionText">Behoort de motorische zenuwcel in een reflexboog tot het animale zenuwstelsel, tot het orthosympatische of tot het parasympatische deel van het autonome zenuwstelsel?</div><ol class="MCAnswers"><li id="Q_3_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_0_Btn" onclick="CheckMCAnswer(3,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot het animale zenuwstelsel</li><li id="Q_3_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_1_Btn" onclick="CheckMCAnswer(3,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot het orthosympatische deel van het autonome zenuwstelsel</li><li id="Q_3_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_3_2_Btn" onclick="CheckMCAnswer(3,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tot het parasympatische deel van het autonome zenuwstelsel</li></ol></li>
+<li class="QuizQuestion" id="Q_4" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo932oud_04.jpg" alt="biohavo932oud_04.jpg" title="biohavo932oud_04" width="697" height="186"><br><br>In de afbeelding is schematisch weergegeven wat er in de lever van de mens kan gebeuren met glucose die in de dunne darm uit het voedsel wordt opgenomen.<br>Welke van de processen 1, 2, 3 en 4 worden door glucagon bevorderd?</div><ol class="MCAnswers"><li id="Q_4_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_0_Btn" onclick="CheckMCAnswer(4,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de processen 1 en 3</li><li id="Q_4_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_1_Btn" onclick="CheckMCAnswer(4,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de processen 1 en 4</li><li id="Q_4_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_2_Btn" onclick="CheckMCAnswer(4,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de processen 2 en 3</li><li id="Q_4_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_3_Btn" onclick="CheckMCAnswer(4,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de processen 2 en 4</li></ol></li>
+<li class="QuizQuestion" id="Q_5" style="display: none"><div class="QuestionText">Bij sommige amfibieën wordt de gedaanteverwisseling onder natuurlijke omstandigheden niet volledig doorlopen. Dit is bijvoorbeeld het geval bij de axolotl, een salamander uit Mexico. De axolotl blijft onder natuurlijke omstandigheden gedurende zijn hele leven een waterdier met kieuwen. Toch is het gelukt om axolotls een volledige gedaanteverwisseling te laten doormaken. Daartoe wordt aan een axolotl met kieuwen een bepaald hormoon toegediend, dat ook bij de mens voorkomt. Bekend is dat bij andere amfibiesoorten de gedaanteverwisseling onderdrukt kan worden door een bepaald deel van de hypofyse uit te schakelen. Ten gevolge hiervan wordt onder andere de vorming van een bepaald hormoon uitgeschakeld. Dit hormoon komt ook bij de mens voor en de vorming daarvan komt in hoge mate overeen met die bij amfibieën.<br><br>Welk hormoon bevordert een volledige gedaanteverwisseling bij een axolotl?</div><ol class="MCAnswers"><li id="Q_5_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_0_Btn" onclick="CheckMCAnswer(5,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;adrenaline</li><li id="Q_5_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_1_Btn" onclick="CheckMCAnswer(5,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;glucagon</li><li id="Q_5_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_2_Btn" onclick="CheckMCAnswer(5,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;insuline</li><li id="Q_5_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_5_3_Btn" onclick="CheckMCAnswer(5,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thyroxine</li></ol></li>
+<li class="QuizQuestion" id="Q_6" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo931_15.jpg" alt="biohavo931_15.jpg" title="biohavo931_15" width="245" height="391"><br><br>De bron geeft schematisch een doorsnee van het ruggemerg van de mens weer met enkele zenuwcellen. Uitlopers van deze zenuwcellen vormen verbindingen tussen het ruggemerg en een bovenarm. Vier zenuwceluitlopers zijn met cijfers aangegeven.<br>Welke van de aangegeven uitlopers zijn uitlopers van motorische zenuwcellen?</div><ol class="MCAnswers"><li id="Q_6_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_0_Btn" onclick="CheckMCAnswer(6,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de zenuwceluitlopers 1 en 2</li><li id="Q_6_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_1_Btn" onclick="CheckMCAnswer(6,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de zenuwceluitlopers 2 en 3</li><li id="Q_6_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_2_Btn" onclick="CheckMCAnswer(6,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de zenuwceluitlopers 3 en 4</li><li id="Q_6_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_6_3_Btn" onclick="CheckMCAnswer(6,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de zenuwceluitlopers 1, 2, 3 en 4</li></ol></li>
+<li class="QuizQuestion" id="Q_7" style="display: none"><div class="QuestionText">Tijdens een voetbalwedstrijd wordt een strafschop genomen. Degene die de strafschop neemt, maakt een beweging naar links, maar de bal komt rechts terecht. De keeper duikt naar de goede hoek en stopt de bal.<br><br>Via welke delen van het centrale zenuwstelsel verlopen impulsen bij de speler die de strafschop neemt?</div><ol class="MCAnswers"><li id="Q_7_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_0_Btn" onclick="CheckMCAnswer(7,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen via het ruggenmerg</li><li id="Q_7_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_1_Btn" onclick="CheckMCAnswer(7,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen via de grote hersenen, de kleine hersenen en het ruggenmerg</li><li id="Q_7_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_2_Btn" onclick="CheckMCAnswer(7,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;via de grote hersenen, de hersenstam, de kleine hersenen en het ruggenmerg</li></ol></li>
+<li class="QuizQuestion" id="Q_8" style="display: none"><div class="QuestionText">Verlopen bij de keeper tijdens het stoppen van de bal impulsen in motorische centra van zijn grote hersenen, in sensorische centra of in beide typen centra?</div><ol class="MCAnswers"><li id="Q_8_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_0_Btn" onclick="CheckMCAnswer(8,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen in motorische centra</li><li id="Q_8_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_1_Btn" onclick="CheckMCAnswer(8,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen in sensorische centra</li><li id="Q_8_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_8_2_Btn" onclick="CheckMCAnswer(8,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel in motorische als in sensorische centra</li></ol></li>
+<li class="QuizQuestion" id="Q_9" style="display: none"><div class="QuestionText">Bevinden de motorische centra zich in het merg of in de schors van de grote hersenen? En de sensorische centra?</div><ol class="MCAnswers"><li id="Q_9_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_0_Btn" onclick="CheckMCAnswer(9,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Zowel de motorische als de sensorische centra bevinden zich in het merg.</li><li id="Q_9_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_1_Btn" onclick="CheckMCAnswer(9,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Zowel de motorische als de sensorische centra bevinden zich in de schors.</li><li id="Q_9_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_9_2_Btn" onclick="CheckMCAnswer(9,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;De motorische centra bevinden zich in het merg, de sensorische centra in de schors.</li></ol></li>
+<li class="QuizQuestion" id="Q_10" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo941oud_05.jpg" alt="biohavo941oud_05.jpg" title="biohavo941oud_05" width="701" height="381"><br><br>In het zenuwstelsel van de mens komen onder andere de drie typen zenuwcellen voor die in de afbeelding zijn weergegeven.<br>Deze typen zenuwcellen zijn betrokken bij een reflex.<br>In welke volgorde doorlopen impulsen tijdens deze reflex deze typen zenuwcellen?</div><ol class="MCAnswers"><li id="Q_10_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_0_Btn" onclick="CheckMCAnswer(10,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 - 2 - 3</li><li id="Q_10_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_1_Btn" onclick="CheckMCAnswer(10,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 - 3 - 2</li><li id="Q_10_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_2_Btn" onclick="CheckMCAnswer(10,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2 - 1 - 3</li><li id="Q_10_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_10_3_Btn" onclick="CheckMCAnswer(10,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2 - 3 - 1</li></ol></li>
+<li class="QuizQuestion" id="Q_11" style="display: none"><div class="QuestionText">In het lichaam van de mens vinden onder andere de volgende processen plaats:<br>1 pupilreflex,<br>2 ademhaling tijdens de slaap,<br>3 constant houden van het glucosegehalte van het bloed.<br><br>Bij welk van deze processen speelt de hersenstam een belangrijke rol?</div><ol class="MCAnswers"><li id="Q_11_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_0_Btn" onclick="CheckMCAnswer(11,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen bij proces 1</li><li id="Q_11_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_1_Btn" onclick="CheckMCAnswer(11,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen bij proces 3</li><li id="Q_11_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_2_Btn" onclick="CheckMCAnswer(11,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen bij de processen 1 en 2</li><li id="Q_11_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_11_3_Btn" onclick="CheckMCAnswer(11,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bij de processen 1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_12" style="display: none"><div class="QuestionText">Welk van de hormonen ADH, LH en thyroxine heeft rechtstreeks invloed op de mate van terugresorptie van water?</div><ol class="MCAnswers"><li id="Q_12_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_0_Btn" onclick="CheckMCAnswer(12,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ADH</li><li id="Q_12_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_1_Btn" onclick="CheckMCAnswer(12,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;LH</li><li id="Q_12_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_12_2_Btn" onclick="CheckMCAnswer(12,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;thyroxine</li></ol></li>
+<li class="QuizQuestion" id="Q_13" style="display: none"><div class="QuestionText">Van welk deel of van welke delen van het autonome zenuwstelsel neemt de activiteit tijdens de warming-up toe?</div><ol class="MCAnswers"><li id="Q_13_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_0_Btn" onclick="CheckMCAnswer(13,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen van het orthosympatische deel van het autonome zenuwstelsel</li><li id="Q_13_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_1_Btn" onclick="CheckMCAnswer(13,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen van het parasympatische deel van het autonome zenuwstelsel</li><li id="Q_13_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_2_Btn" onclick="CheckMCAnswer(13,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel van het orthosympatische deel als van het parasympathische deel van het autonome zenuwstelsel</li></ol></li>
+<li class="QuizQuestion" id="Q_14" style="display: none"><div class="QuestionText">Ondanks de adviezen over warming-up, krijgt iemand een blessure waarbij een spier scheurt. De blessure wordt door de verzorger direct met ijs gekoeld.<br>Beïnvloedt dit koelen de frequentie van impulsen vanuit de gescheurde spier naar de hersenen? Zo ja, is deze impulsfrequentie lager of hoger dan zonder koeling?</div><ol class="MCAnswers"><li id="Q_14_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_0_Btn" onclick="CheckMCAnswer(14,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Nee, dit beïnvloedt de impulsfrequentie niet.</li><li id="Q_14_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_1_Btn" onclick="CheckMCAnswer(14,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, de impulsfrequentie is lager dan zonder koeling.</li><li id="Q_14_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_2_Btn" onclick="CheckMCAnswer(14,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, de impulsfrequentie is hoger dan zonder koeling.</li></ol></li>
+<li class="QuizQuestion" id="Q_15" style="display: none"><div class="QuestionText">De mens heeft onder andere de volgende organen<br>1 schildklier,<br>2 alvleesklier,<br>3 speekselklier,<br>4 hypofyse,<br>5 testis.<br><br>Welke van deze organen geven uitsluitend producten aan het bloed en/of de weefselvloeistof af?</div><ol class="MCAnswers"><li id="Q_15_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_0_Btn" onclick="CheckMCAnswer(15,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;orgaan 1 en orgaan 4</li><li id="Q_15_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_1_Btn" onclick="CheckMCAnswer(15,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;orgaan 2 en orgaan 4</li><li id="Q_15_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_2_Btn" onclick="CheckMCAnswer(15,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de organen 1, 3 en 5</li><li id="Q_15_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_15_3_Btn" onclick="CheckMCAnswer(15,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de organen 2, 3 en 5</li></ol></li>
+<li class="QuizQuestion" id="Q_16" style="display: none"><div class="QuestionText">Wordt de doorbloeding van de spijsverteringsorganen geregeld door het animale zenuwstelsel, door het autonome zenuwstelsel of door beide?</div><ol class="MCAnswers"><li id="Q_16_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_0_Btn" onclick="CheckMCAnswer(16,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen door het animale zenuwstelsel</li><li id="Q_16_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_1_Btn" onclick="CheckMCAnswer(16,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen door het autonome zenuwstelsel</li><li id="Q_16_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_2_Btn" onclick="CheckMCAnswer(16,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel door het animale als door het autonome zenuwstelsel</li></ol></li>
+<li class="QuizQuestion" id="Q_17" style="display: none"><div class="QuestionText">Als een hond aan het eten is, vindt er onder andere door prikkeling van het slijmvlies in de bek afscheiding van speeksel plaats. Deze afscheiding van speeksel gebeurt door een onvoorwaardelijke reflex. Bij een hond die gedurende enige tijd alleen gevoerd wordt nadat er een bel rinkelt, blijkt de speekselafscheiding alleen al door de rinkelende bel op gang gebracht te worden, ook al krijgt het dier daarna geen eten. Dit is een voorwaardelijke reflex.<br><br>Welk deel van het centrale zenuwstelsel geleidt zeker impulsen bij de hierboven genoemde voorwaardelijke reflex en waarschijnlijk niet bij de hierboven genoemde onvoorwaardelijke reflex?</div><ol class="MCAnswers"><li id="Q_17_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_0_Btn" onclick="CheckMCAnswer(17,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de grote hersenen</li><li id="Q_17_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_1_Btn" onclick="CheckMCAnswer(17,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de hersenstam</li><li id="Q_17_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_2_Btn" onclick="CheckMCAnswer(17,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de kleine hersenen</li><li id="Q_17_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_3_Btn" onclick="CheckMCAnswer(17,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;het ruggemerg</li></ol></li>
+<li class="QuizQuestion" id="Q_18" style="display: none"><div class="QuestionText">Een dwarsgestreepte spier is opgebouwd uit spiervezels. De spiervezels in een spier zijn gerangschikt in groepen. Elke groep is aangesloten op uitlopers van één zenuwcel. Een dergelijke groep spiervezels vormt samen met deze zenuwcel een motorische eenheid. Enkele beweringen over dwarsgestreept spierweefsel zijn:<br>1 In een spier die zich in het lichaam gedeeltelijk samentrekt, zijn alle spiervezels gedeeltelijk samengetrokken.<br>2 Een spiervezel die ontspannen is, verbruikt geen energie.<br>3 Een motorische eenheid heeft als geheel een prikkeldrempel.<br><br>Welke van deze beweringen is of welke zijn juist?</div><ol class="MCAnswers"><li id="Q_18_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_0_Btn" onclick="CheckMCAnswer(18,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_18_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_1_Btn" onclick="CheckMCAnswer(18,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_18_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_2_Btn" onclick="CheckMCAnswer(18,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_18_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_3_Btn" onclick="CheckMCAnswer(18,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 3</li><li id="Q_18_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_4_Btn" onclick="CheckMCAnswer(18,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2 en 3</li><li id="Q_18_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_5_Btn" onclick="CheckMCAnswer(18,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_19" style="display: none"><div class="QuestionText">In een tekst staat dat de keeper na de snoekduik op de grond valt zonder zich te bezeren.<br>Spelen hierbij reflexen die via het ruggenmerg verlopen een rol? En spelen hierbij impulsen die via de kleine hersenen verlopen een rol?</div><ol class="MCAnswers"><li id="Q_19_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_0_Btn" onclick="CheckMCAnswer(19,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen reflexen die via het ruggenmerg verlopen</li><li id="Q_19_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_1_Btn" onclick="CheckMCAnswer(19,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen impulsen die via de kleine hersenen verlopen</li><li id="Q_19_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_19_2_Btn" onclick="CheckMCAnswer(19,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel reflexen die via het ruggenmerg verlopen als impulsen die via de kleine hersenen verlopen</li></ol></li>
+<li class="QuizQuestion" id="Q_20" style="display: none"><div class="QuestionText">Na het hardlopen gaat de man thuis bij de televisie zitten en valt in slaap.<br>Heeft één van de beide delen van het autonome zenuwstelsel tijdens het slapen een grotere invloed op het functioneren van het ademhalingsstelsel en het bloedvatenstelsel dan tijdens het trimmen?</div><ol class="MCAnswers"><li id="Q_20_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_0_Btn" onclick="CheckMCAnswer(20,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Nee, de invloed van beide delen is tijdens het slapen en tijdens het trimmen gelijk.</li><li id="Q_20_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_1_Btn" onclick="CheckMCAnswer(20,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, tijdens het slapen heeft het orthosympathische deel een grotere invloed.</li><li id="Q_20_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_2_Btn" onclick="CheckMCAnswer(20,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ja, tijdens het slapen heeft het parasympathische deel een grotere invloed.</li></ol></li>
+<li class="QuizQuestion" id="Q_21" style="display: none"><div class="QuestionText">In Nederland zijn bakkers verplicht om in brood zout te verwerken waaraan jood is toegevoegd. Het element jood is een onmisbaar bestanddeel van het molecuul waaruit het hormoon thyroxine bestaat. Bij een tekort aan jood wordt de schildklier groter dan normaal; men spreekt dan van een kropgezwel (struma).<br><br>Wat is de invloed van een gebrek aan jood op de hoeveelheid thyroxine? De hoeveelheid thyroxine .....1......<br>En wat is het effect op de hoeveelheid TSH? De heoveelheid TSH .......2.......</div><ol class="MCAnswers"><li id="Q_21_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_0_Btn" onclick="CheckMCAnswer(21,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 = neemt toe / 2 = neemt toe</li><li id="Q_21_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_1_Btn" onclick="CheckMCAnswer(21,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 = neemt toe / 2 = neemt af</li><li id="Q_21_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_2_Btn" onclick="CheckMCAnswer(21,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 = neemt af / 2 = neemt toe</li><li id="Q_21_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_3_Btn" onclick="CheckMCAnswer(21,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 = neemt af / 2 = neemt af</li></ol></li>
+<li class="QuizQuestion" id="Q_22" style="display: none"><div class="QuestionText">Als iemand tegen je praat vinden op dat moment, als gevolg daarvan, veranderingen plaats in het centrum van Wernicke. Hierover worden drie beweringen gedaan.<br>1 Het aantal synapsen tussen zenuwcellen neemt daar dan toe.<br>2 Het aantal impulsen per tijdseenheid neemt daar dan toe.<br>3 Het verbruik van glucose in de zenuwcellen neemt daar dan toe.<br>Welke van deze beweringen is of zijn juist?</div><ol class="MCAnswers"><li id="Q_22_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_0_Btn" onclick="CheckMCAnswer(22,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_22_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_1_Btn" onclick="CheckMCAnswer(22,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_22_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_2_Btn" onclick="CheckMCAnswer(22,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_22_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_3_Btn" onclick="CheckMCAnswer(22,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 2</li><li id="Q_22_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_4_Btn" onclick="CheckMCAnswer(22,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2 en 3</li><li id="Q_22_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_5_Btn" onclick="CheckMCAnswer(22,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_23" style="display: none"><div class="QuestionText">Rond 300 voor Christus bestond in Alexandrië, een plaats aan de Middellandse Zee, een bloeiend wetenschappelijk centrum. Bekende geleerden uit deze zogenaamde Alexandrijnse school zijn Herophilus en Erasistratus. Zij bestudeerden onder andere de bouw en werking van het menselijk lichaam.<br>Herophilus onderzocht hersenen en zenuwen. Hij zag dat sommige beschadigingen van zenuwen leidden tot verlamming, andere tot gevoelloosheid. Tegenwoordig maken we onderscheid tussen sensorische en motorische zenuwcellen en schakelcellen.<br><br>Welke van deze typen zenuwcellen komen voor in de zenuwen die Herophilus heeft gezien?</div><ol class="MCAnswers"><li id="Q_23_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_0_Btn" onclick="CheckMCAnswer(23,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen motorische zenuwcellen en schakelcellen</li><li id="Q_23_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_1_Btn" onclick="CheckMCAnswer(23,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen motorische zenuwcellen en sensorische zenuwcellen</li><li id="Q_23_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_2_Btn" onclick="CheckMCAnswer(23,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen schakelcellen en sensorische zenuwcellen</li><li id="Q_23_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_3_Btn" onclick="CheckMCAnswer(23,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;motorische zenuwcellen, schakelcellen en sensorische zenuwcellen</li></ol></li>
+<li class="QuizQuestion" id="Q_24" style="display: none"><div class="QuestionText">Als iemand tegen je praat vinden op dat moment, als gevolg daarvan, veranderingen plaats in het centrum van Wernicke. Hierover worden drie beweringen gedaan.<br>1 Het aantal synapsen tussen zenuwcellen neemt daar dan toe.<br>2 Het aantal impulsen per tijdseenheid neemt daar dan toe.<br>3 Het verbruik van glucose in de zenuwcellen neemt daar dan toe.<br><br>Welke van deze beweringen is of zijn juist?</div><ol class="MCAnswers"><li id="Q_24_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_0_Btn" onclick="CheckMCAnswer(24,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1</li><li id="Q_24_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_1_Btn" onclick="CheckMCAnswer(24,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2</li><li id="Q_24_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_2_Btn" onclick="CheckMCAnswer(24,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 3</li><li id="Q_24_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_3_Btn" onclick="CheckMCAnswer(24,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 1 en 2</li><li id="Q_24_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_4_Btn" onclick="CheckMCAnswer(24,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen 2 en 3</li><li id="Q_24_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_24_5_Btn" onclick="CheckMCAnswer(24,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_25" style="display: none"><div class="QuestionText">Rond 300 voor Christus bestond in Alexandrië, een plaats aan de Middellandse Zee, een bloeiend wetenschappelijk centrum. Bekende geleerden uit deze zogenaamde Alexandrijnse school zijn Herophilus en Erasistratus. Zij bestudeerden onder andere de bouw en werking van het menselijk lichaam.<br>Herophilus onderzocht hersenen en zenuwen. Hij zag dat sommige beschadigingen van zenuwen leidden tot verlamming, andere tot gevoelloosheid. Tegenwoordig maken we onderscheid tussen sensorische en motorische zenuwcellen en schakelcellen.<br>Welke van deze typen zenuwcellen komen voor in de zenuwen die Herophilus heeft gezien?</div><ol class="MCAnswers"><li id="Q_25_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_0_Btn" onclick="CheckMCAnswer(25,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen motorische zenuwcellen en schakelcellen</li><li id="Q_25_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_1_Btn" onclick="CheckMCAnswer(25,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen motorische zenuwcellen en sensorische zenuwcellen</li><li id="Q_25_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_2_Btn" onclick="CheckMCAnswer(25,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen schakelcellen en sensorische zenuwcellen</li><li id="Q_25_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_3_Btn" onclick="CheckMCAnswer(25,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;motorische zenuwcellen, schakelcellen en sensorische zenuwcellen</li></ol></li>
+<li class="QuizQuestion" id="Q_26" style="display: none"><div class="QuestionText">Snurken ontstaat doordat er lucht tijdens de slaap wordt aangezogen via een sterk verslapte luchtweg. Daarbij klapperen de zachte delen in de mond- en keelholte (gehemelte, tongbasis), waardoor het zagende geluid ontstaat. Bij sommige hevige snurkers kunnen de ademhalingswegen zelfs even geblokkeerd raken. Het duurt vaak meer dan tien seconden voordat de ademhalingsweg, door herstel van de spierspanning, weer opengaat. De snurker wordt hierbij vaak bijna wakker, zuigt weer lucht in zijn longen en herstelt zijn slaap- en snurkritme tot de volgende ademhalingsstop. Vooral bij snurkers bij wie de ademhaling telkens even geblokkeerd raakt, lijkt er een verband te bestaan tussen snurken en hoge bloeddruk. Zowel hoge bloeddruk als snurken komen veel voor bij mensen met overgewicht. Een apparaatje dat het snurken mogelijk vermindert, is de zogenoemde 'snoozer'. De snoozer wordt onder het hoofdkussen geplaatst en produceert, na drie opeenvolgende snurkgeluiden, trillingen, die door de huid worden waargenomen en die ongeveer twee seconden aanhouden. Zij sporen de snurker aan om van houding te veranderen. Een zijligging vermindert de kans op snurken.<br><br>Op de regulatie van de adembewegingen hebben zowel het CO2-gehalte als het O2-gehalte van het bloed invloed. Na blokkering van de ademhalingswegen vinden processen plaats waardoor het ademritme weer hersteld wordt.<br>Hieronder staat een aantal zinnen over dit herstel.<br>1 Vanuit de hersenstam gaan impulsen via motorische zenuwen naar de buikwandspieren die zich vervolgens samentrekken.<br>2 Impulsen bereiken het ademcentrum in de hersenstam.<br>3 Zintuigjes worden geprikkeld, zodat impulsen in sensorische zenuwen ontstaan.<br>4 Door blokkering van de luchtwegen neemt het CO2} gehalte van het bloed toe, waardoor het bloed zuurder wordt.<br>5 Impulsen arriveren in de grote hersenen en worden van daaruit doorgegeven aan de hersenstam.<br>6 Vanuit de hersenstam gaan impulsen via motorische zenuwen naar de middenrifspieren die zich vervolgens samentrekken.<br><br>Welke van de gebeurtenissen, beschreven in bovenstaande zinnen, vinden plaats bij het herstellen van het ademritme bij snurkenden en in welke volgorde gebeurt dat?</div><ol class="MCAnswers"><li id="Q_26_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_0_Btn" onclick="CheckMCAnswer(26,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2 - 3 - 4 - 1</li><li id="Q_26_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_1_Btn" onclick="CheckMCAnswer(26,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3 - 2 - 5 - 6</li><li id="Q_26_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_2_Btn" onclick="CheckMCAnswer(26,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3 - 4 - 1 - 5</li><li id="Q_26_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_3_Btn" onclick="CheckMCAnswer(26,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 - 2 - 5 - 1</li><li id="Q_26_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_4_Btn" onclick="CheckMCAnswer(26,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 - 3 - 2 - 6</li><li id="Q_26_5"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_26_5_Btn" onclick="CheckMCAnswer(26,5,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 - 3 - 5 - 6</li></ol></li>
+<li class="QuizQuestion" id="Q_27" style="display: none"><div class="QuestionText">Het hormoon ADH wordt gemaakt in de hypothalamus en aan het bloed afgegeven in de hypofyse.<br>Door welk proces komt dit hormoon vanuit de hypofyse in het bloed terecht?</div><ol class="MCAnswers"><li id="Q_27_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_0_Btn" onclick="CheckMCAnswer(27,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door actief transport</li><li id="Q_27_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_1_Btn" onclick="CheckMCAnswer(27,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door osmose</li><li id="Q_27_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_2_Btn" onclick="CheckMCAnswer(27,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door terugresorptie</li><li id="Q_27_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_27_3_Btn" onclick="CheckMCAnswer(27,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door ultrafiltratie</li></ol></li>
+<li class="QuizQuestion" id="Q_28" style="display: none"><div class="QuestionText">Een kat ligt rustig in de zon. Plotseling ziet ze een hond, komt overeind, zet een dikke staart op en kromt haar rug. De hond reageert hierop door te blaffen en door zijn tanden te laten zien. Het gehalte aan adrenaline in het bloed van beide dieren zal door deze gebeurtenissen veranderen. Bij de hond en de kat wordt de afgifte van adrenaline op overeenkomstige wijze geregeld als bij de mens.<br><br>In welk bloedvat zal de adrenalineconcentratie het eerst veranderen?</div><ol class="MCAnswers"><li id="Q_28_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_0_Btn" onclick="CheckMCAnswer(28,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de bijnierader</li><li id="Q_28_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_1_Btn" onclick="CheckMCAnswer(28,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de bijnierslagader</li><li id="Q_28_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_2_Btn" onclick="CheckMCAnswer(28,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de nierader</li><li id="Q_28_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_28_3_Btn" onclick="CheckMCAnswer(28,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de nierslagader</li></ol></li>
+<li class="QuizQuestion" id="Q_29" style="display: none"><div class="QuestionText">Als jonge zebravinken slapen, repeteren zij het gezang dat zij, als ze wakker zijn, van hun ouders horen. Zo leggen zij deze klanken in hun hersenen vast. Dit concluderen onderzoekers van de Universiteit van Chicago na proeven met zebravinken. De onderzoekers observeerden de activiteit in het hersendeel van de zebravinken dat betrokken is bij hun zang. Overdag vertoonden de neuronen in dit gebied een regelmatige, relatief zwakke activiteit. Tijdens de slaap waren echter plotseling uitbarstingen van grote activiteit waar te nemen van dezelfde neuronen.<br><br>In welk deel van de hersenen leggen de jonge zebravinken het gezang dat zij van hun ouders hebben gehoord, vast?</div><ol class="MCAnswers"><li id="Q_29_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_0_Btn" onclick="CheckMCAnswer(29,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de grote hersenen</li><li id="Q_29_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_1_Btn" onclick="CheckMCAnswer(29,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de hersenstam</li><li id="Q_29_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_2_Btn" onclick="CheckMCAnswer(29,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de kleine hersenen</li></ol></li>
+<li class="QuizQuestion" id="Q_30" style="display: none"><div class="QuestionText">"Zebravink oefent zang tijdens slaap"<br>Wat hebben de onderzoekers bij metingen aan de neuronen waargenomen tijdens uitbarstingen van grote activiteit?</div><ol class="MCAnswers"><li id="Q_30_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_0_Btn" onclick="CheckMCAnswer(30,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;toename van de impulsfrequentie</li><li id="Q_30_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_1_Btn" onclick="CheckMCAnswer(30,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;toename van de impulssterkte</li><li id="Q_30_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_30_2_Btn" onclick="CheckMCAnswer(30,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;toename van het aantal synapsen toename van het aantal uitlopers</li></ol></li>
+<li class="QuizQuestion" id="Q_31" style="display: none"><div class="QuestionText">Bij jeugddiabetes valt het afweersysteem van de patiënt de eigen zogeheten bètacellen van de eilandjes van Langerhans aan. Deze cellen, die het hormoon insuline produceren, sterven langzaam af. Hierdoor kan de glucoseconcentratie te veel gaan schommelen. Om de effecten daarvan tegen te gaan zijn insuline-injecties noodzakelijk.<br>Op den duur kunnen de bloedvaten aangetast worden, wat onder andere complicaties kan geven voor de nieren. Dit maakt dialyse en niertransplantatie noodzakelijk. Een van de problemen na transplantatie is dat de donornieren naderhand ook weer achteruitgaan door de<br>diabetes. Daarom wordt bij diabetespatiënten een niertransplantatie sinds 1986 gecombineerd met een alvleeskliertransplantatie. In de meeste gevallen zijn de patiënten dan niet meer afhankelijk van insuline-injecties en dialyse.<br>Een aantal van de patiënten verliest echter na enige tijd de alvleesklier doordat het lichaam het vreemde orgaan afstoot. Deze patiënten waren beter af geweest als alleen de eilandjes van Langerhans getransplanteerd waren. De eilandjes van Langerhans maken namelijk slechts één procent uit van het totale gewicht van de alvleesklier. Bij een transplantatie van de gehele alvleesklier wordt dus in feite 99 procent teveel getransplanteerd.<br>Het isoleren van de eilandjes van Langerhans gebeurt met verteringsenzymen die de eilandjes losmaken van het omringende alvleesklierweefsel. Daarna worden ze gezuiverd en ten slotte onder plaatselijke verdoving in de poortader geïnjecteerd. Ze blijven steken in de kleine bloedvaten van de lever. Hebben ze zich daar eenmaal genesteld, dan kunnen ze insuline afgeven aan het bloed.<br><br>Wat is voor de eilandjes van Langerhans de prikkel voor het afgeven van insuline aan het bloed?</div><ol class="MCAnswers"><li id="Q_31_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_0_Btn" onclick="CheckMCAnswer(31,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een hoge glucoseconcentratie van het bloed</li><li id="Q_31_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_1_Btn" onclick="CheckMCAnswer(31,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een lage glucoseconcentratie van het bloed</li><li id="Q_31_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_2_Btn" onclick="CheckMCAnswer(31,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een hoge glucagonconcentratie van het bloed</li><li id="Q_31_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_31_3_Btn" onclick="CheckMCAnswer(31,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een lage glucagonconcentratie van het bloed</li></ol></li>
+<li class="QuizQuestion" id="Q_32" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo932nieuw_12.jpg" alt="biohavo932nieuw_12.jpg" title="biohavo932nieuw_12" width="366" height="287"><br><br>De bron geeft een horizontale doorsnede door het linker oog van de mens weer.<br>In ogen van de mens kunnen de volgende afwijkingen voorkomen:<br>1 de afstand tussen lens en netvlies is te groot,<br>2 het hoornvlies is te bol,<br>3 de elasticiteit van de lens is te gering.<br>Elk van deze afwijkingen kan er de oorzaak van zijn dat men niet op alle afstanden scherp ziet.<br><br>Welke van deze afwijkingen kan of welke kunnen met behulp van een bril zodanig worden gecorrigeerd dat men wel scherp kan zien?</div><ol class="MCAnswers"><li id="Q_32_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_0_Btn" onclick="CheckMCAnswer(32,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de afwijkingen 1 en 2</li><li id="Q_32_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_1_Btn" onclick="CheckMCAnswer(32,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de afwijkingen 1 en 3</li><li id="Q_32_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_2_Btn" onclick="CheckMCAnswer(32,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de afwijkingen 2 en 3</li><li id="Q_32_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_32_3_Btn" onclick="CheckMCAnswer(32,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de afwijkingen 1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_33" style="display: none"><div class="QuestionText">Enkele beweringen over kegeltjes en staafjes in de ogen van de mens zijn:<br><br>1 zowel kegeltjes als staafjes bevatten lichtgevoelig pigment,<br>2 de prikkeldrempel van een staafje is afhankelijk van het aantal schakelcellen waarmee het is verbonden,<br>3 in de schemering wordt de prikkeldrempel van kegeltjes eerder overschreden dan die van staafjes.<br><br>Welke van deze beweringen is of welke zijn juist?</div><ol class="MCAnswers"><li id="Q_33_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_0_Btn" onclick="CheckMCAnswer(33,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen bewering 1</li><li id="Q_33_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_1_Btn" onclick="CheckMCAnswer(33,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de beweringen 1 en 2</li><li id="Q_33_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_2_Btn" onclick="CheckMCAnswer(33,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen de beweringen 1 en 3</li><li id="Q_33_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_3_Btn" onclick="CheckMCAnswer(33,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de beweringen 1, 2 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_34" style="display: none"><div class="QuestionText">In het netvlies van een oog van de mens bevinden zich kegeltjes en staafjes. Elk kegeltje is apart verbonden met één sensorische zenuwcel, terwijl meerdere staafjes samen met één sensorische zenuwcel verbonden zijn. Over de gevolgen van dit verschil in schakeling<br>worden de volgende beweringen gedaan.<br>1 Door dit verschil in schakeling is de scherpte van het beeld dat met de staafjes wordt waargenomen, groter dan de scherpte van het beeld dat met de kegeltjes wordt<br>waargenomen.<br>2 Door dit verschil in schakeling kan met de kegeltjes kleur worden waargenomen en met de staafjes niet.<br><br>Welke van deze beweringen is of welke zijn juist?</div><ol class="MCAnswers"><li id="Q_34_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_0_Btn" onclick="CheckMCAnswer(34,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;De beweringen 1 en 2 zijn geen van beide juist.</li><li id="Q_34_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_1_Btn" onclick="CheckMCAnswer(34,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Alleen bewering 1 is juist.</li><li id="Q_34_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_2_Btn" onclick="CheckMCAnswer(34,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Alleen bewering 2 is juist.</li><li id="Q_34_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_3_Btn" onclick="CheckMCAnswer(34,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;De beweringen 1 en 2 zijn beide juist.</li></ol></li>
+<li class="QuizQuestion" id="Q_35" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo931_14.jpg" alt="biohavo931_14.jpg" title="biohavo931_14" width="523" height="288"><br><br>De afbeelding toont twee portretten van dezelfde persoon. Op de kop afgedrukt lijken de portretten sterk op elkaar en nemen we "normale" beelden waar.<br>Als we het papier nu omdraaien, ontstaat een heel vreemd effect en blijken de portretten geheel verschillend te zijn.<br><br>Vier lichaamsdelen die bij dit waarnemen een rol spelen, zijn: de grote hersenen, de kleine hersenen, de kruising van de oogzenuwen en de zintuigcellen van het netvlies van de ogen.<br>Door de werking van welk van de genoemde delen nemen wij eerst een grote gelijkenis waar en na omdraaien van het papier een groot verschil?<br></div><ol class="MCAnswers"><li id="Q_35_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_0_Btn" onclick="CheckMCAnswer(35,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de grote hersenen</li><li id="Q_35_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_1_Btn" onclick="CheckMCAnswer(35,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de kleine hersenen</li><li id="Q_35_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_2_Btn" onclick="CheckMCAnswer(35,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de kruising van de oogzenuwen</li><li id="Q_35_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_3_Btn" onclick="CheckMCAnswer(35,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de zintuigcellen van het netvlies</li></ol></li>
+<li class="QuizQuestion" id="Q_36" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo941_08.jpg" alt="biohavo941_08.jpg" title="biohavo941_08" width="332" height="355"><br><br>Een proefpersoon bevindt zich in een helder en gelijkmatig verlichte ruimte. Hij kijkt met zijn linker oog naar een groene ballon op 10 meter afstand (ballon 2 in bron 1).<br>Op 10 meter bevinden zich nog twee ballonnen van hetzelfde type en dezelfde kleur. Ook deze ballonnen ziet hij met het linker oog (de ballonnen 1 en 3 in bron 1).<br>Gedurende het experiment houdt de proefpersoon het rechteroog gesloten. Hij blijft steeds naar ballon 2 kijken. De verlichtingssterkte wordt langzaam verminderd, waardoor hij de ballonnen tenslotte niet meer ziet.<br><br>Worden bij afnemende verlichtingssterkte de ballonnen tegelijkertijd onzichtbaar voor de proefpersoon? Zo niet, welke ballon wordt dan het eerst onzichtbaar?<br></div><ol class="MCAnswers"><li id="Q_36_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_0_Btn" onclick="CheckMCAnswer(36,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;ja</li><li id="Q_36_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_1_Btn" onclick="CheckMCAnswer(36,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;nee, eerst wordt ballon 1 onzichtbaar</li><li id="Q_36_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_2_Btn" onclick="CheckMCAnswer(36,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;nee, eerst wordt ballon 2 onzichtbaar</li><li id="Q_36_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_36_3_Btn" onclick="CheckMCAnswer(36,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;nee, eerst wordt ballon 3 onzichtbaar</li></ol></li>
+<li class="QuizQuestion" id="Q_37" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo941info_06.jpg" alt="biohavo941info_06.jpg" title="biohavo941info_06" width="435" height="228"><br><br>Iemand wordt 's morgens vroeg wakker in zijn donkere slaapkamer. Hij doet het licht aan, terwijl hij nog slaperig voor zich uit staart. Over de veranderingen in de pupillen van zijn ogen in deze situatie worden vier beweringen gedaan.<br>1 De kringspieren in de irissen van zijn ogen trekken samen.<br>2 De kringspieren in de straalvormige lichamen van zijn ogen ontspannen.<br>3 De straalsgewijs verlopende spieren in de irissen van zijn ogen trekken samen.<br>4 De straalsgewijs verlopende spieren in de straalvormige lichamen van zijn ogen trekken samen.<br><br>Welke van deze beweringen is juist?<br></div><ol class="MCAnswers"><li id="Q_37_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_37_0_Btn" onclick="CheckMCAnswer(37,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1</li><li id="Q_37_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_37_1_Btn" onclick="CheckMCAnswer(37,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2</li><li id="Q_37_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_37_2_Btn" onclick="CheckMCAnswer(37,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3</li><li id="Q_37_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_37_3_Btn" onclick="CheckMCAnswer(37,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4</li></ol></li>
+<li class="QuizQuestion" id="Q_38" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo942oud_16.jpg" alt="biohavo942oud_16.jpg" title="biohavo942oud_16" width="390" height="362"><br><br>In de afbeelding is schematisch een microscopisch beeld van een deel van het netvlies van een oog van de mens getekend. Drie zijden van de tekening zijn met de letters P, Q en R aangegeven. Verschillende delen van de tekening zijn met cijfers aangegeven.<br>Valt in de natuurlijke situatie in een oog het licht van kant P, van kant Q of van kant R op het netvlies?</div><ol class="MCAnswers"><li id="Q_38_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_38_0_Btn" onclick="CheckMCAnswer(38,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van kant P</li><li id="Q_38_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_38_1_Btn" onclick="CheckMCAnswer(38,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van kant Q</li><li id="Q_38_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_38_2_Btn" onclick="CheckMCAnswer(38,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;van kant R</li></ol></li>
+<li class="QuizQuestion" id="Q_39" style="display: none"><div class="QuestionText">Een persoon is zwaar neusverkouden en kan daardoor niet goed proeven wat hij eet. Hij bedenkt hiervoor de volgende verklaringen:<br>1 de prikkeldrempel van de smaak- en reukreceptoren is door de verkoudheid sterk verlaagd,<br>2 de smaakreceptoren zijn door de verkoudheid met slijm bedekt,<br>3 de reukreceptoren functioneren niet goed doordat ze bedekt zijn met slijm.<br><br>Welke van deze verklaringen is of welke zijn juist?</div><ol class="MCAnswers"><li id="Q_39_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_39_0_Btn" onclick="CheckMCAnswer(39,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen verklaring 1</li><li id="Q_39_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_39_1_Btn" onclick="CheckMCAnswer(39,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen verklaring 2</li><li id="Q_39_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_39_2_Btn" onclick="CheckMCAnswer(39,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen verklaring 3</li><li id="Q_39_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_39_3_Btn" onclick="CheckMCAnswer(39,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;de verklaringen 1 en 3</li></ol></li>
+<li class="QuizQuestion" id="Q_40" style="display: none"><div class="QuestionText"><img src="/Toetsenbb/Regeling/biohavo972_11.jpg" alt="biohavo972_11.jpg" title="biohavo972_11" width="680" height="378"><br><br>Als binnenshuis een foto gemaakt wordt met gebruik van een flitser, hebben de mensen op de afdruk vaak rode ogen. Het rood van de ogen op de foto is het gevolg van de terugkaatsing van het flitslicht tegen de binnenzijde van de ogen.<br>De bron geeft schematisch weer hoe een doorgesneden oog er van binnen uitziet.<br><br>Door welk van de aangegeven delen wordt de rode kleur van het weerkaatste licht veroorzaakt?</div><ol class="MCAnswers"><li id="Q_40_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_40_0_Btn" onclick="CheckMCAnswer(40,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de bloedvaten die tegen het netvlies aanliggen</li><li id="Q_40_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_40_1_Btn" onclick="CheckMCAnswer(40,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de iris</li><li id="Q_40_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_40_2_Btn" onclick="CheckMCAnswer(40,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door de pigmentlaag</li><li id="Q_40_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_40_3_Btn" onclick="CheckMCAnswer(40,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door het harde oogvlies</li><li id="Q_40_4"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_40_4_Btn" onclick="CheckMCAnswer(40,4,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door het hoornvlies</li></ol></li>
+<li class="QuizQuestion" id="Q_41" style="display: none"><div class="QuestionText">De ziekte van Alzheimer is een vorm van ouderdoms-dementie. Amerikaanse onderzoekers hebben onlangs een test beschreven waarmee de ziekte van Alzheimer kan worden vastgesteld. Ze druppelen tropicamide in een oog van de te onderzoeken persoon. Bij Alzheimer-patiënten leidt dit tot een aanzienlijk grotere verwijding van de pupil dan bij andere mensen. Tropicamide wordt gewoonlijk toegepast door oogartsen die via de pupil het netvlies willen bekijken.<br>De wijdte van de pupil wordt geregeld via de pupilreflex.<br><br>Waardoor wordt de pupil verwijd?</div><ol class="MCAnswers"><li id="Q_41_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_41_0_Btn" onclick="CheckMCAnswer(41,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door het samentrekken van de kringspier in de iris</li><li id="Q_41_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_41_1_Btn" onclick="CheckMCAnswer(41,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door het samentrekken van de kringspier in het straalvormig lichaam</li><li id="Q_41_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_41_2_Btn" onclick="CheckMCAnswer(41,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;door het samentrekken van de straalsgewijs verlopende spier in de iris</li></ol></li>
+<li class="QuizQuestion" id="Q_42" style="display: none"><div class="QuestionText">Welke prikkel leidt onder normale omstandigheden tot het verwijden van de pupil?</div><ol class="MCAnswers"><li id="Q_42_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_42_0_Btn" onclick="CheckMCAnswer(42,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een onscherp beeld in de iris</li><li id="Q_42_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_42_1_Btn" onclick="CheckMCAnswer(42,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;een onscherp beeld op het netvlies</li><li id="Q_42_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_42_2_Btn" onclick="CheckMCAnswer(42,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;te weinig licht op de iris</li><li id="Q_42_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_42_3_Btn" onclick="CheckMCAnswer(42,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;te weinig licht op het netvlies</li></ol></li>
+<li class="QuizQuestion" id="Q_43" style="display: none"><div class="QuestionText">Bij een bepaalde vorm van staar treedt een troebeling van de ooglens op. Als gevolg hiervan neemt het gezichtsvermogen af en kan op den duur zelfs geheel verdwijnen. Bij een patiënt met staar worden door een operatie de troebele ooglenzen verwijderd. Er worden geen nieuwe lenzen geplaatst en de patiënt is voor zijn verdere leven verziend. Twee leerlingen doen de volgende beweringen over een dergelijke staarpatiënt met verziendheid:<br>Leerling 1: "Bij verwijdering van de ooglens verdwijnt het accommodatievermogen, daardoor is deze patiënt verziend".<br>Leerling 2: "Als deze patiënt naar een voorwerp dichtbij kijkt, bijvoorbeeld op 40 cm afstand, wordt het beeld vóór het netvlies gevormd omdat de beeldafstand kleiner wordt".<br><br>Welk van deze leerlingen doet of welke doen een juiste bewering?</div><ol class="MCAnswers"><li id="Q_43_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_43_0_Btn" onclick="CheckMCAnswer(43,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;geen van beide leerlingen</li><li id="Q_43_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_43_1_Btn" onclick="CheckMCAnswer(43,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 1</li><li id="Q_43_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_43_2_Btn" onclick="CheckMCAnswer(43,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;alleen leerling 2</li><li id="Q_43_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_43_3_Btn" onclick="CheckMCAnswer(43,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;zowel leerling 1 als leerling 2</li></ol></li></ol>
+
+
+
+
+</div>
+
+
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="HideFeedback(); return false;">&nbsp;OK&nbsp;</button>
+</div>
+
+<!-- BeginBottomNavButtons -->
+
+
+
+<!-- EndBottomNavButtons -->
+
+<!-- BeginSubmissionForm -->
+
+<!-- EndSubmissionForm --></div>
+<footer class="page-footer"><p>Biologiepagina.nl · gratis oefenen en leren voor vmbo, havo en vwo.</p><p><a href="/Contact/contact.htm">Contact</a> · <a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></p></footer>
+</main>
+</div>
+<script src="/theme/theme.js" defer></script>
+</body>
+</html>

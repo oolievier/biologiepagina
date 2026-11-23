@@ -1,0 +1,1966 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oefentoets Bloemen vruchten zaden | Biologiepagina.nl</title>
+<meta property="og:title" content="Oefentoets Bloemen vruchten zaden">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefentoets Bloemen vruchten zaden">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://biologiepagina.nl/1/bloemenvruchtenzaden/Oefentoets/Toetsbloemenvruchtenzaden.htm">
+<meta property="og:image" content="https://biologiepagina.nl/Images/biologiepagina.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Oefentoets Bloemen vruchten zaden">
+<meta name="twitter:description" content="Biologiepagina, de website voor het oefenen van biologie op vmbo, havo en vwo. Oefentoets Bloemen vruchten zaden">
+<meta name="twitter:image" content="https://biologiepagina.nl/Images/biologiepagina.jpg">
+<meta name="twitter:image:alt" content="Oefentoets Bloemen vruchten zaden">
+<meta name="DC:Creator" content="Biologiepagina">
+<meta name="DC:Title" content="Oefentoets Bloemen vruchten zaden">
+<meta name="author" content="biologiepagina.nl">
+<meta http-equiv="language" content="NL">
+<link rel="icon" href="/theme/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap">
+<link rel="stylesheet" href="/theme/theme.css">
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M062Y6XMGZ');
+</script>
+<script type="text/javascript">
+//<![CDATA[
+
+<!--
+
+
+
+
+function Client(){
+//if not a DOM browser, hopeless
+	this.min = false; if (document.getElementById){this.min = true;};
+
+	this.ua = navigator.userAgent;
+	this.name = navigator.appName;
+	this.ver = navigator.appVersion;  
+
+//Get data about the browser
+	this.mac = (this.ver.indexOf('Mac') != -1);
+	this.win = (this.ver.indexOf('Windows') != -1);
+
+//Look for Gecko
+	this.gecko = (this.ua.indexOf('Gecko') > 1);
+	if (this.gecko){
+		this.geckoVer = parseInt(this.ua.substring(this.ua.indexOf('Gecko')+6, this.ua.length));
+		if (this.geckoVer < 20020000){this.min = false;}
+	}
+	
+//Look for Firebird
+	this.firebird = (this.ua.indexOf('Firebird') > 1);
+	
+//Look for Safari
+	this.safari = (this.ua.indexOf('Safari') > 1);
+	if (this.safari){
+		this.gecko = false;
+	}
+	
+//Look for IE
+	this.ie = (this.ua.indexOf('MSIE') > 0);
+	if (this.ie){
+		this.ieVer = parseFloat(this.ua.substring(this.ua.indexOf('MSIE')+5, this.ua.length));
+		if (this.ieVer < 5.5){this.min = false;}
+	}
+	
+//Look for Opera
+	this.opera = (this.ua.indexOf('Opera') > 0);
+	if (this.opera){
+		this.operaVer = parseFloat(this.ua.substring(this.ua.indexOf('Opera')+6, this.ua.length));
+		if (this.operaVer < 7.04){this.min = false;}
+	}
+	if (this.min == false){
+		alert('Your browser may not be able to handle this page.');
+	}
+	
+//Special case for the horrible ie5mac
+	this.ie5mac = (this.ie&&this.mac&&(this.ieVer<6));
+}
+
+var C = new Client();
+
+//for (prop in C){
+//	alert(prop + ': ' + C[prop]);
+//}
+
+
+
+//CODE FOR HANDLING NAV BUTTONS AND FUNCTION BUTTONS
+
+//[strNavBarJS]
+function NavBtnOver(Btn){
+	if (Btn.className != 'NavButtonDown'){Btn.className = 'NavButtonUp';}
+}
+
+function NavBtnOut(Btn){
+	Btn.className = 'NavButton';
+}
+
+function NavBtnDown(Btn){
+	Btn.className = 'NavButtonDown';
+}
+//[/strNavBarJS]
+
+function FuncBtnOver(Btn){
+	if (Btn.className != 'FuncButtonDown'){Btn.className = 'FuncButtonUp';}
+}
+
+function FuncBtnOut(Btn){
+	Btn.className = 'FuncButton';
+}
+
+function FuncBtnDown(Btn){
+	Btn.className = 'FuncButtonDown';
+}
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+
+
+
+//CODE FOR HANDLING DISPLAY OF POPUP FEEDBACK BOX
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+//Focus the OK button
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+	
+//
+//	RefreshImages();
+//
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+				//get Mac FireFox to manipulate display, to force screen redraw
+				if (C.mac && C.gecko) {Els[i].style.display = '';}
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+				if (C.mac && C.gecko) {Els[i].style.display = 'none';}
+			}
+		} 
+		else {
+			// tagName is either input or select (that is, Form Elements)
+			// ie6 has a problem with Form elements, so manipulate those
+			if (C.ie) {
+				if (C.ieVer < 7) {
+					if (Show == true){
+						Els[i].style.visibility = 'visible';
+					}
+					else{
+						Els[i].style.visibility = 'hidden';
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+	if (Finished == true){
+		Finish();
+	}
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].clientWidth;
+	this.H = document.getElementsByTagName('body')[0].clientHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	if (C.ie) {
+		thisKey = window.event.keyCode;
+	}
+	else {
+		thisKey = e.keyCode;
+	}
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+	}
+
+	if (Suppress == true){
+		if (C.ie){
+			window.event.returnValue = false;	
+			window.event.cancelBubble = true;
+		}
+		else{
+			e.preventDefault();
+		}
+	}
+}
+
+if (C.ie){
+	document.attachEvent('onkeydown',SuppressBackspace);
+	window.attachEvent('onkeydown',SuppressBackspace);
+}
+else{
+	if (window.addEventListener){
+		window.addEventListener('keypress',SuppressBackspace,false);
+	}
+}
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+	RefreshImages();
+
+}
+
+
+
+Imgs = new Array();
+
+function PreloadImages(){
+	var a = PreloadImages.arguments;
+	for (var i=0; i<a.length; i++){
+		Imgs[i] = new Image();
+		Imgs[i].src = a[i];
+	}
+}
+
+function RefreshImages(){
+	for (var i=0; i<document.images.length; i++){
+		if (document.images[i].name.substring(0,6) != 'NavBar'){
+			document.images[i].src = document.images[i].src;
+		}
+	}
+}
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+//EXTENSION TO ARRAY OBJECT
+function Array_IndexOf(Input){
+	var Result = -1;
+	for (var i=0; i<this.length; i++){
+		if (this[i] == Input){
+			Result = i;
+		}
+	}
+	return Result;
+}
+Array.prototype.indexOf = Array_IndexOf;
+
+//IE HAS RENDERING BUG WITH BOTTOM NAVBAR
+function RemoveBottomNavBarForIE(){
+	if ((C.ie)&&(document.getElementById('Reading') != null)){
+		if (document.getElementById('BottomNavBar') != null){
+			document.getElementById('TheBody').removeChild(document.getElementById('BottomNavBar'));
+		}
+	}
+}
+
+
+
+
+//HOTPOTNET-RELATED CODE
+
+var HPNStartTime = (new Date()).getTime();
+var SubmissionTimeout = 30000;
+var Detail = ''; //Global that is used to submit tracking data
+
+function Finish(){
+//If there's a form, fill it out and submit it
+	if (document.store != null){
+		Frm = document.store;
+		Frm.starttime.value = HPNStartTime;
+		Frm.endtime.value = (new Date()).getTime();
+		Frm.mark.value = Score;
+		Frm.detail.value = Detail;
+		Frm.submit();
+	}
+}
+
+
+
+
+
+//JQUIZ CORE JAVASCRIPT CODE
+
+var CurrQNum = 0;
+var CorrectIndicator = '<img src="duimhoog.gif" alt="duimhoog.gif" title="duimhoog" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var IncorrectIndicator = '<img src="duimlaagrood.gif" alt="duimlaagrood.gif" title="duimlaagrood" width="25" height="19" style="display: block; margin-left: auto; margin-right: auto; text-align: center;"></img>';
+var YourScoreIs = 'Je score is';
+
+//New for 6.2.2.0
+var CompletedSoFar = 'Aantal vragen volledig afgerond: ';
+var ExerciseCompleted = 'You have completed the exercise.';
+var ShowCompletedSoFar = true;
+
+var ContinuousScoring = true;
+var CorrectFirstTime = 'Vragen die de eerste keer al goed zijn beantwoord: ';
+var ShowCorrectFirstTime = true;
+var ShuffleQs = true;
+var ShuffleAs = true;
+var DefaultRight = 'Correct!';
+var DefaultWrong = 'Sorry! Probeer nog een keer....';
+var QsToShow = 36;
+var Score = 0;
+var Finished = false;
+var Qs = null;
+var QArray = new Array();
+var ShowingAllQuestions = false;
+var ShowAllQuestionsCaption = '';
+var ShowOneByOneCaption = '';
+var State = new Array();
+var Feedback = '';
+var TimeOver = false;
+var strInstructions = '';
+var Locked = false;
+
+//The following variable can be used to add a message explaining that
+//the question is finished, so no further marking will take place.
+var strQuestionFinished = '';
+
+function CompleteEmptyFeedback(){
+	var QNum, ANum;
+	for (QNum=0; QNum<I.length; QNum++){
+//Only do this if not multi-select
+		if (I[QNum][2] != '3'){
+  		for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+  			if (I[QNum][3][ANum][1].length < 1){
+  				if (I[QNum][3][ANum][2] > 0){
+  					I[QNum][3][ANum][1] = DefaultRight;
+  				}
+  				else{
+  					I[QNum][3][ANum][1] = DefaultWrong;
+  				}
+  			}
+  		}
+		}
+	}
+}
+
+function SetUpQuestions(){
+	var AList = new Array(); 
+	var QList = new Array();
+	var i, j;
+	Qs = document.getElementById('Questions');
+	while (Qs.getElementsByTagName('li').length > 0){
+		QList.push(Qs.removeChild(Qs.getElementsByTagName('li')[0]));
+	}
+	var DumpItem = 0;
+	if (QsToShow > QList.length){
+		QsToShow = QList.length;
+	}
+	while (QsToShow < QList.length){
+		DumpItem = Math.floor(QList.length*Math.random());
+		for (j=DumpItem; j<(QList.length-1); j++){
+			QList[j] = QList[j+1];
+		}
+		QList.length = QList.length-1;
+	}
+	if (ShuffleQs == true){
+		QList = Shuffle(QList);
+	}
+	if (ShuffleAs == true){
+		var As;
+		for (var i=0; i<QList.length; i++){
+			As = QList[i].getElementsByTagName('ol')[0];
+			if (As != null){
+  			AList.length = 0;
+				while (As.getElementsByTagName('li').length > 0){
+					AList.push(As.removeChild(As.getElementsByTagName('li')[0]));
+				}
+				AList = Shuffle(AList);
+				for (j=0; j<AList.length; j++){
+					As.appendChild(AList[j]);
+				}
+			}
+		}
+	}
+	
+	for (i=0; i<QList.length; i++){
+		Qs.appendChild(QList[i]);
+		QArray[QArray.length] = QList[i];
+	}
+
+//Show the first item
+	QArray[0].style.display = '';
+	
+//Now hide all except the first item
+	for (i=1; i<QArray.length; i++){
+		QArray[i].style.display = 'none';
+	}		
+	SetQNumReadout();
+	
+	SetFocusToTextbox();
+}
+
+function SetFocusToTextbox(){
+//if there's a textbox, set the focus in it
+	if (QArray[CurrQNum].getElementsByTagName('input')[0] != null){
+		QArray[CurrQNum].getElementsByTagName('input')[0].focus();
+//and show a keypad if there is one
+		if (document.getElementById('CharacterKeypad') != null){
+			document.getElementById('CharacterKeypad').style.display = 'block';
+		}
+	}
+	else{
+  	if (QArray[CurrQNum].getElementsByTagName('textarea')[0] != null){
+  		QArray[CurrQNum].getElementsByTagName('textarea')[0].focus();	
+//and show a keypad if there is one
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'block';
+			}
+		}
+//This added for 6.0.4.11: hide accented character buttons if no textbox
+		else{
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'none';
+			}
+		}
+	}
+}
+
+function ChangeQ(ChangeBy){
+//The following line prevents moving to another question until the current
+//question is answered correctly. Uncomment it to enable this behaviour. 
+//	if (State[CurrQNum][0] == -1){return;}
+	if (((CurrQNum + ChangeBy) < 0)||((CurrQNum + ChangeBy) >= QArray.length)){return;}
+	QArray[CurrQNum].style.display = 'none';
+	CurrQNum += ChangeBy;
+	QArray[CurrQNum].style.display = '';
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+	SetQNumReadout();
+	SetFocusToTextbox();
+}
+
+var HiddenReadingShown = false;
+function ShowSpecialReadingForQuestion(){
+//Undocumented function for showing specific reading text elements which change with each question
+//Added on 10/12/2004
+	if (document.getElementById('ReadingDiv') != null){
+		if (HiddenReadingShown == true){
+			document.getElementById('ReadingDiv').innerHTML = '';
+		}
+		if (QArray[CurrQNum] != null){
+//Fix for 6.0.4.25
+			var Children = QArray[CurrQNum].getElementsByTagName('div');
+			for (var i=0; i<Children.length; i++){
+			if (Children[i].className=="HiddenReading"){
+					document.getElementById('ReadingDiv').innerHTML = Children[i].innerHTML;
+					HiddenReadingShown = true;
+//Hide the ShowAllQuestions button to avoid confusion
+					if (document.getElementById('ShowMethodButton') != null){
+						document.getElementById('ShowMethodButton').style.display = 'none';
+					}
+				}
+			}	
+		}
+	}
+}
+
+function SetQNumReadout(){
+	document.getElementById('QNumReadout').innerHTML = (CurrQNum+1) + ' / ' + QArray.length;
+	if ((CurrQNum+1) >= QArray.length){
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'visible';
+		}
+	}
+	if (CurrQNum <= 0){
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'visible';
+		}
+	}
+}
+
+var I=new Array();
+I[0]=new Array();I[0][0]=100;
+I[0][1]='';
+I[0][2]='1';
+I[0][3]=new Array();
+I[0][3][0]=new Array('stempel','',1,100,1);
+I[1]=new Array();I[1][0]=100;
+I[1][1]='';
+I[1][2]='1';
+I[1][3]=new Array();
+I[1][3][0]=new Array('zaadbeginsel','',1,100,1);
+I[1][3][1]=new Array('eicel','',1,100,1);
+I[2]=new Array();I[2][0]=100;
+I[2][1]='';
+I[2][2]='1';
+I[2][3]=new Array();
+I[2][3][0]=new Array('kelkblad','',1,100,1);
+I[2][3][1]=new Array('kelkbladeren','',1,100,1);
+I[3]=new Array();I[3][0]=100;
+I[3][1]='';
+I[3][2]='3';
+I[3][3]=new Array();
+I[3][3][0]=new Array('1','',0,0,1);
+I[3][3][1]=new Array('2','',1,100,1);
+I[3][3][2]=new Array('3','',0,0,1);
+I[3][3][3]=new Array('4','',0,0,1);
+I[4]=new Array();I[4][0]=100;
+I[4][1]='';
+I[4][2]='0';
+I[4][3]=new Array();
+I[4][3][0]=new Array('1','',1,100,1);
+I[4][3][1]=new Array('2','',0,0,1);
+I[4][3][2]=new Array('3','',0,0,1);
+I[4][3][3]=new Array('4','',0,0,1);
+I[5]=new Array();I[5][0]=100;
+I[5][1]='';
+I[5][2]='1';
+I[5][3]=new Array();
+I[5][3][0]=new Array('stuifmeelbuis','',1,100,1);
+I[6]=new Array();I[6][0]=100;
+I[6][1]='';
+I[6][2]='3';
+I[6][3]=new Array();
+I[6][3][0]=new Array('Geuren sterk','',1,100,1);
+I[6][3][1]=new Array('Geen nectar','',0,0,1);
+I[6][3][2]=new Array('Stempel en meeldraden buiten de bloem','',0,0,1);
+I[6][3][3]=new Array('Plakkerig stuifmeel','',1,100,1);
+I[6][3][4]=new Array('Zwaarder stuifmeel','',1,100,1);
+I[6][3][5]=new Array('Heel veel stuifmeel','',0,0,1);
+I[7]=new Array();I[7][0]=100;
+I[7][1]='';
+I[7][2]='0';
+I[7][3]=new Array();
+I[7][3][0]=new Array('1 stuifmeelbuis; 1 eicel','',0,0,1);
+I[7][3][1]=new Array('1 stuifmeelbuis; 4 eicellen','',0,0,1);
+I[7][3][2]=new Array('4 stuifmeelbuis; 1 eicel','',0,0,1);
+I[7][3][3]=new Array('4 stuifmeelbuizen; 4 eicellen','',1,100,1);
+I[8]=new Array();I[8][0]=100;
+I[8][1]='';
+I[8][2]='1';
+I[8][3]=new Array();
+I[8][3][0]=new Array('vrucht','',1,100,1);
+I[9]=new Array();I[9][0]=100;
+I[9][1]='';
+I[9][2]='3';
+I[9][3]=new Array();
+I[9][3][0]=new Array('Knollen','',1,100,1);
+I[9][3][1]=new Array('Bollen','',1,100,1);
+I[9][3][2]=new Array('Vruchten','',0,0,1);
+I[9][3][3]=new Array('Uitlopers','',1,100,1);
+I[10]=new Array();I[10][0]=100;
+I[10][1]='';
+I[10][2]='3';
+I[10][3]=new Array();
+I[10][3][0]=new Array('Mart','',1,100,1);
+I[10][3][1]=new Array('Wina','',1,100,1);
+I[10][3][2]=new Array('Rudolf','',1,100,1);
+I[11]=new Array();I[11][0]=100;
+I[11][1]='';
+I[11][2]='3';
+I[11][3]=new Array();
+I[11][3][0]=new Array('Mirte','',1,100,1);
+I[11][3][1]=new Array('Brenda','',1,100,1);
+I[11][3][2]=new Array('Willem','',0,0,1);
+I[12]=new Array();I[12][0]=100;
+I[12][1]='';
+I[12][2]='1';
+I[12][3]=new Array();
+I[12][3][0]=new Array('wortelstok','',1,100,1);
+I[12][3][1]=new Array('wortelstokken','',1,100,1);
+I[13]=new Array();I[13][0]=100;
+I[13][1]='';
+I[13][2]='0';
+I[13][3]=new Array();
+I[13][3][0]=new Array('in de helmdraden','',0,0,1);
+I[13][3][1]=new Array('in de helmknoppen','',0,0,1);
+I[13][3][2]=new Array('in de stempels','',0,0,1);
+I[13][3][3]=new Array('in de zaadbeginsels','',1,100,1);
+I[14]=new Array();I[14][0]=100;
+I[14][1]='';
+I[14][2]='0';
+I[14][3]=new Array();
+I[14][3][0]=new Array('bevruchting > bestuiving > ontstaan stuifmeelbuis','',0,0,1);
+I[14][3][1]=new Array('bevruchting > ontstaan stuifmeelbuis > bestuiving','',0,0,1);
+I[14][3][2]=new Array('bestuiving > ontstaan stuifmeelbuis > bevruchting','',1,100,1);
+I[14][3][3]=new Array('bestuiving > bevruchting > ontstaan stuifmeelbuis','',0,0,1);
+I[15]=new Array();I[15][0]=100;
+I[15][1]='';
+I[15][2]='1';
+I[15][3]=new Array();
+I[15][3][0]=new Array('eicel','',1,100,1);
+I[16]=new Array();I[16][0]=100;
+I[16][1]='';
+I[16][2]='0';
+I[16][3]=new Array();
+I[16][3][0]=new Array('Beide ongelijk','',0,0,1);
+I[16][3][1]=new Array('Carlijn heeft gelijk','',0,0,1);
+I[16][3][2]=new Array('Merel heeft gelijk','',0,0,1);
+I[16][3][3]=new Array('Beide hebben gelijk','',1,100,1);
+I[17]=new Array();I[17][0]=100;
+I[17][1]='';
+I[17][2]='0';
+I[17][3]=new Array();
+I[17][3][0]=new Array('Beide ongelijk','Inderdaad. Bestuiving kan alleen binnen 1 soort plaats vinden. De felle kroonbladeren zijn voor het aantrekken van insecten.',1,100,1);
+I[17][3][1]=new Array('Ruben heeft gelijk','',0,0,1);
+I[17][3][2]=new Array('Mike heeft gelijk','',0,0,1);
+I[17][3][3]=new Array('Beide hebben gelijk','',0,0,1);
+I[18]=new Array();I[18][0]=100;
+I[18][1]='';
+I[18][2]='0';
+I[18][3]=new Array();
+I[18][3][0]=new Array('Beide gelijk','',0,0,1);
+I[18][3][1]=new Array('Alleen Mark heeft gelijk','Inderdaad, bevruchting vindt plaats in het vruchtbeginsel van een plant',1,100,1);
+I[18][3][2]=new Array('Alleen Maxime heeft gelijk','',0,0,1);
+I[18][3][3]=new Array('Beide gelijk','',0,0,1);
+I[19]=new Array();I[19][0]=100;
+I[19][1]='';
+I[19][2]='1';
+I[19][3]=new Array();
+I[19][3][0]=new Array('kelk','',1,100,1);
+I[19][3][1]=new Array('kelkblad','',1,100,1);
+I[19][3][2]=new Array('kelkbladeren','',1,100,1);
+I[19][3][3]=new Array('kelkblaadjes','',1,100,1);
+I[19][3][4]=new Array('kelkblaadje','',1,100,1);
+I[20]=new Array();I[20][0]=100;
+I[20][1]='';
+I[20][2]='0';
+I[20][3]=new Array();
+I[20][3][0]=new Array('Uit het vruchtbeginsel','',0,0,1);
+I[20][3][1]=new Array('Uit het zaadbeginsel','',1,100,1);
+I[20][3][2]=new Array('Uit de stempel','',0,0,1);
+I[20][3][3]=new Array('Uit de bloembodem','',0,0,1);
+I[21]=new Array();I[21][0]=100;
+I[21][1]='';
+I[21][2]='0';
+I[21][3]=new Array();
+I[21][3][0]=new Array('Door de wind','',0,0,1);
+I[21][3][1]=new Array('Door de plant zelf','',0,0,1);
+I[21][3][2]=new Array('Worden opgegeten en uitgepoept door dieren','',0,0,1);
+I[21][3][3]=new Array('Blijven hangen aan de vacht van dieren','',1,100,1);
+I[22]=new Array();I[22][0]=100;
+I[22][1]='';
+I[22][2]='0';
+I[22][3]=new Array();
+I[22][3][0]=new Array('Door de wind','',1,100,1);
+I[22][3][1]=new Array('Door de plant zelf','',0,0,1);
+I[22][3][2]=new Array('Worden opgegeten en uitgepoept door dieren','',0,0,1);
+I[22][3][3]=new Array('Blijven hangen aan de vacht van dieren','',0,0,1);
+I[23]=new Array();I[23][0]=100;
+I[23][1]='';
+I[23][2]='0';
+I[23][3]=new Array();
+I[23][3][0]=new Array('Door de wind','',0,0,1);
+I[23][3][1]=new Array('Door de plant zelf','Inderdaad de vruchten springen open en slingeren zo de zaden weg',1,100,1);
+I[23][3][2]=new Array('Worden opgegeten en uitgepoept door dieren','',0,0,1);
+I[23][3][3]=new Array('Blijven hangen aan de vacht van dieren','',0,0,1);
+I[24]=new Array();I[24][0]=100;
+I[24][1]='';
+I[24][2]='1';
+I[24][3]=new Array();
+I[24][3][0]=new Array('zelfbestuiving','',1,100,1);
+I[24][3][1]=new Array('zelfbestuiven','',1,100,1);
+I[25]=new Array();I[25][0]=100;
+I[25][1]='';
+I[25][2]='0';
+I[25][3]=new Array();
+I[25][3][0]=new Array('Beide ongelijk','',0,0,1);
+I[25][3][1]=new Array('Karin heeft gelijk','',0,0,1);
+I[25][3][2]=new Array('Madelon heeft gelijk','',0,0,1);
+I[25][3][3]=new Array('Beide hebben gelijk','',1,100,1);
+I[26]=new Array();I[26][0]=100;
+I[26][1]='';
+I[26][2]='1';
+I[26][3]=new Array();
+I[26][3][0]=new Array('stijl','',1,100,1);
+I[27]=new Array();I[27][0]=100;
+I[27][1]='';
+I[27][2]='1';
+I[27][3]=new Array();
+I[27][3][0]=new Array('stempel','',1,100,1);
+I[28]=new Array();I[28][0]=100;
+I[28][1]='';
+I[28][2]='3';
+I[28][3]=new Array();
+I[28][3][0]=new Array('kelkbladeren','',1,100,1);
+I[28][3][1]=new Array('kroonbladeren','',0,0,1);
+I[28][3][2]=new Array('meeldraden','',1,100,1);
+I[28][3][3]=new Array('stamper','',0,0,1);
+I[28][3][4]=new Array('bloemsteel','',0,0,1);
+I[29]=new Array();I[29][0]=100;
+I[29][1]='';
+I[29][2]='0';
+I[29][3]=new Array();
+I[29][3][0]=new Array('Juist','',0,0,1);
+I[29][3][1]=new Array('Onjuist','Deze plant is tweeslachtig dus eenhuizig',1,100,1);
+I[30]=new Array();I[30][0]=100;
+I[30][1]='';
+I[30][2]='1';
+I[30][3]=new Array();
+I[30][3][0]=new Array('bladeren','',1,100,1);
+I[31]=new Array();I[31][0]=100;
+I[31][1]='';
+I[31][2]='1';
+I[31][3]=new Array();
+I[31][3][0]=new Array('stekken','',1,100,1);
+I[31][3][1]=new Array('stek','',1,100,1);
+I[31][3][2]=new Array('stekje','',1,100,1);
+I[32]=new Array();I[32][0]=100;
+I[32][1]='';
+I[32][2]='3';
+I[32][3]=new Array();
+I[32][3][0]=new Array('1','',1,100,1);
+I[32][3][1]=new Array('2','',0,0,1);
+I[32][3][2]=new Array('3','',1,100,1);
+I[32][3][3]=new Array('4','',1,100,1);
+I[33]=new Array();I[33][0]=100;
+I[33][1]='';
+I[33][2]='0';
+I[33][3]=new Array();
+I[33][3][0]=new Array('eenslachtig / windbloem','',0,0,1);
+I[33][3][1]=new Array('eenslachtig / insectenbloem','',0,0,1);
+I[33][3][2]=new Array('tweeslachtig / windbloem','',0,0,1);
+I[33][3][3]=new Array('tweeslachtig / insectenbloem','',1,100,1);
+I[34]=new Array();I[34][0]=100;
+I[34][1]='';
+I[34][2]='0';
+I[34][3]=new Array();
+I[34][3][0]=new Array('wind','',0,0,1);
+I[34][3][1]=new Array('insecten','',1,100,1);
+I[35]=new Array();I[35][0]=100;
+I[35][1]='';
+I[35][2]='0';
+I[35][3]=new Array();
+I[35][3][0]=new Array('Beide ongelijk','',0,0,1);
+I[35][3][1]=new Array('Wilbert heeft gelijk','',0,0,1);
+I[35][3][2]=new Array('Marieke heeft gelijk','Inderdaad, het zijn 6 meeldraden',1,100,1);
+I[35][3][3]=new Array('Beide hebben gelijk','',0,0,1);
+
+
+function StartUp(){
+	RemoveBottomNavBarForIE();
+
+//If there's only one question, no need for question navigation controls
+	if (QsToShow < 2){
+		document.getElementById('QNav').style.display = 'none';
+	}
+	
+//Stash the instructions so they can be redisplayed
+	strInstructions = document.getElementById('InstructionsDiv').innerHTML;
+	
+
+	
+
+	
+
+	PreloadImages('duimhoog.gif','duimlaagrood.gif','bloem_invul.gif','krusizelfbestuiving.jpg','stuifmeelbuis.jpg','bijtje41.gif','aardappel.jpg','Aardbeien.jpg','wortelstok.jpg','stampertje.jpg','boterbloem.jpg','appel.jpg','kleefkruid.jpg','esdoorn[1].jpg','brem.jpg','stamper.jpg','lelie-2[1].jpg','ongesl.gif','koekoeksbloem.jpg','f_2050[1].jpg','Bloemdiagram_tulp1[1].jpg');
+
+	
+	CompleteEmptyFeedback();
+
+	SetUpQuestions();
+	ClearTextBoxes();
+	CreateStatusArray();
+	
+
+	
+//Check search string for q parameter
+	if (document.location.search.length > 0){
+		if (ShuffleQs == false){
+			var JumpTo = parseInt(document.location.search.substring(1,document.location.search.length))-1;
+			if (JumpTo <= QsToShow){
+				ChangeQ(JumpTo);
+			}
+		}
+	}
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+}
+
+function ShowHideQuestions(){
+	FuncBtnOut(document.getElementById('ShowMethodButton'));
+	document.getElementById('ShowMethodButton').style.display = 'none';
+	if (ShowingAllQuestions == false){
+		for (var i=0; i<QArray.length; i++){
+				QArray[i].style.display = '';
+			}
+		document.getElementById('Questions').style.listStyleType = 'decimal';
+		document.getElementById('OneByOneReadout').style.display = 'none';
+		document.getElementById('ShowMethodButton').innerHTML = ShowOneByOneCaption;
+		ShowingAllQuestions = true;
+	}
+	else{
+		for (var i=0; i<QArray.length; i++){
+				if (i != CurrQNum){
+					QArray[i].style.display = 'none';
+				}
+			}
+		document.getElementById('Questions').style.listStyleType = 'none';
+		document.getElementById('OneByOneReadout').style.display = '';
+		document.getElementById('ShowMethodButton').innerHTML = ShowAllQuestionsCaption;
+		ShowingAllQuestions = false;	
+	}
+	document.getElementById('ShowMethodButton').style.display = 'inline';
+}
+
+function CreateStatusArray(){
+	var QNum, ANum;
+//For each item in the item array
+	for (QNum=0; QNum<I.length; QNum++){
+//Check if the question still exists (hasn't been nuked by showing a random selection)
+		if (document.getElementById('Q_' + QNum) != null){
+			State[QNum] = new Array();
+			State[QNum][0] = -1; //Score for this q; -1 shows question not done yet
+			State[QNum][1] = new Array(); //answers
+			for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+				State[QNum][1][ANum] = 0; //answer not chosen yet; when chosen, will store its position in the series of choices
+			}
+			State[QNum][2] = 0; //tries at this q so far
+			State[QNum][3] = 0; //incrementing percent-correct values of selected answers
+			State[QNum][4] = 0; //penalties incurred for hints
+			State[QNum][5] = ''; //Sequence of answers chosen by number
+		}
+		else{
+			State[QNum] = null;
+		}
+	}
+}
+
+
+
+function CheckMCAnswer(QNum, ANum, Btn){
+//if question doesn't exist, bail
+	if (State[QNum].length < 1){return;}
+	
+//Get the feedback
+	Feedback = I[QNum][3][ANum][1];
+	
+//Now show feedback and bail if question already complete
+	if (State[QNum][0] > -1){
+//Add an extra message explaining that the question
+// is finished if defined by the user
+		if (strQuestionFinished.length > 0){Feedback += '<br />' + strQuestionFinished;}
+//Show the feedback
+		ShowMessage(Feedback);
+//New for 6.2.2.1: If you want to mark an answer as correct even when it's the final choice, uncomment this line.
+//		if (I[QNum][3][ANum][2] >= 1){Btn.innerHTML = CorrectIndicator;}else{Btn.innerHTML = IncorrectIndicator;}	
+		return;
+	}
+	
+//Hide the button while processing
+	Btn.style.display = 'none';
+
+//Increment the number of tries
+	State[QNum][2]++;
+	
+//Add the percent-correct value of this answer
+	State[QNum][3] += I[QNum][3][ANum][3];
+	
+//Store the try number in the answer part of the State array, for tracking purposes
+	State[QNum][1][ANum] = State[QNum][2];
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	State[QNum][5] += String.fromCharCode(65+ANum);
+	
+//Should this answer be accepted as correct?
+	if (I[QNum][3][ANum][2] < 1){
+//It's wrong
+
+//Mark the answer
+		Btn.innerHTML = IncorrectIndicator;
+		
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+		
+//Check whether this leaves just one MC answer unselected, in which case the Q is terminated
+		var RemainingAnswer = FinalAnswer(QNum);
+		if (RemainingAnswer > -1){
+//Behave as if the last answer had been selected, but give no credit for it
+//Increment the number of tries
+			State[QNum][2]++;		
+		
+//Calculate the score for this question
+			CalculateMCQuestionScore(QNum);
+			
+//Get the overall score and add it to the feedback
+			CalculateOverallScore();
+//New for 6.2.2.1
+			var QsDone = CheckQuestionsCompleted();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's right
+//Mark the answer
+		Btn.innerHTML = CorrectIndicator;
+				
+//Calculate the score for this question
+		CalculateMCQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+
+//Get the overall score and add it to the feedback
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+		}
+		else{
+			WriteToInstructions(QsDone);
+		}
+	}
+	
+//Show the button again
+	Btn.style.display = 'inline';
+	
+//Finally, show the feedback	
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMCQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties
+	var PercentCorrect = State[QNum][3];
+	var TotAns = GetTotalMCAnswers(QNum);
+	var HintPenalties = State[QNum][4];
+	
+//Make sure it's not already complete
+
+	if (State[QNum][0] < 0){
+//Allow for Hybrids
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+//This line calculates the score for this question
+			if (TotAns == 1){
+				State[QNum][0] = 1;
+			}
+			else{
+				State[QNum][0] = ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
+			}
+		}
+//Fix for Safari bug added for version 6.0.3.42 (negative infinity problem)
+		if ((State[QNum][0] < 0)||(State[QNum][0] == Number.NEGATIVE_INFINITY)){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function GetTotalMCAnswers(QNum){
+	var Result = 0;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			Result++;
+		}
+	}
+	return Result;
+}
+
+function FinalAnswer(QNum){
+	var UnchosenAnswers = 0;
+	var FinalAnswer = -1;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			if (State[QNum][1][ANum] < 1){ //This answer hasn't been chosen yet
+				UnchosenAnswers++;
+				FinalAnswer = ANum;
+			}
+		}
+	}
+	if (UnchosenAnswers == 1){
+		return FinalAnswer;
+	}
+	else{
+		return -1;
+	}
+}
+
+
+
+
+
+function CheckMultiSelAnswer(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+
+//Increment the tries for this question
+	State[QNum][2]++;
+	
+	var ShouldBeChecked;
+	var Matches = 0;
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	
+//Check if there are any mismatches
+	Feedback = '';
+	var CheckBox = null;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		CheckBox = document.getElementById('Q_' + QNum + '_' + ANum + '_Chk');
+		if (CheckBox.checked == true){
+			State[QNum][5] += 'Y';
+		}
+		else{
+			State[QNum][5] += 'N';
+		}
+		ShouldBeChecked = (I[QNum][3][ANum][2] == 1);
+		if (ShouldBeChecked == CheckBox.checked){
+			Matches++;
+		}
+		else{
+			Feedback = I[QNum][3][ANum][1];
+		}
+	}
+//Add the hit readout
+	Feedback = Matches + ' / ' + I[QNum][3].length + '<br />' + Feedback;
+	if (Matches == I[QNum][3].length){
+//It's right
+		CalculateMultiSelQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+		
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's wrong -- Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+	}
+		
+//Show the feedback
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMultiSelQuestionScore(QNum){
+	var Tries = State[QNum][2];
+	var TotAns = State[QNum][1].length;
+	
+//Make sure it's not already complete
+	if (State[QNum][0] < 0){
+		State[QNum][0] = (TotAns - (Tries-1)) / TotAns;
+		if (State[QNum][0] < 0){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+
+
+function CalculateOverallScore(){
+	var TotalWeighting = 0;
+	var TotalScore = 0;
+	
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] > -1){
+				TotalWeighting += I[QNum][0];
+				TotalScore += (I[QNum][0] * State[QNum][0]);
+			}
+		}
+	}
+	if (TotalWeighting > 0){
+		Score = Math.floor((TotalScore/TotalWeighting)*100);
+	}
+	else{
+//if TotalWeighting is 0, no questions so far have any value, so 
+//no penalty should be shown.
+		Score = 100; 
+	}
+}
+
+//New for 6.2.2.0
+function CheckQuestionsCompleted(){
+	if (ShowCompletedSoFar == false){return '';}
+	var QsCompleted = 0;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] >= 0){
+				QsCompleted++;
+			}
+		}
+	}
+//Fixes for 6.2.2.2
+	if (QsCompleted >= QArray.length){
+		return ExerciseCompleted;
+	}
+	else{
+		return CompletedSoFar + ' ' + QsCompleted + '/' + QArray.length + '.';
+	}
+}
+
+function CheckFinished(){
+	var FB = '';
+	var AllDone = true;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] < 0){
+				AllDone = false;
+			}
+		}
+	}
+	if (AllDone == true){
+	
+//Report final score and submit if necessary
+		CalculateOverallScore();
+		FB = YourScoreIs + ' ' + Score + '%.';
+		if (ShowCorrectFirstTime == true){
+			var CFT = 0;
+			for (QNum=0; QNum<State.length; QNum++){
+				if (State[QNum] != null){
+					if (State[QNum][0] >= 1){
+						CFT++;
+					}
+				}
+			}
+			FB += '<br />' + CorrectFirstTime + ' ' + CFT + '/' + QsToShow;
+		}
+		
+//New for 6.2.2.0
+		FB += '<br />' + ExerciseCompleted;
+		
+		WriteToInstructions(FB);
+		
+		Finished == true;
+
+
+
+
+		TimeOver = true;
+		Locked = true;
+		
+
+
+		Finished = true;
+		Detail = '<?xml version="1.0"?><hpnetresult><fields>';
+		for (QNum=0; QNum<State.length; QNum++){
+			if (State[QNum] != null){
+				if (State[QNum][5].length > 0){
+					Detail += '<field><fieldname>Question #' + (QNum+1) + '</fieldname><fieldtype>question-tracking</fieldtype><fieldlabel>Q ' + (QNum+1) + '</fieldlabel><fieldlabelid>QuestionTrackingField</fieldlabelid><fielddata>' + State[QNum][5] + '</fielddata></field>';
+				}
+			}
+		}
+		Detail += '</fields></hpnetresult>';
+		setTimeout('Finish()', SubmissionTimeout);
+	}
+
+}
+
+
+
+
+
+//CORE CODE FOR CHECKING SHORT ANSWER GUESSES AGAINST ANSWER ARRAYS
+
+var CaseSensitive = false;
+var ShowAlsoCorrect = true;
+var PleaseEnter = 'Voer een antwoord in';
+var HybridTries = 2;
+var PartlyIncorrect = 'Je antwoord is deels onjuist';
+var CorrectList = 'Goede antwoorden: ';
+var NextCorrect = 'Volgende goede letter van het antwoord is: ';
+var CurrBox = null;
+
+function TrackFocus(BoxID){
+	InTextBox = true;
+	CurrBox = document.getElementById(BoxID);
+}
+
+function LeaveGap(){
+	InTextBox = false;
+}
+
+function TypeChars(Chars){
+	if (CurrBox != null){
+//Following check added for 6.0.4.4 to avoid error message in IE6
+		if (CurrBox.style.display != 'none'){
+			CurrBox.value += Chars;
+			CurrBox.focus();
+		}
+	}
+}
+
+function CheckGuess(Guess, Answer, CaseSensitive, PercentCorrect, Feedback){
+	this.Guess = Guess;
+	this.Answer = Answer;
+	this.PercentCorrect = PercentCorrect;
+	this.Feedback = Feedback;
+	if (CaseSensitive == false){
+		this.WorkingGuess = Guess.toLowerCase();
+		this.WorkingAnswer = Answer.toLowerCase();
+	}
+	else{
+		this.WorkingGuess = Guess;
+		this.WorkingAnswer = Answer;				
+	}
+	this.Hint = '';
+	this.HintPenalty = 1/Answer.length;
+	this.CorrectStart = '';
+	this.WrongMiddle = '';
+	this.CorrectEnd = '';
+	this.PercentMatch = 0;
+	this.DoCheck();
+}
+
+function CheckGuess_DoCheck(){
+//Check if it's an exact match
+	if (this.WorkingAnswer == this.WorkingGuess){
+		this.PercentMatch = 100;
+		this.CorrectStart = this.Guess;
+	return;
+	}
+//Figure out how much of the beginning is correct
+	var i = 0;
+	var CorrectChars = 0;
+	while (this.WorkingAnswer.charAt(i) == this.WorkingGuess.charAt(i)){
+		i++;
+		CorrectChars++;
+	}
+//Stash the hint
+	this.Hint = this.Answer.charAt(i);
+	
+	this.CorrectStart = this.Guess.substring(0, i);
+	
+//If there's more to the answer, look at the rest of it
+	if (i<this.Guess.length){
+	
+//Figure out how much of the end is correct
+		var j = this.WorkingGuess.length-1;
+		var k = this.WorkingAnswer.length-1;
+		while ((j>=i)&&((this.WorkingAnswer.charAt(k) == this.WorkingGuess.charAt(j))&&(CorrectChars < this.Answer.length))){
+			CorrectChars++;
+			j--;
+			k--;
+		}
+		this.CorrectEnd = this.Guess.substring(j+1, this.Guess.length);
+		this.WrongMiddle = this.Guess.substring(i, j+1);
+	}
+	if (TrimString(this.WrongMiddle).length < 1){this.WrongMiddle = '_';}
+//Calculate match score based on how much of the guess is correct
+	if (CorrectChars < this.Answer.length){
+		this.PercentMatch = Math.floor(100*CorrectChars)/this.Answer.length;
+	}
+	else{
+		this.PercentMatch = Math.floor((100 * CorrectChars)/this.Guess.length);
+	}	
+}
+
+CheckGuess.prototype.DoCheck = CheckGuess_DoCheck;
+
+function CheckAnswerArray(CaseSensitive){
+	this.CaseSensitive = CaseSensitive;
+	this.Answers = new Array();
+	this.Score = 0;
+	this.Feedback = '';
+	this.Hint = '';
+	this.HintPenalty = 0;
+	this.MatchedAnswerLength = 1;
+	this.CompleteMatch = false;
+	this.MatchNum = -1;
+}
+
+function CheckAnswerArray_AddAnswer(Guess, Answer, PercentCorrect, Feedback){
+	this.Answers.push(new CheckGuess(Guess, Answer, this.CaseSensitive, PercentCorrect, Feedback));
+}
+
+CheckAnswerArray.prototype.AddAnswer = CheckAnswerArray_AddAnswer;
+
+function CheckAnswerArray_ClearAll(){
+	this.Answers.length = 0;
+}
+
+CheckAnswerArray.prototype.ClearAll = CheckAnswerArray_ClearAll;
+
+function CheckAnswerArray_GetBestMatch(){
+//First check for a 100% match
+	for (var i=0; i<this.Answers.length; i++){
+		if (this.Answers[i].PercentMatch == 100){
+			this.Feedback = this.Answers[i].Feedback;
+			this.Score = this.Answers[i].PercentCorrect;
+			this.CompleteMatch = true;
+			this.MatchNum = i;
+			return;
+		}
+	}
+//Now check for the best alternative match
+	var PercentMatch = 0;
+	var BestMatch = -1;
+	for (i=0; i<this.Answers.length; i++){
+		if ((this.Answers[i].PercentMatch > PercentMatch)&&(this.Answers[i].PercentCorrect == 100)){
+			BestMatch = i;
+			PercentMatch = this.Answers[i].PercentMatch;
+		}
+	}
+	if (BestMatch > -1){
+		this.Score = this.Answers[BestMatch].PercentMatch;
+		this.Feedback = PartlyIncorrect + ' ';
+		this.Feedback += '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Feedback += '<span class="Highlight">' + this.Answers[BestMatch].WrongMiddle + '</span>';
+		this.Feedback += this.Answers[BestMatch].CorrectEnd + '</span>';
+		this.Hint = '<span class="PartialAnswer">' + this.Answers[BestMatch].CorrectStart;
+		this.Hint += '<span class="Highlight">' + this.Answers[BestMatch].Hint + '</span></span>';
+		this.HintPenalty = this.Answers[BestMatch].HintPenalty;
+	}
+	else{
+		this.Score = 0;
+		this.Feedback = '';
+	}
+}
+
+CheckAnswerArray.prototype.GetBestMatch = CheckAnswerArray_GetBestMatch;
+
+function CheckShortAnswer(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess (TrimString added to fix bug for 6.0.4.3)
+	var G = TrimString(document.getElementById('Q_' + QNum + '_Guess').value);
+	
+//If no guess, bail with message; no penalty
+	if (G.length < 1){
+		ShowMessage(PleaseEnter);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+	}
+	CA.GetBestMatch();
+	
+//Store any match in the state tracking field
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	if (CA.MatchNum > -1){
+		State[QNum][5] += String.fromCharCode(65+CA.MatchNum);
+	}
+//Else store the student's answer
+	else{
+		State[QNum][5] += G;
+	}
+
+//Add the percent correct value for this answer to the Q State (works for all
+//situations, wrong or right)
+	State[QNum][3] += CA.Score;
+	
+//Now branch, based on the nature of the match
+//Is it a complete match?
+	if (CA.CompleteMatch == true){
+		
+//Is it with a wrong answer, or a right answer?
+		if (CA.Score == 100){
+//It's right
+			CalculateShortAnsQuestionScore(QNum);
+			
+//New for 6.2.2.0
+			var QsDone = CheckQuestionsCompleted();
+			
+//Get correct answer list if required, assuming there are any other correct alternatives
+			if (ShowAlsoCorrect == true){
+				var AlsoCorrectList = GetCorrectList(QNum, G, false);
+				if (AlsoCorrectList.length > 0){
+					CA.Feedback += '<br />' + CorrectList + '<br />' + AlsoCorrectList;
+				}
+			}	
+		
+//Get the overall score and add it to the feedback
+			if (ContinuousScoring == true){
+				CalculateOverallScore();
+				CA.Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+			ShowMessage(CA.Feedback);
+//Put the answer in
+			ReplaceGuessBox(QNum, G);
+			CheckFinished();
+			return;
+		}
+	}
+	
+//Otherwise, it's a match to a predicted wrong/partially correct, or a partial
+//match to a right answer
+	if (CA.Feedback.length < 1){CA.Feedback = DefaultWrong;}
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+	if (Finished == false){
+		WriteToInstructions(strInstructions);
+	}	
+	ShowMessage(CA.Feedback);
+
+//If necessary, switch a hybrid question to m/c
+	if (State[QNum][2] >= HybridTries){
+		SwitchHybridDisplay(QNum);
+	}
+}
+
+function CalculateShortAnsQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties;
+	var PercentCorrect = State[QNum][3];
+	var HintPenalties = State[QNum][4];
+
+//Make sure it's not already complete
+	if (State[QNum][0] < 0){
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+			State[QNum][0] = (PercentCorrect/(100*Tries));
+		}
+		if (State[QNum][0] < 0){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function SwitchHybridDisplay(QNum){
+	if (document.getElementById('Q_' + QNum + '_Hybrid_MC') != null){
+		document.getElementById('Q_' + QNum + '_Hybrid_MC').style.display = '';
+		if (document.getElementById('Q_' + QNum + '_SA') != null){
+			document.getElementById('Q_' + QNum + '_SA').style.display = 'none';
+		}
+	}
+}
+
+function GetCorrectArray(QNum){
+	var Result = new Array();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][2] == 1){ //This is an acceptable correct answer
+			Result.push(I[QNum][3][ANum][0]);
+		}
+	}	
+	return Result;
+}
+
+function GetCorrectList(QNum, Answer, IncludeAnswer){
+	var As = GetCorrectArray(QNum);
+	var Result = '';
+	for (var ANum=0; ANum<As.length; ANum++){
+		if ((IncludeAnswer == true)||(As[ANum] != Answer)){
+			Result += As[ANum] + '<br />';
+		}
+	}
+	return Result;
+}
+
+function GetFirstCorrectAnswer(QNum){
+	var As = GetCorrectArray(QNum);
+	if (As.length > 0){
+		return As[0];
+	}
+	else{
+		return '';
+	}
+}
+
+function ReplaceGuessBox(QNum, Ans){
+	if (document.getElementById('Q_' + QNum + '_SA') != null){
+		var El = document.getElementById('Q_' + QNum + '_SA');
+		while (El.childNodes.length > 0){
+			El.removeChild(El.childNodes[0]);
+		}
+		var A = document.createElement('span');
+		A.setAttribute('class', 'Answer');
+		var T = document.createTextNode(Ans);
+		A.appendChild(T);
+		El.appendChild(A);
+	}
+}
+
+
+
+function ShowAnswers(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//Get the answer list to display
+	var Ans = GetCorrectList(QNum, '', false);
+	Ans = CorrectList + '<br />' + Ans;
+	
+//Display feedback
+	ShowMessage(Ans);
+	
+//Set the score for this question to 0 if no score yet 
+	if (State[QNum][0] < 1){
+		State[QNum][0] = 0;
+	}
+
+//Get the first correct answer
+	var FirstAns = GetFirstCorrectAnswer(QNum);
+	
+//Replace the textbox
+	ReplaceGuessBox(QNum, FirstAns);
+	
+//New for 6.2.2.0: Get scores and feedback
+	var QsDone = CheckQuestionsCompleted();
+	
+	if (ContinuousScoring == true){
+		CalculateOverallScore();
+		WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+	}
+	
+//This may be the last, so check finished status
+	CheckFinished();
+}
+
+
+
+
+
+function ShowHint(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+	
+//bail if question already complete
+	if (State[QNum][0] > -1){return;}
+
+//Get the guess
+	var G = document.getElementById('Q_' + QNum + '_Guess').value;
+	
+//If no guess, give the first correct bit
+	if (G.length < 1){
+		var Ans = GetFirstCorrectAnswer(QNum);
+		var Hint = Ans.charAt(0);
+		ShowMessage(NextCorrect + '<br />' + Hint);
+//Penalty for hint
+		State[QNum][4] += (1/Ans.length);
+		return;
+	}
+
+//Increment tries
+	State[QNum][2]++;
+	
+//Create a check object
+	var CA = new CheckAnswerArray(CaseSensitive);
+
+	CA.ClearAll();
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+//Use only correct answers
+		if (I[QNum][3][ANum][2] == 1){
+			CA.AddAnswer(G, I[QNum][3][ANum][0], I[QNum][3][ANum][3], I[QNum][3][ANum][1]);
+		}
+	}
+	CA.GetBestMatch();
+	if (CA.CompleteMatch == true){
+//It's right!
+		CheckShortAnswer(QNum);
+		return;
+	}
+	else{
+		if (CA.Hint.length > 0){
+			ShowMessage(NextCorrect + '<br />' + CA.Hint);
+			State[QNum][4] += CA.HintPenalty;
+		}
+		else{
+			ShowMessage(DefaultWrong + '<br />' + NextCorrect + '<br />' + GetFirstCorrectAnswer(QNum).charAt(0));
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+//]]>
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+</head>
+<body id="TheBody" onload="StartUp();MM_preloadImages('../../../Images/indexoefeningblauw.jpg')">
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip-link" href="#content">Direct naar de inhoud</a>
+<header class="masthead"><div class="masthead__inner"><a class="brand" href="/" aria-label="Biologiepagina.nl — home"><svg class="brand__mark" viewBox="0 0 32 36" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 33V13"/><path d="M16 21C8 21 4 16 4 8c8 0 12 5 12 13Z"/><path d="M16 14C16 7 20 3 27 3c0 7-4 11-11 11Z"/><circle cx="16" cy="27" r="5"/></svg><span class="brand__name">Biologie<em>pagina</em>.nl<small>Oefenen &amp; leren voor vmbo, havo en vwo</small></span></a><p class="masthead__tagline">Biologie bij Biologie voor Jou &amp; Nectar</p><div class="masthead__tools"><div class="search"><label class="search__label" for="site-search">Zoek op deze site</label><input class="search__input" id="site-search" type="search" placeholder="Zoek" autocomplete="off"><svg class="search__icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><ul class="search__results" hidden aria-label="Zoekresultaten"></ul></div><button class="nav-toggle" type="button" aria-controls="site-rail" aria-expanded="false">Inhoud</button></div></div></header>
+<div class="rail-backdrop" aria-hidden="true"></div>
+<div class="shell">
+<nav class="rail" id="site-rail" aria-label="Hoofdnavigatie"><p class="rail__eyebrow">Inhoud</p><div class="rail__group"><h2 class="rail__title">Klassen</h2><ul class="rail__list"><li><a href="/Brugklasnieuw/klas1.htm">Klas 1 · vmbo / havo / vwo</a></li><li><a href="/2en3/klas2.htm">Klas 2</a></li><li><a href="/2en3/klas2.htm">Klas 3</a></li><li><a href="/34mavo/mavo34.htm">Vmbo 3 & 4</a></li><li><a href="/Havo4/Havo4.htm">Havo 4</a></li><li><a href="/Havo5/Havo5.htm">Havo 5</a></li><li><a href="/Vwo4/vwo4.htm">Vwo 4</a></li><li><a href="/Vwo5/vwo5.htm">Vwo 5</a></li><li><a href="/Vwo6/vwo6.htm">Vwo 6</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Examens</h2><ul class="rail__list"><li><a href="/34mavo/examenbiologieVMBObb.htm">Vmbo BB</a></li><li><a href="/34mavo/examenbiologieVMBOkader.htm">Vmbo kader</a></li><li><a href="/34mavo/examenbiologie.htm">Vmbo TL / mavo</a></li><li><a href="/Havo5/examen.htm">Havo</a></li><li><a href="/Vwo6/examenvwo.htm">Vwo</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Vaardigheden</h2><ul class="rail__list"><li><a href="/verslagbiologieonderbouw.htm">Verslag · onderbouw</a></li><li><a href="/verslagbiologie.htm">Verslag · bovenbouw</a></li><li><a href="/tekenregels.htm">Tekenregels</a></li><li><a href="/grafiekmaken.htm">Grafiek maken</a></li><li><a href="/Links/profielwerkstuk.htm">Profielwerkstuk</a></li><li><a href="/Links/links.htm">Overige links</a></li></ul></div><div class="rail__group"><h2 class="rail__title">Over de site</h2><ul class="rail__list"><li><a href="/Contact/contact.htm">Contact</a></li><li><a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></li></ul></div><div class="rail__foot"><a href="/Links/links.htm">Alle links</a> · <a href="/Contact/contact.htm">Contact</a></div></nav>
+<main class="page" id="content">
+<nav class="breadcrumb" aria-label="Kruimelpad"><a href="/">Home</a><span class="breadcrumb__sep">/</span><span>Klas 1</span></nav>
+<h1 class="page-title">Oefentoets Bloemen vruchten zaden<span class="page-kicker">Klas 1</span></h1>
+<div class="prose"><!-- BeginTopNavButtons -->
+
+
+
+<!-- EndTopNavButtons -->
+
+<div class="Titles">
+	<h2 class="ExerciseTitle">Oefentoets Bloemen vruchten zaden</h2>
+	<div align="center">
+	  
+<!-- responsive -->
+
+</div>
+</div>
+
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions"></div>
+</div>
+
+
+
+
+<div id="MainDiv" class="StdDiv">
+ 
+<div id="QNav" class="QuestionNavigation">
+
+<div id="OneByOneReadout">
+<button id="PrevQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(-1); return false;">&lt;&lt;&lt;</button>
+
+<span id="QNumReadout" class="QNum">&nbsp;</span>
+
+<button id="NextQButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOver(this)" onclick="ChangeQ(1); return false;">&gt;&gt;&gt; </button>
+<br>
+</div>
+
+</div>
+ 
+<ol class="QuizQuestions" id="Questions">
+<li class="QuizQuestion" id="Q_0" style="display: none"><div class="QuestionText">Hoe heet onderdeel 1?<br><img src="/1/6voortplanting/Oefentoets/bloem_invul.gif" alt="bloem_invul.gif" title="bloem_invul" width="489" height="319"></div><div class="ShortAnswer" id="Q_0_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_0_Guess" onfocus="TrackFocus('Q_0_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(0)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(0)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(0)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_1" style="display: none"><div class="QuestionText">Hoe heet onderdeel 6?<br><img src="/1/6voortplanting/Oefentoets/bloem_invul.gif" alt="bloem_invul.gif" title="bloem_invul" width="489" height="319"></div><div class="ShortAnswer" id="Q_1_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_1_Guess" onfocus="TrackFocus('Q_1_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="12"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(1)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(1)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(1)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_2" style="display: none"><div class="QuestionText">Hoe heet onderdeel 7?<br><img src="/1/6voortplanting/Oefentoets/bloem_invul.gif" alt="bloem_invul.gif" title="bloem_invul" width="489" height="319"></div><div class="ShortAnswer" id="Q_2_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_2_Guess" onfocus="TrackFocus('Q_2_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="12"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(2)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(2)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(2)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_3" style="display: none"><div class="QuestionText">Welke nummers geven kruisbestuiving aan?<br><img src="/1/6voortplanting/Oefentoets/krusizelfbestuiving.jpg" alt="krusizelfbestuiving.jpg" title="krusizelfbestuiving" width="400" height="365"></div><ol class="MSelAnswers"><li id="Q_3_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_3_0_Chk" class="MSelCheckbox">1</div></form></li><li id="Q_3_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_3_1_Chk" class="MSelCheckbox">2</div></form></li><li id="Q_3_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_3_2_Chk" class="MSelCheckbox">3</div></form></li><li id="Q_3_3"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_3_3_Chk" class="MSelCheckbox">4</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(3)">Check</button></li>
+<li class="QuizQuestion" id="Q_4" style="display: none"><div class="QuestionText">Bij welk nummer vindt de bestuiving plaats?<br><img src="/1/6voortplanting/Oefentoets/stuifmeelbuis.jpg" alt="stuifmeelbuis.jpg" title="stuifmeelbuis" width="300" height="478"></div><ol class="MCAnswers"><li id="Q_4_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_0_Btn" onclick="CheckMCAnswer(4,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1</li><li id="Q_4_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_1_Btn" onclick="CheckMCAnswer(4,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;2</li><li id="Q_4_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_2_Btn" onclick="CheckMCAnswer(4,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;3</li><li id="Q_4_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_4_3_Btn" onclick="CheckMCAnswer(4,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4</li></ol></li>
+<li class="QuizQuestion" id="Q_5" style="display: none"><div class="QuestionText">Hoe heet nummer 2?<br><img src="/1/6voortplanting/Oefentoets/stuifmeelbuis.jpg" alt="stuifmeelbuis.jpg" title="stuifmeelbuis" width="300" height="478"></div><div class="ShortAnswer" id="Q_5_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_5_Guess" onfocus="TrackFocus('Q_5_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="13"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(5)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(5)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(5)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_6" style="display: none"><div class="QuestionText"><img src="/1/6voortplanting/Oefentoets/bijtje41.gif" alt="bijtje41.gif" title="bijtje41" width="250" height="225"><br>Welke kenmerken horen bij een insectenbloem?</div><ol class="MSelAnswers"><li id="Q_6_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_0_Chk" class="MSelCheckbox">Geuren sterk</div></form></li><li id="Q_6_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_1_Chk" class="MSelCheckbox">Geen nectar</div></form></li><li id="Q_6_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_2_Chk" class="MSelCheckbox">Stempel en meeldraden buiten de bloem</div></form></li><li id="Q_6_3"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_3_Chk" class="MSelCheckbox">Plakkerig stuifmeel</div></form></li><li id="Q_6_4"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_4_Chk" class="MSelCheckbox">Zwaarder stuifmeel</div></form></li><li id="Q_6_5"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_6_5_Chk" class="MSelCheckbox">Heel veel stuifmeel</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(6)">Check</button></li>
+<li class="QuizQuestion" id="Q_7" style="display: none"><div class="QuestionText">In een vrucht zitten 4 zaden. Hoeveel stuifmeelbuizen zijn hiervoor gegroeid? En hoeveel eicellen waren hier voor nodig?</div><ol class="MCAnswers"><li id="Q_7_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_0_Btn" onclick="CheckMCAnswer(7,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 stuifmeelbuis; 1 eicel</li><li id="Q_7_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_1_Btn" onclick="CheckMCAnswer(7,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;1 stuifmeelbuis; 4 eicellen</li><li id="Q_7_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_2_Btn" onclick="CheckMCAnswer(7,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 stuifmeelbuis; 1 eicel</li><li id="Q_7_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_7_3_Btn" onclick="CheckMCAnswer(7,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;4 stuifmeelbuizen; 4 eicellen</li></ol></li>
+<li class="QuizQuestion" id="Q_8" style="display: none"><div class="QuestionText">De levenscyclus van een eenjarige plant gaat als volgt:<br>zaad --&gt; kiemplantje --&gt; volwassen plant --&gt; ..................... --&gt; zaad<br>Wat moet ingevuld worden op de pijltjes?</div><div class="ShortAnswer" id="Q_8_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_8_Guess" onfocus="TrackFocus('Q_8_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(8)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(8)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(8)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_9" style="display: none"><div class="QuestionText">Wat zijn voorbeelden van ongeslachtelijke voortplanting?</div><ol class="MSelAnswers"><li id="Q_9_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_9_0_Chk" class="MSelCheckbox">Knollen</div></form></li><li id="Q_9_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_9_1_Chk" class="MSelCheckbox">Bollen</div></form></li><li id="Q_9_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_9_2_Chk" class="MSelCheckbox">Vruchten</div></form></li><li id="Q_9_3"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_9_3_Chk" class="MSelCheckbox">Uitlopers</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(9)">Check</button></li>
+<li class="QuizQuestion" id="Q_10" style="display: none"><div class="QuestionText">Mart zegt dat aardappels eigenlijk verdikte stengels zijn.<br>Wina zegt dat aardappels knollen zijn en een voorbeeld van ongeslachtelijke voortplanting<br>Rudolf zegt dat zetmeel en vetten voorbeelden zijn van reservevoedsel<br><br><br>Wie hebben erg gelijk?</div><ol class="MSelAnswers"><li id="Q_10_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_10_0_Chk" class="MSelCheckbox">Mart</div></form></li><li id="Q_10_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_10_1_Chk" class="MSelCheckbox">Wina</div></form></li><li id="Q_10_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_10_2_Chk" class="MSelCheckbox">Rudolf</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(10)">Check</button></li>
+<li class="QuizQuestion" id="Q_11" style="display: none"><div class="QuestionText"><img src="/1/6voortplanting/Oefentoets/Aardbeien.jpg" alt="Aardbeien.jpg" title="Aardbeien" width="300" height="226"><br>Mirte zegt dat wortelstokken stengels zijn<br>Brenda zegt dat aardbeien zich zowel geslachtelijk als ongeslachtelijk kunnen voortplanten<br>Willem zegt dat bij ongeslachtelijke voortplanting bevruchting plaats vindt<br><br>Wie hebben er gelijk?</div><ol class="MSelAnswers"><li id="Q_11_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_11_0_Chk" class="MSelCheckbox">Mirte</div></form></li><li id="Q_11_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_11_1_Chk" class="MSelCheckbox">Brenda</div></form></li><li id="Q_11_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_11_2_Chk" class="MSelCheckbox">Willem</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(11)">Check</button></li>
+<li class="QuizQuestion" id="Q_12" style="display: none"><div class="QuestionText">Hoe heet de ondergrondse stengel die je hier ziet waaruit een nieuwe plant kan groeien?<br><img src="/1/6voortplanting/Oefentoets/wortelstok.jpg" alt="wortelstok.jpg" title="wortelstok" width="353" height="232"></div><div class="ShortAnswer" id="Q_12_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_12_Guess" onfocus="TrackFocus('Q_12_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="13"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(12)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(12)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(12)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_13" style="display: none"><div class="QuestionText">Waarin een bloem worden eicellen gevormd?</div><ol class="MCAnswers"><li id="Q_13_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_0_Btn" onclick="CheckMCAnswer(13,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de helmdraden</li><li id="Q_13_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_1_Btn" onclick="CheckMCAnswer(13,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de helmknoppen</li><li id="Q_13_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_2_Btn" onclick="CheckMCAnswer(13,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de stempels</li><li id="Q_13_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_13_3_Btn" onclick="CheckMCAnswer(13,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;in de zaadbeginsels</li></ol></li>
+<li class="QuizQuestion" id="Q_14" style="display: none"><div class="QuestionText">De volgorde waarin het voortplantingsproces bij zaadplanten plaatsvindt, is:</div><ol class="MCAnswers"><li id="Q_14_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_0_Btn" onclick="CheckMCAnswer(14,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bevruchting &gt; bestuiving &gt; ontstaan stuifmeelbuis</li><li id="Q_14_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_1_Btn" onclick="CheckMCAnswer(14,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bevruchting &gt; ontstaan stuifmeelbuis &gt; bestuiving</li><li id="Q_14_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_2_Btn" onclick="CheckMCAnswer(14,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bestuiving &gt; ontstaan stuifmeelbuis &gt; bevruchting</li><li id="Q_14_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_14_3_Btn" onclick="CheckMCAnswer(14,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;bestuiving &gt; bevruchting &gt; ontstaan stuifmeelbuis</li></ol></li>
+<li class="QuizQuestion" id="Q_15" style="display: none"><div class="QuestionText">Hoe heet onderdeel 5?<br><img src="/1/6voortplanting/Oefentoets/stampertje.jpg" alt="stampertje.jpg" title="stampertje" width="154" height="309"></div><div class="ShortAnswer" id="Q_15_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_15_Guess" onfocus="TrackFocus('Q_15_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(15)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(15)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(15)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_16" style="display: none"><div class="QuestionText">Twee uitspraken:<br>Carlijn zegt: Een meeldraad bestaat uit een helmdraad met een helmknop<br>Merel zegt: Stuifmeelkorrels zijn de mannelijke voortplantingscellen van een bloem<br>Wie heeft er gelijk?</div><ol class="MCAnswers"><li id="Q_16_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_0_Btn" onclick="CheckMCAnswer(16,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide ongelijk</li><li id="Q_16_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_1_Btn" onclick="CheckMCAnswer(16,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Carlijn heeft gelijk</li><li id="Q_16_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_2_Btn" onclick="CheckMCAnswer(16,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Merel heeft gelijk</li><li id="Q_16_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_16_3_Btn" onclick="CheckMCAnswer(16,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide hebben gelijk</li></ol></li>
+<li class="QuizQuestion" id="Q_17" style="display: none"><div class="QuestionText">Twee uitspraken:<br>Ruben zegt: Als er stuifmeel van een margriet op de stempel van een kamille komt, heet dat bestuiving.<br>Mike zegt: De functie van de kelkbladeren is het aantrekken van insecten.<br>Wie heeft er gelijk?<br><br></div><ol class="MCAnswers"><li id="Q_17_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_0_Btn" onclick="CheckMCAnswer(17,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide ongelijk</li><li id="Q_17_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_1_Btn" onclick="CheckMCAnswer(17,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Ruben heeft gelijk</li><li id="Q_17_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_2_Btn" onclick="CheckMCAnswer(17,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Mike heeft gelijk</li><li id="Q_17_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_17_3_Btn" onclick="CheckMCAnswer(17,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide hebben gelijk</li></ol></li>
+<li class="QuizQuestion" id="Q_18" style="display: none"><div class="QuestionText">Twee uitspraken:<br>Mark zegt: Windbloemen maken glad en licht stuifmeel, want dat vliegt makkelijker weg<br>Maxime zegt: Bevruchting vindt plaats in de stijl van een plant<br>Wie heeft er gelijk?</div><ol class="MCAnswers"><li id="Q_18_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_0_Btn" onclick="CheckMCAnswer(18,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide gelijk</li><li id="Q_18_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_1_Btn" onclick="CheckMCAnswer(18,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Alleen Mark heeft gelijk</li><li id="Q_18_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_2_Btn" onclick="CheckMCAnswer(18,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Alleen Maxime heeft gelijk</li><li id="Q_18_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_18_3_Btn" onclick="CheckMCAnswer(18,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide gelijk</li></ol></li>
+<li class="QuizQuestion" id="Q_19" style="display: none"><div class="QuestionText">Hoe heet onderdeel B van de kruipende boterbloem?<br><br><img src="/1/6voortplanting/Oefentoets/boterbloem.jpg" alt="boterbloem.jpg" title="boterbloem" width="270" height="312"></div><div class="ShortAnswer" id="Q_19_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_19_Guess" onfocus="TrackFocus('Q_19_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="12"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(19)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(19)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(19)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_20" style="display: none"><div class="QuestionText">Uit welk deel van de bloem is onderdeel X ontwikkeld?<br><br><img src="/1/6voortplanting/Oefentoets/appel.jpg" alt="appel.jpg" title="appel" width="160" height="141"></div><ol class="MCAnswers"><li id="Q_20_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_0_Btn" onclick="CheckMCAnswer(20,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Uit het vruchtbeginsel</li><li id="Q_20_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_1_Btn" onclick="CheckMCAnswer(20,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Uit het zaadbeginsel</li><li id="Q_20_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_2_Btn" onclick="CheckMCAnswer(20,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Uit de stempel</li><li id="Q_20_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_20_3_Btn" onclick="CheckMCAnswer(20,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Uit de bloembodem</li></ol></li>
+<li class="QuizQuestion" id="Q_21" style="display: none"><div class="QuestionText">In de afbeelding zie je de vruchten van kleefkruid. Hoe zullen deze vruchten verspreid worden?<br><br><img src="/1/6voortplanting/Oefentoets/kleefkruid.jpg" alt="kleefkruid.jpg" title="kleefkruid" width="300" height="225"></div><ol class="MCAnswers"><li id="Q_21_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_0_Btn" onclick="CheckMCAnswer(21,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de wind</li><li id="Q_21_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_1_Btn" onclick="CheckMCAnswer(21,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de plant zelf</li><li id="Q_21_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_2_Btn" onclick="CheckMCAnswer(21,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Worden opgegeten en uitgepoept door dieren</li><li id="Q_21_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_21_3_Btn" onclick="CheckMCAnswer(21,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Blijven hangen aan de vacht van dieren</li></ol></li>
+<li class="QuizQuestion" id="Q_22" style="display: none"><div class="QuestionText">In de afbeelding zie je de esdoorn met zijn typische vruchten. Hoe zullen deze vruchten verspreid worden?<br><br><img src="/1/6voortplanting/Oefentoets/esdoorn%5B1%5D.jpg" alt="esdoorn[1].jpg" title="esdoorn[1]" width="213" height="217"></div><ol class="MCAnswers"><li id="Q_22_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_0_Btn" onclick="CheckMCAnswer(22,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de wind</li><li id="Q_22_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_1_Btn" onclick="CheckMCAnswer(22,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de plant zelf</li><li id="Q_22_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_2_Btn" onclick="CheckMCAnswer(22,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Worden opgegeten en uitgepoept door dieren</li><li id="Q_22_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_22_3_Btn" onclick="CheckMCAnswer(22,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Blijven hangen aan de vacht van dieren</li></ol></li>
+<li class="QuizQuestion" id="Q_23" style="display: none"><div class="QuestionText">In de afbeelding zie je de gele brem met zijn typische vruchten. Hoe zullen deze vruchten verspreid worden?<br><br><img src="/1/6voortplanting/Oefentoets/brem.jpg" alt="brem.jpg" title="brem" width="693" height="537"></div><ol class="MCAnswers"><li id="Q_23_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_0_Btn" onclick="CheckMCAnswer(23,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de wind</li><li id="Q_23_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_1_Btn" onclick="CheckMCAnswer(23,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Door de plant zelf</li><li id="Q_23_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_2_Btn" onclick="CheckMCAnswer(23,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Worden opgegeten en uitgepoept door dieren</li><li id="Q_23_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_23_3_Btn" onclick="CheckMCAnswer(23,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Blijven hangen aan de vacht van dieren</li></ol></li>
+<li class="QuizQuestion" id="Q_24" style="display: none"><div class="QuestionText">Hoe noemen we de vorm van bestuiving, waarbij stuifmeel van een meeldraad op de stempel van een bloem van dezelfde plant komt?</div><div class="ShortAnswer" id="Q_24_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_24_Guess" onfocus="TrackFocus('Q_24_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="14"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(24)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(24)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(24)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_25" style="display: none"><div class="QuestionText">Twee uitspraken:<br>Karin zegt: De functie van de bloemkelk bij windbloemen en insectenbloemenis het beschermen van de bloem als deze nog in knop zit.<br>Madelon zegt: De nectar zorgt ervoor dat er insecten naar de insectenbloem gelokt worden die voor bestuiving kunnen zorgen.<br>Wie heeft gelijk?</div><ol class="MCAnswers"><li id="Q_25_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_0_Btn" onclick="CheckMCAnswer(25,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide ongelijk</li><li id="Q_25_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_1_Btn" onclick="CheckMCAnswer(25,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Karin heeft gelijk</li><li id="Q_25_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_2_Btn" onclick="CheckMCAnswer(25,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Madelon heeft gelijk</li><li id="Q_25_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_25_3_Btn" onclick="CheckMCAnswer(25,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide hebben gelijk</li></ol></li>
+<li class="QuizQuestion" id="Q_26" style="display: none"><div class="QuestionText">Hoe heet onderdeel 1?<br><br><img src="/1/6voortplanting/Oefentoets/stamper.jpg" alt="stamper.jpg" title="stamper" width="245" height="245"></div><div class="ShortAnswer" id="Q_26_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_26_Guess" onfocus="TrackFocus('Q_26_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(26)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(26)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(26)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_27" style="display: none"><div class="QuestionText">Hoe heet onderdeel 6?<br><br><img src="/1/6voortplanting/Oefentoets/stamper.jpg" alt="stamper.jpg" title="stamper" width="245" height="245"></div><div class="ShortAnswer" id="Q_27_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_27_Guess" onfocus="TrackFocus('Q_27_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(27)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(27)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(27)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_28" style="display: none"><div class="QuestionText">Welk of welke onderdelen kun je aantreffen in het kroontje van een appel?</div><ol class="MSelAnswers"><li id="Q_28_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_28_0_Chk" class="MSelCheckbox">kelkbladeren</div></form></li><li id="Q_28_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_28_1_Chk" class="MSelCheckbox">kroonbladeren</div></form></li><li id="Q_28_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_28_2_Chk" class="MSelCheckbox">meeldraden</div></form></li><li id="Q_28_3"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_28_3_Chk" class="MSelCheckbox">stamper</div></form></li><li id="Q_28_4"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_28_4_Chk" class="MSelCheckbox">bloemsteel</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(28)">Check</button></li>
+<li class="QuizQuestion" id="Q_29" style="display: none"><div class="QuestionText">Kijk naar onderstaande bloem:<br><br><img src="/1/6voortplanting/Oefentoets/lelie-2%5B1%5D.jpg" alt="lelie-2[1].jpg" title="lelie-2[1]" width="440" height="330"><br><br>Deze plant is tweehuizig</div><ol class="MCAnswers"><li id="Q_29_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_0_Btn" onclick="CheckMCAnswer(29,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Juist</li><li id="Q_29_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_29_1_Btn" onclick="CheckMCAnswer(29,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Onjuist</li></ol></li>
+<li class="QuizQuestion" id="Q_30" style="display: none"><div class="QuestionText">De rokken van een bol zijn verdikte ......... met reservevoedsel.</div><div class="ShortAnswer" id="Q_30_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_30_Guess" onfocus="TrackFocus('Q_30_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(30)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(30)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(30)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_31" style="display: none"><div class="QuestionText">Bij onderstaande techniek wordt een stukje van een stengel afgebroken en in aarde geplaatst. Hierna groeit dit stukje stengel uit tot een nieuwe plant.<br>Hoe noemen we deze techniek?<br><br><img src="/1/6voortplanting/Oefentoets/ongesl.gif" alt="ongesl.gif" title="ongesl" width="285" height="258"></div><div class="ShortAnswer" id="Q_31_SA"><form method="post" action="" onsubmit="return false;"><div><input type="text" id="Q_31_Guess" onfocus="TrackFocus('Q_31_Guess')" onblur="LeaveGap()" class="ShortAnswerBox" size="9"><br><br><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckShortAnswer(31)">Check</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowHint(31)">Hint?</button><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="ShowAnswers(31)">Toon antwoord</button></div></form></div></li>
+<li class="QuizQuestion" id="Q_32" style="display: none"><div class="QuestionText">Welke nummers geven zelfbestuiving aan?<br><img src="/1/6voortplanting/Oefentoets/krusizelfbestuiving.jpg" alt="krusizelfbestuiving.jpg" title="krusizelfbestuiving" width="400" height="365"></div><ol class="MSelAnswers"><li id="Q_32_0"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_32_0_Chk" class="MSelCheckbox">1</div></form></li><li id="Q_32_1"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_32_1_Chk" class="MSelCheckbox">2</div></form></li><li id="Q_32_2"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_32_2_Chk" class="MSelCheckbox">3</div></form></li><li id="Q_32_3"><form method="post" action="" onsubmit="return false;"><div><input type="checkbox" id="Q_32_3_Chk" class="MSelCheckbox">4</div></form></li></ol><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="CheckMultiSelAnswer(32)">Check</button></li>
+<li class="QuizQuestion" id="Q_33" style="display: none"><div class="QuestionText">Een oude schoolplaat van de koekoeksbloem.<br>Is deze plant een of tweeslachtig? Is dit een insectenbloem of windbloem?<br><br><img src="/1/6voortplanting/Oefentoets/koekoeksbloem.jpg" alt="koekoeksbloem" title="koekoeksbloem" width="440" height="710"></div><ol class="MCAnswers"><li id="Q_33_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_0_Btn" onclick="CheckMCAnswer(33,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;eenslachtig / windbloem</li><li id="Q_33_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_1_Btn" onclick="CheckMCAnswer(33,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;eenslachtig / insectenbloem</li><li id="Q_33_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_2_Btn" onclick="CheckMCAnswer(33,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tweeslachtig / windbloem</li><li id="Q_33_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_33_3_Btn" onclick="CheckMCAnswer(33,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;tweeslachtig / insectenbloem</li></ol></li>
+<li class="QuizQuestion" id="Q_34" style="display: none"><div class="QuestionText">Zullen deze stuifmeelkorrels door insecten of door de wind overgebracht worden?<br><img src="/1/6voortplanting/Oefentoets/f_2050%5B1%5D.jpg" alt="f_2050[1].jpg" title="f_2050[1]" width="400" height="313"></div><ol class="MCAnswers"><li id="Q_34_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_0_Btn" onclick="CheckMCAnswer(34,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;wind</li><li id="Q_34_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_34_1_Btn" onclick="CheckMCAnswer(34,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;insecten</li></ol></li>
+<li class="QuizQuestion" id="Q_35" style="display: none"><div class="QuestionText">Hieronder een bloemdiagram van een tulp:<br><img src="/1/6voortplanting/Oefentoets/Bloemdiagram_tulp1%5B1%5D.jpg" alt="Bloemdiagram_tulp1[1].jpg" title="Bloemdiagram_tulp1[1]" width="250" height="252"><br><br>Wilbert zegt: Deze plant heeft 7 meeldraden<br>Marieke zegt: Deze plant is eenhuizig<br><br>Wie heeft er gelijk?</div><ol class="MCAnswers"><li id="Q_35_0"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_0_Btn" onclick="CheckMCAnswer(35,0,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide ongelijk</li><li id="Q_35_1"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_1_Btn" onclick="CheckMCAnswer(35,1,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Wilbert heeft gelijk</li><li id="Q_35_2"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_2_Btn" onclick="CheckMCAnswer(35,2,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Marieke heeft gelijk</li><li id="Q_35_3"><button class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" id="Q_35_3_Btn" onclick="CheckMCAnswer(35,3,this)">&nbsp;&nbsp;?&nbsp;&nbsp;</button>&nbsp;&nbsp;Beide hebben gelijk</li></ol></li></ol>
+
+
+
+</div>
+
+
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onfocus="FuncBtnOver(this)" onblur="FuncBtnOut(this)" onmouseover="FuncBtnOver(this)" onmouseout="FuncBtnOut(this)" onmousedown="FuncBtnDown(this)" onmouseup="FuncBtnOut(this)" onclick="HideFeedback(); return false;">&nbsp;OK&nbsp;</button>
+</div>
+
+<div align="center">
+  <!-- BeginBottomNavButtons -->
+  
+  
+  
+  <!-- EndBottomNavButtons -->
+  
+  <!-- BeginSubmissionForm -->
+  
+  <!-- EndSubmissionForm -->
+  
+</div></div>
+<footer class="page-footer"><p>Biologiepagina.nl · gratis oefenen en leren voor vmbo, havo en vwo.</p><p><a href="/Contact/contact.htm">Contact</a> · <a href="/richtlijnenbronvermelding.htm">Bronvermelding</a></p></footer>
+</main>
+</div>
+<script src="/theme/theme.js" defer></script>
+</body>
+</html>

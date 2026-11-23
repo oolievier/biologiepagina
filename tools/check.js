@@ -55,8 +55,12 @@ for (const file of newPages) {
     if (!raw || /^(https?:|mailto:|tel:|javascript:|data:|#|\/\/)/i.test(raw)) return;
     let p = raw.split('#')[0].split('?')[0];
     if (!p) return;
-    if (p === '/') p = 'index.html';
-    p = decodeURIComponent(p).replace(/^\/+/, '').toLowerCase();
+    if (p === '/') p = '/index.html';
+    p = decodeURIComponent(p);
+    if (p.charAt(0) !== '/') {
+      p = path.relative(OUT, path.resolve(path.dirname(file), p));
+    }
+    p = path.normalize(p).replace(/^\/+/, '').replace(/^(\.\.[/\\])+/, '').toLowerCase();
     if (!lowerMap.has(p) && !lowerMap.has(p + '.html') && !lowerMap.has(p + '.htm')) {
       missing.push(rel + '  ->  ' + raw);
     }

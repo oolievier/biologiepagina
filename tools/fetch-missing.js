@@ -53,6 +53,8 @@ function findCase(base, rel) {
       if (!path.isAbsolute(p)) p = path.relative(OUT, path.resolve(path.dirname(file), p));
       p = path.normalize(p).replace(/^(\.\.[/\\])+/, '');
       if (p.startsWith('..') || p.startsWith('theme' + path.sep)) continue;
+      // HTML-pagina's worden door build.js gemaakt; nooit van de oude site halen
+      if (/\.html?$/i.test(p)) continue;
       wanted.set(p, (wanted.get(p) || 0) + 1);
     }
   }
